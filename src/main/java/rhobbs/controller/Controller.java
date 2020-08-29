@@ -1,6 +1,7 @@
 package rhobbs.controller;
 
 import rhobbs.model.Model;
+import rhobbs.model.storage.Storage;
 import rhobbs.view.ConsoleView;
 
 import java.util.Scanner;
@@ -32,8 +33,13 @@ public class Controller {
 
   private void runStart(String input) {
     if (input.equals("1")) {
-      this.model.buildHero("Mike");
-      ConsoleView.showHeroStats(this.model.getHero());
+//      this.model.buildHero("Mike");
+//      ConsoleView.showHeroStats(this.model.getHero());
+      try {
+        Storage.selectHero("Mikeww");
+      } catch (Exception e) {
+        System.out.println(e.getMessage());
+      }
     } else if (input.equals("2")) {
       System.out.println("You selected 2");
     } else {

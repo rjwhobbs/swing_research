@@ -1,10 +1,6 @@
 package rhobbs.model;
 
-//import rhobbs.model.util.dataUtil;
-
-import rhobbs.model.storage.Connect;
-import rhobbs.model.storage.StoreHero;
-
+import rhobbs.model.storage.Storage;
 import java.sql.Connection;
 import java.util.List;
 
@@ -18,9 +14,9 @@ public class Model {
   public void buildHero(String name) {
     this.hero = new GuitarHero(name);
     try {
-      conn = Connect.getConnection();
+      conn = Storage.getConnection();
       System.out.println("Connected");
-      StoreHero.insertHero(
+      Storage.insertHero(
               this.hero.getName(),
               this.hero.getClassType(),
               this.hero.getWeapon().getType(),
