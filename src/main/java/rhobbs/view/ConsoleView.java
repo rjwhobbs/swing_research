@@ -22,7 +22,7 @@ public class ConsoleView {
     System.out.println("XP: " + hero.getExperience());
     System.out.println("HP: " + hero.getHitPoints());
     System.out.println("Weapon: " + hero.getWeapon().getType());
-    System.out.println("Defense: " + hero.getDefense());
+    System.out.println("Armor: " + hero.getArmor().getType());
   }
 
   public static void showUsersInput(String input) {

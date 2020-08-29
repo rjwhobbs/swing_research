@@ -1,8 +1,7 @@
-package rhobbs.model.artefacts;
+package rhobbs.model.artefacts.weapons;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import rhobbs.model.artefacts.weapons.Weapon;
 
 public class GuitarWeapons {
 

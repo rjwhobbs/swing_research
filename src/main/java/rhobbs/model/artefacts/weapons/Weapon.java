@@ -1,4 +1,4 @@
-package rhobbs.model.artefacts;
+package rhobbs.model.artefacts.weapons;
 
 public class Weapon {
   private String type;

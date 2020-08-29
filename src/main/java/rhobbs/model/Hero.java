@@ -1,12 +1,14 @@
 package rhobbs.model;
 
-import rhobbs.model.artefacts.Weapon;
+import rhobbs.model.artefacts.armor.Armor;
+import rhobbs.model.artefacts.weapons.Weapon;
 
 public abstract class Hero {
 
   private String name;
   private String classType;
   private Weapon weapon;
+  private Armor armor;
   private int level;
   private int experience;
   private int hitPoints;
@@ -17,19 +19,20 @@ public abstract class Hero {
           String name,
           String classType,
           Weapon weapon,
+          Armor armor,
           int level,
           int experience,
-          int hitPoints,
-          int defense
+          int hitPoints
   ) {
     this.name = name;
     this.classType = classType;
     this.weapon = weapon;
+    this.armor = armor;
     this.level = level;
     this.experience = experience;
     this.hitPoints = hitPoints;
     this.attack = weapon.getAttack();
-    this.defense = defense;
+    this.defense = armor.getDefense();
   }
 
   public String getName() {
@@ -42,6 +45,15 @@ public abstract class Hero {
 
   public Weapon getWeapon() {
     return weapon;
+  }
+
+  public Armor getArmor() {
+    return armor;
+  }
+
+  public void setArmor(Armor armor) {
+    this.defense = armor.getDefense();
+    this.armor = armor;
   }
 
   public void setWeapon(Weapon weapon) {

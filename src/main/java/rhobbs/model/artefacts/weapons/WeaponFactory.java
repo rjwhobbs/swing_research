@@ -1,4 +1,8 @@
-package rhobbs.model.artefacts;
+package rhobbs.model.artefacts.weapons;
+
+import rhobbs.model.artefacts.weapons.BassGuitarWeapons;
+import rhobbs.model.artefacts.weapons.GuitarWeapons;
+import rhobbs.model.artefacts.weapons.Weapon;
 
 public abstract class WeaponFactory {
   public static Weapon retrieveWeapon(String weaponType) {
