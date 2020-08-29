@@ -1,6 +1,8 @@
 package rhobbs.model.storage;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Storage {
 
@@ -55,22 +57,25 @@ public class Storage {
     }
   }
 
-  public static void selectHero(String name) throws Exception{
+  public static List<String> selectHero(String name) throws Exception{
+    List<String> selectedHero = new ArrayList<>();
     String sql;
     sql = "SELECT * FROM heroes WHERE name = ?";
 
     try {
       Connection conn = Storage.getConnection();
       PreparedStatement pstmt = conn.prepareStatement(sql);
-//      Statement stmt  = conn.createStatement();
       pstmt.setString(1, name);
       ResultSet res = pstmt.executeQuery();
       if (res.next()) {
-        System.out.println(res.getString("name"));
-      } else {
-        System.out.println("Nothing");
+        selectedHero.add(res.getString("name"));
+        selectedHero.add(res.getString("classType"));
+        selectedHero.add(res.getString("weapon"));
+        selectedHero.add(res.getString("armor"));
+        selectedHero.add(res.getString("level"));
+        selectedHero.add(res.getString("xp"));
       }
-
+      return selectedHero;
     } catch (SQLException e) {
       throw new Exception(e.getMessage());
     }

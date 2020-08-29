@@ -35,11 +35,12 @@ public class Controller {
     if (input.equals("1")) {
 //      this.model.buildHero("Mike");
 //      ConsoleView.showHeroStats(this.model.getHero());
-      try {
-        Storage.selectHero("Mikeww");
-      } catch (Exception e) {
-        System.out.println(e.getMessage());
-      }
+//      try {
+//        Storage.selectHero("Mikeww");
+//      } catch (Exception e) {
+//        System.out.println(e.getMessage());
+//      }
+      this.model.retrieveHero();
     } else if (input.equals("2")) {
       System.out.println("You selected 2");
     } else {

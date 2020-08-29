@@ -29,6 +29,17 @@ public class Model {
     }
   }
 
+  public void retrieveHero() {
+    try {
+      List<String> hero = Storage.selectHero("Mike");
+      for(String str: hero) {
+        System.out.println(str);
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public Hero getHero() {
     return this.hero;
   }
