@@ -6,13 +6,11 @@ import java.util.List;
 
 public class ConsoleView {
 
-  private static boolean showStartScreen;
-
   public static void showStartMessage() {
     System.out.println("Welcome to Swingy! (Type EXIT to quit)");
-    System.out.println("Type the number of your option");
-    System.out.println("1 Select a hero.");
-    System.out.println("2 Create a new hero.");
+    System.out.println("Your epic quest starts here!\nSelect an old hero or ... create a new one?");
+    System.out.println("(1) Select a hero.");
+    System.out.println("(2) Create a new hero.");
   }
 
   public static void listAvailableHeroes(List<List<String>> allHeroes) {
@@ -20,7 +18,7 @@ public class ConsoleView {
     for (List<String> hero: allHeroes) {
       System.out.print(
               " (" + hero.get(0) + ") "
-                      + hero.get(1) + " "
+                      + hero.get(1)
                       + " Lvl " + hero.get(5)
                       + " " + hero.get(2) + "\n"
                       + " Axe: " + hero.get(3)
@@ -48,14 +46,8 @@ public class ConsoleView {
     System.out.println("Input not recognized: " + error);
   }
 
-  public static boolean isShowStartScreen() {
-    return showStartScreen;
+  public static void showMessage(String message) {
+    System.out.println(message);
   }
 
-  public static void setShowStartScreen(boolean showStartScreen) {
-    ConsoleView.showStartScreen = showStartScreen;
-  }
-
-  public static void showAvailableHeroes() {
-  }
 }
