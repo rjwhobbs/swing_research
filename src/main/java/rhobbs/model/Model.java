@@ -46,7 +46,7 @@ public class Model {
           System.out.println(str);
         }
       } else {
-        System.out.println("problem " + hero.size());
+        System.out.println("problem in selectHero" + hero.size());
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());

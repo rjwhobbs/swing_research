@@ -3,7 +3,6 @@ package rhobbs.controller;
 import rhobbs.model.Model;
 import rhobbs.view.ConsoleView;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -22,22 +21,31 @@ public class Controller {
     String input = "";
 
     Scanner scanner = new Scanner(System.in);
+
     showStartScreen = true;
     showSelectHeroScreen = false;
 
-    ConsoleView.showStartMessage();
-
-    input = scanner.nextLine();
+    ConsoleView.showStartScreen();
 
     while (!input.equals("EXIT")) {
       if (showStartScreen) {
-       this.runStart(input);
+        ConsoleView.showStartSelectScreen();
+        input = scanner.nextLine();
+        if (input.equals("EXIT")) {
+          break;
+        }
+        this.runStart(input);
       }
-      if (showSelectHeroScreen) {
+      else if (showSelectHeroScreen) {
+        ConsoleView.listAvailableHeroes(this.model.getStoredHeroes());
+        input = scanner.nextLine();
+        if (input.equals("EXIT")) {
+          break;
+        }
         this.runSelectHero(input);
       }
-      input = scanner.nextLine();
     }
+
   }
 
   private void runStart(String input) {
@@ -59,9 +67,10 @@ public class Controller {
   }
 
   private void runSelectHero(String input) {
-    ConsoleView.listAvailableHeroes(this.model.getStoredHeroes());
     if (this.validateSlectedHeroIndex(input)) {
       this.model.selectHero(input);
+    } else {
+      ConsoleView.showInputNotRecognized(input);
     }
   }
 

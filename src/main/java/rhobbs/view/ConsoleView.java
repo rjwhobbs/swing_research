@@ -6,9 +6,12 @@ import java.util.List;
 
 public class ConsoleView {
 
-  public static void showStartMessage() {
+  public static void showStartScreen() {
     System.out.println("Welcome to Swingy! (Type EXIT to quit)");
     System.out.println("Your epic quest starts here!\nSelect an old hero or ... create a new one?");
+  }
+
+  public static void showStartSelectScreen() {
     System.out.println("(1) Select a hero.");
     System.out.println("(2) Create a new hero.");
   }
