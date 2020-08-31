@@ -16,11 +16,20 @@ public class ConsoleView {
   }
 
   public static void listAvailableHeroes(List<List<String>> allHeroes) {
+    System.out.println("Choose your hero:");
     for (List<String> hero: allHeroes) {
-      for (String heroStats: hero) {
-        System.out.println(heroStats);
-      }
+      System.out.print(
+              " (" + hero.get(0) + ") "
+                      + hero.get(1) + " "
+                      + " Lvl " + hero.get(5)
+                      + " " + hero.get(2) + "\n"
+                      + " Axe: " + hero.get(3)
+                      + ", Defense: " + hero.get(4)
+                      + ", XP: " + hero.get(6)
+                      + "\n -------\n"
+      );
     }
+
   }
 
   public static void showHeroStats(Hero hero) {

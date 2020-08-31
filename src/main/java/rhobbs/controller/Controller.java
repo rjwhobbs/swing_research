@@ -26,22 +26,13 @@ public class Controller {
       if (ConsoleView.isShowStartScreen()) {
        this.runStart(input);
       }
-
       input = scanner.nextLine();
     }
   }
 
   private void runStart(String input) {
     if (input.equals("1")) {
-//      this.model.buildHero("Mike");
-//      ConsoleView.showHeroStats(this.model.getHero());
-//      try {
-//        Storage.selectHero("Mikeww");
-//      } catch (Exception e) {
-//        System.out.println(e.getMessage());
-//      }
       ConsoleView.listAvailableHeroes(this.model.getAllHeroes());
-
     } else if (input.equals("2")) {
       System.out.println("You selected 2");
     } else {
