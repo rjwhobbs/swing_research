@@ -2,6 +2,8 @@ package rhobbs.view;
 
 import rhobbs.model.Hero;
 
+import java.util.List;
+
 public class ConsoleView {
 
   private static boolean showStartScreen;
@@ -13,8 +15,12 @@ public class ConsoleView {
     System.out.println("2 Create a new hero.");
   }
 
-  public static void listAvailableHeroes() {
-
+  public static void listAvailableHeroes(List<List<String>> allHeroes) {
+    for (List<String> hero: allHeroes) {
+      for (String heroStats: hero) {
+        System.out.println(heroStats);
+      }
+    }
   }
 
   public static void showHeroStats(Hero hero) {

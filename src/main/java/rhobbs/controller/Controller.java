@@ -40,7 +40,8 @@ public class Controller {
 //      } catch (Exception e) {
 //        System.out.println(e.getMessage());
 //      }
-      this.model.retrieveHero();
+      ConsoleView.listAvailableHeroes(this.model.getAllHeroes());
+
     } else if (input.equals("2")) {
       System.out.println("You selected 2");
     } else {

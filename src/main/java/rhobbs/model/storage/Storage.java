@@ -22,11 +22,38 @@ public class Storage {
       Connection conn = DriverManager.getConnection(url);
       Statement stmt = conn.createStatement();
       stmt.execute(sql);
-//      System.out.println("here");
       return conn;
     } catch (SQLException e) {
       throw new Exception(e.getMessage());
     }
+  }
+
+  public static List<List<String>> selectAllHeroes() {
+    List<List<String>> result = new ArrayList<>();
+    String sql;
+    sql = "SELECT * FROM heroes";
+
+    try {
+      Connection conn = Storage.getConnection();
+      Statement stmt = conn.createStatement();
+      ResultSet res = stmt.executeQuery(sql);
+
+      while (res.next()) {
+        List<String> temp = new ArrayList<>();
+        temp.add(res.getString(1));
+        temp.add(res.getString(2));
+        temp.add(res.getString(3));
+        temp.add(res.getString(4));
+        temp.add(res.getString(5));
+        temp.add(res.getString(6));
+        temp.add(res.getString(7));
+        result.add(temp);
+        temp = null; // Will this do what I think it will?
+      }
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return result;
   }
 
   public static void insertHero(

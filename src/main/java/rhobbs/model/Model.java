@@ -2,6 +2,7 @@ package rhobbs.model;
 
 import rhobbs.model.storage.Storage;
 import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
@@ -29,11 +30,20 @@ public class Model {
     }
   }
 
+  public List<List<String>> getAllHeroes() {
+    return Storage.selectAllHeroes();
+  }
+
   public void retrieveHero() {
     try {
-      List<String> hero = Storage.selectHero("Mike");
-      for(String str: hero) {
-        System.out.println(str);
+      List<String> hero = Storage.selectHero("Miked");
+      System.out.println("Bru"+ hero.size());
+      if (hero.size() == 6) {
+        for(String str: hero) {
+          System.out.println(str);
+        }
+      } else {
+        System.out.println(hero.size());
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());
