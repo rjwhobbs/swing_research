@@ -25,7 +25,9 @@ public class Controller {
     Scanner scanner = new Scanner(System.in);
     showStartScreen = true;
     showSelectHeroScreen = false;
+
     ConsoleView.showStartMessage();
+
     input = scanner.nextLine();
 
     while (!input.equals("EXIT")) {
@@ -44,19 +46,36 @@ public class Controller {
       if (this.storedHeroes.size() != 0) {
         showStartScreen = false;
         showSelectHeroScreen = true;
-      } else {
+      }
+      else {
         ConsoleView.showMessage("Mmm, there seem to be no available heroes, please create a new one.");
       }
-    } else if (input.equals("2")) {
+    }
+    else if (input.equals("2")) {
       System.out.println("You selected 2");
-    } else {
+    }
+    else {
       ConsoleView.showInputNotRecognized(input);
     }
-
   }
 
   private void runSelectHero(String input) {
-
     ConsoleView.listAvailableHeroes(this.storedHeroes);
+    if (this.validateSlectedHeroIndex(input)) {
+      this.model.selectHero(input);
+    }
+  }
+
+  private boolean validateSlectedHeroIndex(String index) {
+    try {
+      int input = Integer.parseInt(index);
+      if (input <= 0 || input > this.storedHeroes.size() || index.indexOf(0) == '+') {
+        return false;
+      }
+      return true;
+    }
+    catch (NumberFormatException e) {
+      return false;
+    }
   }
 }

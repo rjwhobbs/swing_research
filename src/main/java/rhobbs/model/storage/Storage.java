@@ -84,7 +84,7 @@ public class Storage {
     }
   }
 
-  public static List<String> selectHero(String name) throws Exception{
+  public static List<String> selectHeroByName(String name) throws Exception {
     List<String> selectedHero = new ArrayList<>();
     String sql;
     sql = "SELECT * FROM heroes WHERE name = ?";
@@ -108,4 +108,27 @@ public class Storage {
     }
   }
 
+  public static List<String> selecHeroById(String id) throws Exception {
+    List<String> selectedHero = new ArrayList<>();
+    String sql;
+    sql = "SELECT * FROM heroes WHERE id = ?";
+
+    try {
+      Connection conn = Storage.getConnection();
+      PreparedStatement pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, id);
+      ResultSet res = pstmt.executeQuery();
+      if (res.next()) {
+        selectedHero.add(res.getString("name"));
+        selectedHero.add(res.getString("classType"));
+        selectedHero.add(res.getString("weapon"));
+        selectedHero.add(res.getString("armor"));
+        selectedHero.add(res.getString("level"));
+        selectedHero.add(res.getString("xp"));
+      }
+      return selectedHero;
+    } catch (SQLException e) {
+      throw new Exception(e.getMessage());
+    }
+  }
 }
