@@ -3,17 +3,17 @@ package rhobbs.model.artefacts.weapons;
 public abstract class WeaponFactory {
   public static Weapon retrieveWeapon(String weaponType) {
     switch (weaponType) {
-      case "acousticGuitar":
+      case "Acoustic Guitar":
         return GuitarWeapons.getAcousticGuitar();
-      case "flyingV":
+      case "Flying V":
         return GuitarWeapons.getFlyingV();
-      case "fenderStrat":
+      case "Fender Strat":
         return GuitarWeapons.getFenderStrat();
-      case "squierJBass":
+      case "Squier JBass":
         return BassGuitarWeapons.getSquierJBass();
-      case "mexiPBass":
+      case "Mexican PBass":
         return BassGuitarWeapons.getMexiPBass();
-      case "doubleBass":
+      case "Double Bass":
         return BassGuitarWeapons.getDoubleBass();
       default:
         return new Weapon("none", 0);

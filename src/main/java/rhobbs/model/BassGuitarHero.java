@@ -36,7 +36,7 @@ public class BassGuitarHero extends Hero {
             "Bass Guitar hero",
             WeaponFactory.retrieveWeapon(weapon),
             ArmorFactory.retrieveArmor(armor),
-            HelmFactory.getHelm("none"),
+            HelmFactory.getHelm(helm),
             level,
             experience,
             hitPoints

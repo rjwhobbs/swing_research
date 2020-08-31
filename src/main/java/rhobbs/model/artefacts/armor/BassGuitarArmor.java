@@ -4,7 +4,7 @@ public class BassGuitarArmor {
 
   private static Armor hartkeAmp = new Armor("Hartke Amp", 50);
   private static Armor fenderAmp = new Armor("Fender Amp", 100);
-  private static Armor AmpegAllTubeAmp = new Armor("Ampeg All Tube Amp", 200);
+  private static Armor ampegAllTubeAmp = new Armor("Ampeg All Tube Amp", 200);
 
   public static Armor getHartkeAmp() {
     return hartkeAmp;
@@ -15,6 +15,6 @@ public class BassGuitarArmor {
   }
 
   public static Armor getAmpegAllTubeAmp() {
-    return AmpegAllTubeAmp;
+    return ampegAllTubeAmp;
   }
 }

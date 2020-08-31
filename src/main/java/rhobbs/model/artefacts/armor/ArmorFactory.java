@@ -3,22 +3,20 @@ package rhobbs.model.artefacts.armor;
 public class ArmorFactory {
   public static Armor retrieveArmor(String armorType) {
     switch (armorType) {
-      case "none":
-        return new Armor("none", 0);
-      case "marshallAmp":
+      case "Marshall Amp":
         return GuitarArmor.getMarshallAmp();
-      case "mesaBoogieAmp":
+      case "MesaBoogie Amp":
         return GuitarArmor.getMesaBoogieAmp();
-      case "voxAmp":
+      case "Vox Amp":
         return GuitarArmor.getVoxAmp();
-      case "hartkeAmp":
+      case "Hartke Amp":
         return BassGuitarArmor.getHartkeAmp();
-      case "fenderAmp":
+      case "Fender Amp":
         return BassGuitarArmor.getFenderAmp();
-      case "ampegAllTubeAmp":
+      case "Ampeg All Tube Amp":
         return BassGuitarArmor.getAmpegAllTubeAmp();
       default:
-        return null;
+        return new Armor("none", 0);
     }
   }
 }

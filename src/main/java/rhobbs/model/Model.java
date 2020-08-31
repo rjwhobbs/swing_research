@@ -1,13 +1,13 @@
 package rhobbs.model;
 
 import rhobbs.model.storage.Storage;
-import java.sql.Connection;
+//import java.sql.Connection;
 import java.util.List;
 
 public class Model {
 
-  private Connection conn;
-  private List<String> heroes;
+//  private Connection conn;
+//  private List<String> heroes;
   private Hero hero;
   private List<List<String>> storedHeroes;
 
@@ -63,16 +63,4 @@ public class Model {
   public Hero getHero() {
     return this.hero;
   }
-
-
-//  public void initHero() {
-//    try {
-//      heroes = dataUtil.getAllHeroes();
-//      for(String hero: heroes) {
-//        System.out.println(hero);
-//      }
-//    } catch (Exception e) {
-//      System.out.println(e.getMessage());
-//    }
-//  }
 }

@@ -20,6 +20,17 @@ public class Storage {
                 0
         );
       }
+      if (selectHeroByName("Brenda").size() == 0) {
+        insertHero(
+                "Brenda",
+                "Bass Guitar Hero",
+                "Mexican PBass",
+                "Hartke Amp",
+                "Black Vans Hoodie",
+                3,
+                500
+        );
+      }
     }
     catch (Exception e) {
       System.out.println(e.getMessage());
