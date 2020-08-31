@@ -12,6 +12,7 @@ public class Model {
   private List<List<String>> storedHeroes;
 
   public Model() {
+    Storage.storageInit();
     this.storedHeroes = Storage.selectAllHeroes();
   }
 
@@ -25,6 +26,7 @@ public class Model {
               this.hero.getClassType(),
               this.hero.getWeapon().getType(),
               this.hero.getArmor().getType(),
+              this.hero.getHelm().getHelmType(),
               this.hero.getLevel(),
               this.hero.getExperience()
       );
@@ -39,9 +41,9 @@ public class Model {
 
   public void selectHero(String index) {
     try {
-      List<String> selectedHero = Storage.selecHeroById(index);
+      List<String> selectedHero = Storage.selectHeroById(index);
 //      System.out.println("Bru"+ hero.size());
-      if (selectedHero.size() == 6) {
+      if (selectedHero.size() == 7) {
         this.hero = HeroFactory.buildHero(selectedHero.get(0), selectedHero.get(1));
       } else {
         System.out.println("problem in selectHero" + selectedHero.size());

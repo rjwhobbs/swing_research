@@ -22,11 +22,12 @@ public class ConsoleView {
       System.out.print(
               " (" + hero.get(0) + ") "
                       + hero.get(1)
-                      + " Lvl " + hero.get(5)
+                      + " Lvl " + hero.get(6)
                       + " " + hero.get(2) + "\n"
                       + " Axe: " + hero.get(3)
                       + ", Defense: " + hero.get(4)
-                      + ", XP: " + hero.get(6)
+                      + ", Helm: " + hero.get(5)
+                      + ", XP: " + hero.get(7)
                       + "\n -------\n"
       );
     }
@@ -39,6 +40,7 @@ public class ConsoleView {
     System.out.println("HP: " + hero.getHitPoints());
     System.out.println("Weapon: " + hero.getWeapon().getType());
     System.out.println("Armor: " + hero.getArmor().getType());
+    System.out.println("Helm: " + hero.getHelm().getHelmType());
   }
 
   public static void showUsersInput(String input) {

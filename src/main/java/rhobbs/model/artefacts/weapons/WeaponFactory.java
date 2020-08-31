@@ -1,9 +1,5 @@
 package rhobbs.model.artefacts.weapons;
 
-import rhobbs.model.artefacts.weapons.BassGuitarWeapons;
-import rhobbs.model.artefacts.weapons.GuitarWeapons;
-import rhobbs.model.artefacts.weapons.Weapon;
-
 public abstract class WeaponFactory {
   public static Weapon retrieveWeapon(String weaponType) {
     switch (weaponType) {
@@ -20,7 +16,7 @@ public abstract class WeaponFactory {
       case "doubleBass":
         return BassGuitarWeapons.getDoubleBass();
       default:
-        return null;
+        return new Weapon("none", 0);
     }
   }
 }

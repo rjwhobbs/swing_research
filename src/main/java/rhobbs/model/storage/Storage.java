@@ -6,6 +6,27 @@ import java.util.List;
 
 public class Storage {
 
+  public static void storageInit() {
+    try {
+//      Connection conn = getConnection();
+      if (selectHeroByName("Steve").size() == 0) {
+
+        insertHero(
+                "Steve",
+                "Guitar Hero",
+                "Flying V",
+                "none",
+                "Hard Rock Cafe Cap",
+                2,
+                0
+        );
+      }
+    }
+    catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+  }
+
   public static Connection getConnection() throws Exception {
     String url = "jdbc:sqlite:swingyDB.db";
     String sql;
@@ -15,6 +36,7 @@ public class Storage {
             + " classType varchar(50) NOT NULL,"
             + " weapon varchar(50) NOT NULL,"
             + " armor varchar(50) NOT NULL,"
+            + " helm varchar(50) NOT NULL,"
             + " level integer NOT NULL,"
             + " xp integer NOT NULL);";
 
@@ -47,9 +69,11 @@ public class Storage {
         temp.add(res.getString(5));
         temp.add(res.getString(6));
         temp.add(res.getString(7));
+        temp.add(res.getString(8));
         result.add(temp);
-        temp = null; // Will this do what I think it will?
+//        temp = null; // Will this do what I think it will?
       }
+      conn.close();
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
@@ -61,13 +85,14 @@ public class Storage {
           String classType,
           String weapon,
           String armor,
+          String helm,
           int level,
           int xp
   ) throws Exception {
     String sql;
-    sql = "INSERT INTO heroes ("
-            + " name, classType, weapon, armor, level, xp)"
-            + " VALUES(?, ?, ?, ?, ?, ?)";
+    sql = "INSERT INTO heroes"
+            + " (name, classType, weapon, armor, helm, level, xp)"
+            + " VALUES(?, ?, ?, ?, ?, ?, ?)";
 
     try {
       Connection conn = Storage.getConnection();
@@ -76,10 +101,14 @@ public class Storage {
       pstmt.setString(2, classType);
       pstmt.setString(3, weapon);
       pstmt.setString(4, armor);
-      pstmt.setInt(5, level);
-      pstmt.setInt(6, xp);
+      pstmt.setString(5, helm);
+      pstmt.setInt(6, level);
+      pstmt.setInt(7, xp);
       pstmt.executeUpdate();
+      System.out.println("XXXXXHere");
+      conn.close();
     } catch (SQLException e) {
+//      System.out.println(e.getMessage());
       throw new Exception(e.getMessage());
     }
   }
@@ -99,16 +128,18 @@ public class Storage {
         selectedHero.add(res.getString("classType"));
         selectedHero.add(res.getString("weapon"));
         selectedHero.add(res.getString("armor"));
+        selectedHero.add(res.getString("helm"));
         selectedHero.add(res.getString("level"));
         selectedHero.add(res.getString("xp"));
       }
+      conn.close();
       return selectedHero;
     } catch (SQLException e) {
       throw new Exception(e.getMessage());
     }
   }
 
-  public static List<String> selecHeroById(String id) throws Exception {
+  public static List<String> selectHeroById(String id) throws Exception {
     List<String> selectedHero = new ArrayList<>();
     String sql;
     sql = "SELECT * FROM heroes WHERE id = ?";
@@ -123,9 +154,11 @@ public class Storage {
         selectedHero.add(res.getString("classType"));
         selectedHero.add(res.getString("weapon"));
         selectedHero.add(res.getString("armor"));
+        selectedHero.add(res.getString("helm"));
         selectedHero.add(res.getString("level"));
         selectedHero.add(res.getString("xp"));
       }
+      conn.close();
       return selectedHero;
     } catch (SQLException e) {
       throw new Exception(e.getMessage());

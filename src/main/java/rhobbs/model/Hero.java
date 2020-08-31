@@ -1,6 +1,7 @@
 package rhobbs.model;
 
 import rhobbs.model.artefacts.armor.Armor;
+import rhobbs.model.artefacts.helms.Helm;
 import rhobbs.model.artefacts.weapons.Weapon;
 
 public abstract class Hero {
@@ -9,6 +10,7 @@ public abstract class Hero {
   private String classType;
   private Weapon weapon;
   private Armor armor;
+  private Helm helm;
   private int level;
   private int experience;
   private int hitPoints;
@@ -20,6 +22,7 @@ public abstract class Hero {
           String classType,
           Weapon weapon,
           Armor armor,
+          Helm helm,
           int level,
           int experience,
           int hitPoints
@@ -28,9 +31,10 @@ public abstract class Hero {
     this.classType = classType;
     this.weapon = weapon;
     this.armor = armor;
+    this.helm = helm;
     this.level = level;
     this.experience = experience;
-    this.hitPoints = hitPoints;
+    this.hitPoints = hitPoints + helm.getHitPoints();
     this.attack = weapon.getAttack();
     this.defense = armor.getDefense();
   }
@@ -109,4 +113,12 @@ public abstract class Hero {
     this.defense = defense;
   }
 
+  public Helm getHelm() {
+    return helm;
+  }
+
+  public void setHelm(Helm helm) {
+    this.helm = helm;
+    this.hitPoints += helm.getHitPoints();
+  }
 }
