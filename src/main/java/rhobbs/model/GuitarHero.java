@@ -2,7 +2,6 @@ package rhobbs.model;
 
 import rhobbs.model.artefacts.armor.ArmorFactory;
 import rhobbs.model.artefacts.armor.GuitarArmor;
-import rhobbs.model.artefacts.helms.Helm;
 import rhobbs.model.artefacts.helms.HelmFactory;
 import rhobbs.model.artefacts.weapons.GuitarWeapons;
 import rhobbs.model.artefacts.weapons.WeaponFactory;
@@ -16,7 +15,7 @@ public class GuitarHero extends Hero {
             "Guitar Hero",
             GuitarWeapons.getAcousticGuitar(),
             GuitarArmor.getMarshallAmp(),
-            HelmFactory.getHelm("none"),
+            HelmFactory.retrieveHelm("none"),
             1,
             0,
             100
@@ -37,7 +36,7 @@ public class GuitarHero extends Hero {
             "Guitar Hero",
             WeaponFactory.retrieveWeapon(weapon),
             ArmorFactory.retrieveArmor(armor),
-            HelmFactory.getHelm(helm),
+            HelmFactory.retrieveHelm(helm),
             level,
             experience,
             hitPoints

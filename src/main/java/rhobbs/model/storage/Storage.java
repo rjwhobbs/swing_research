@@ -31,6 +31,17 @@ public class Storage {
                 500
         );
       }
+      if (selectHeroByName("Sarel").size() == 0) {
+        insertHero(
+                "Sarel",
+                "Drum Hero",
+                "Yamaha Drum Kit",
+                "none",
+                "Toy Machine Beanie",
+                1,
+                0
+        );
+      }
     }
     catch (Exception e) {
       System.out.println(e.getMessage());

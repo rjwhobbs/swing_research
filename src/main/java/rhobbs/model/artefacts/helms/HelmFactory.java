@@ -1,7 +1,7 @@
 package rhobbs.model.artefacts.helms;
 
 public abstract class HelmFactory {
-  public static Helm getHelm(String helmType) {
+  public static Helm retrieveHelm(String helmType) {
     switch (helmType) {
       case "Hard Rock Cafe Cap":
         return new Helm("Hard Rock Cafe Cap", 10);

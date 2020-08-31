@@ -26,6 +26,8 @@ public abstract class HeroFactory {
         return new GuitarHero(name, weapon, armor, helm, level, experience, 100);
       case "Bass Guitar Hero":
         return new BassGuitarHero(name, weapon, armor, helm, level, experience, 100);
+      case "Drum Hero":
+        return new DrumHero(name, weapon, armor, helm, level, experience, 100);
       default:
         return null;
     }

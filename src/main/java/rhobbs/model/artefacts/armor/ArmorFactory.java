@@ -15,6 +15,12 @@ public class ArmorFactory {
         return BassGuitarArmor.getFenderAmp();
       case "Ampeg All Tube Amp":
         return BassGuitarArmor.getAmpegAllTubeAmp();
+      case "Wuhan Crash Cymbal":
+        return DrumArmor.getWuhanCrashCymbal();
+      case "Meinl Crash Cymbal":
+        return DrumArmor.getMeinlCrashCymbal();
+      case "Zildjian Crash Cymbal":
+        return DrumArmor.getZildjianCrashCymbal();
       default:
         return new Armor("none", 0);
     }

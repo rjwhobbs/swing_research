@@ -6,13 +6,13 @@ import rhobbs.model.artefacts.helms.HelmFactory;
 import rhobbs.model.artefacts.weapons.BassGuitarWeapons;
 import rhobbs.model.artefacts.weapons.WeaponFactory;
 
-public class BassGuitarHero extends Hero {
+public class DrumHero extends Hero {
 
   // Creating a new hero
-  public BassGuitarHero(String name) {
+  public DrumHero(String name) {
     super(
             name,
-            "Bass Guitar Hero",
+            "Drum Hero",
             BassGuitarWeapons.getMexiPBass(),
             BassGuitarArmor.getHartkeAmp(),
             HelmFactory.retrieveHelm("none"),
@@ -23,7 +23,7 @@ public class BassGuitarHero extends Hero {
   }
 
   //   Retrieving a hero
-  public BassGuitarHero(
+  public DrumHero(
           String name,
           String weapon,
           String armor,
@@ -33,7 +33,7 @@ public class BassGuitarHero extends Hero {
           int hitPoints
   ) {
     super(name,
-            "Bass Guitar Hero",
+            "Drum Hero",
             WeaponFactory.retrieveWeapon(weapon),
             ArmorFactory.retrieveArmor(armor),
             HelmFactory.retrieveHelm(helm),
