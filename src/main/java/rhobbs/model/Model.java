@@ -42,9 +42,16 @@ public class Model {
   public void selectHero(String index) {
     try {
       List<String> selectedHero = Storage.selectHeroById(index);
-//      System.out.println("Bru"+ hero.size());
       if (selectedHero.size() == 7) {
-        this.hero = HeroFactory.buildHero(selectedHero.get(0), selectedHero.get(1));
+        this.hero = HeroFactory.buildHero(
+                selectedHero.get(0),
+                selectedHero.get(1),
+                selectedHero.get(2),
+                selectedHero.get(3),
+                selectedHero.get(4),
+                Integer.parseInt(selectedHero.get(5)),
+                Integer.parseInt(selectedHero.get(6))
+        );
       } else {
         System.out.println("problem in selectHero" + selectedHero.size());
       }

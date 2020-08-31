@@ -34,7 +34,7 @@ public class GuitarHero extends Hero {
           int hitPoints
   ) {
     super(name,
-            "Guitar hero",
+            "Guitar Hero",
             WeaponFactory.retrieveWeapon(weapon),
             ArmorFactory.retrieveArmor(armor),
             HelmFactory.getHelm(helm),

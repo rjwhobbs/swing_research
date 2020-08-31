@@ -10,7 +10,6 @@ public class Storage {
     try {
 //      Connection conn = getConnection();
       if (selectHeroByName("Steve").size() == 0) {
-
         insertHero(
                 "Steve",
                 "Guitar Hero",
