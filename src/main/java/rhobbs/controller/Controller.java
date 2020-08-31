@@ -1,7 +1,6 @@
 package rhobbs.controller;
 
 import rhobbs.model.Model;
-import rhobbs.model.storage.Storage;
 import rhobbs.view.ConsoleView;
 
 import java.util.List;
@@ -12,15 +11,15 @@ public class Controller {
   ConsoleView view;
   Model model;
 
-  private List<List<String>> storedHeroes;
+//  private List<List<String>> storedHeroes;
   private boolean showStartScreen;
   private boolean showSelectHeroScreen;
 
   public Controller(Model model) {
 
     this.model = model;
-    storedHeroes = this.model.getAllHeroes();
-    String input;
+//    storedHeroes = this.model.getStoredHeroes();
+    String input = "";
 
     Scanner scanner = new Scanner(System.in);
     showStartScreen = true;
@@ -43,7 +42,7 @@ public class Controller {
 
   private void runStart(String input) {
     if (input.equals("1")) {
-      if (this.storedHeroes.size() != 0) {
+      if (this.model.getStoredHeroes().size() != 0) {
         showStartScreen = false;
         showSelectHeroScreen = true;
       }
@@ -60,7 +59,7 @@ public class Controller {
   }
 
   private void runSelectHero(String input) {
-    ConsoleView.listAvailableHeroes(this.storedHeroes);
+    ConsoleView.listAvailableHeroes(this.model.getStoredHeroes());
     if (this.validateSlectedHeroIndex(input)) {
       this.model.selectHero(input);
     }
@@ -69,7 +68,7 @@ public class Controller {
   private boolean validateSlectedHeroIndex(String index) {
     try {
       int input = Integer.parseInt(index);
-      if (input <= 0 || input > this.storedHeroes.size() || index.indexOf(0) == '+') {
+      if (input <= 0 || input > this.model.getStoredHeroes().size() || index.indexOf(0) == '+') {
         return false;
       }
       return true;

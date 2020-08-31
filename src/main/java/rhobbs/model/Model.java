@@ -9,12 +9,16 @@ public class Model {
   private Connection conn;
   private List<String> heroes;
   private Hero hero;
+  private List<List<String>> storedHeroes;
 
+  public Model() {
+    this.storedHeroes = Storage.selectAllHeroes();
+  }
 
   public void buildHero(String name) {
     this.hero = new GuitarHero(name);
     try {
-      conn = Storage.getConnection();
+//      conn = Storage.getConnection();
       System.out.println("Connected");
       Storage.insertHero(
               this.hero.getName(),
@@ -29,8 +33,8 @@ public class Model {
     }
   }
 
-  public List<List<String>> getAllHeroes() {
-    return Storage.selectAllHeroes();
+  public List<List<String>> getStoredHeroes() {
+    return this.storedHeroes;
   }
 
   public void selectHero(String index) {
