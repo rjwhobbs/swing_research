@@ -15,7 +15,7 @@ public class Model {
     this.storedHeroes = Storage.selectAllHeroes();
   }
 
-  public void buildHero(String name) {
+  public void saveNewHeroInDB(String name) {
     this.hero = new GuitarHero(name);
     try {
 //      conn = Storage.getConnection();
@@ -39,14 +39,12 @@ public class Model {
 
   public void selectHero(String index) {
     try {
-      List<String> hero = Storage.selecHeroById(index);
+      List<String> selectedHero = Storage.selecHeroById(index);
 //      System.out.println("Bru"+ hero.size());
-      if (hero.size() == 6) {
-        for(String str: hero) {
-          System.out.println(str);
-        }
+      if (selectedHero.size() == 6) {
+        this.hero = HeroFactory.buildHero(selectedHero.get(0), selectedHero.get(1));
       } else {
-        System.out.println("problem in selectHero" + hero.size());
+        System.out.println("problem in selectHero" + selectedHero.size());
       }
     } catch (Exception e) {
       System.out.println(e.getMessage());

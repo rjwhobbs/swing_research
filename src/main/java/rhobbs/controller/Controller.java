@@ -13,6 +13,7 @@ public class Controller {
 //  private List<List<String>> storedHeroes;
   private boolean showStartScreen;
   private boolean showSelectHeroScreen;
+  private boolean showSelectedHeroScreen;
 
   public Controller(Model model) {
 
@@ -24,6 +25,7 @@ public class Controller {
 
     showStartScreen = true;
     showSelectHeroScreen = false;
+    showSelectedHeroScreen = false;
 
     ConsoleView.showStartScreen();
 
@@ -43,6 +45,13 @@ public class Controller {
           break;
         }
         this.runSelectHero(input);
+      }
+      else if (showSelectedHeroScreen) {
+        ConsoleView.showHeroStats(this.model.getHero());
+        input = scanner.nextLine();
+        if (input.equals("EXIT")) {
+          break;
+        }
       }
     }
 
@@ -67,14 +76,17 @@ public class Controller {
   }
 
   private void runSelectHero(String input) {
-    if (this.validateSlectedHeroIndex(input)) {
+    if (this.validateSelectedHeroIndex(input)) {
       this.model.selectHero(input);
+//      ConsoleView.showHeroStats(this.model.getHero());
+      showSelectHeroScreen = false;
+      showSelectedHeroScreen = true;
     } else {
       ConsoleView.showInputNotRecognized(input);
     }
   }
 
-  private boolean validateSlectedHeroIndex(String index) {
+  private boolean validateSelectedHeroIndex(String index) {
     try {
       int input = Integer.parseInt(index);
       if (input <= 0 || input > this.model.getStoredHeroes().size() || index.indexOf(0) == '+') {
