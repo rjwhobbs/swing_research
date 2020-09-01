@@ -126,7 +126,6 @@ public class Storage {
       pstmt.setInt(6, level);
       pstmt.setInt(7, xp);
       pstmt.executeUpdate();
-      System.out.println("XXXXXHere");
       conn.close();
     } catch (SQLException e) {
 //      System.out.println(e.getMessage());

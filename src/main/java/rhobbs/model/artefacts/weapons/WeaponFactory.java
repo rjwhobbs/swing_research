@@ -1,7 +1,15 @@
 package rhobbs.model.artefacts.weapons;
 
+import javax.validation.constraints.NotNull;
+import static org.junit.Assert.*;
+import org.junit.Test;
+
 public abstract class WeaponFactory {
   public static Weapon retrieveWeapon(String weaponType) {
+//    assertNotNull(weaponType);
+//    if (weaponType == null) {
+//      return null;
+//    }
     switch (weaponType) {
       case "Acoustic Guitar":
         return GuitarWeapons.getAcousticGuitar();

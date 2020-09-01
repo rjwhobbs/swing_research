@@ -4,17 +4,48 @@ import rhobbs.model.artefacts.armor.Armor;
 import rhobbs.model.artefacts.helms.Helm;
 import rhobbs.model.artefacts.weapons.Weapon;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public abstract class Hero {
 
+  @NotNull(message = "Hero name can't be null.")
+  @Size(min = 1, max = 20, message = "Hero name can't be less than 1 or more than 20 characters.")
   private String name;
+
+  @NotNull(message = "Hero class type can't be null.")
+  @Size(min = 1, max = 50, message = "Hero class type can't be less than 1 or more than 50 characters.")
   private String classType;
+
+  @NotNull(message = "Hero weapon can't be null.")
   private Weapon weapon;
+
+  @NotNull(message = "Hero armor can't be null.")
   private Armor armor;
+
+  @NotNull(message = "Hero helm can't be null.")
   private Helm helm;
+
+  @Min(value = 1, message = "Hero level can't be less than 1.")
+  @Max(value = 2147483647, message =  "Hero level can't exceed max signed integer value.")
   private int level;
+
+  @Min(value = 0, message = "Hero experience can't be less than 0.")
+  @Max(value = 2147483647, message =  "Hero experience can't exceed max signed integer value.")
   private int experience;
+
+  @Min(value = 0, message = "Hero hit points can't be less than 0.")
+  @Max(value = 2147483647, message =  "Hero hit points can't exceed max signed integer value.")
   private int hitPoints;
+
+  @Min(value = 0, message = "Hero attack can't be less than 0.")
+  @Max(value = 2147483647, message =  "Hero attack can't exceed max signed integer value.")
   private int attack;
+
+  @Min(value = 0, message = "Hero defense can't be less than 0.")
+  @Max(value = 2147483647, message =  "Hero defense can't exceed max signed integer value.")
   private int defense;
 
   public Hero(

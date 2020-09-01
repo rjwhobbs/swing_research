@@ -2,6 +2,9 @@ package rhobbs.model.artefacts.armor;
 
 public class ArmorFactory {
   public static Armor retrieveArmor(String armorType) {
+    if (armorType == null) {
+      return null;
+    }
     switch (armorType) {
       case "Marshall Amp":
         return GuitarArmor.getMarshallAmp();

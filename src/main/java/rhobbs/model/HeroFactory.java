@@ -7,6 +7,8 @@ public abstract class HeroFactory {
         return new GuitarHero(name);
       case "Bass Guitar Hero":
         return new BassGuitarHero(name);
+      case "Drum Hero":
+        return new DrumHero(name);
       default:
         return null;
     }
