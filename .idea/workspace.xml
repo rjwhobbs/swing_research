@@ -14,19 +14,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d699cb6a-6171-4644-8c55-bc7f3accf15e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jetbrains_annotations_java5_20_0_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/208e4bfb-f08a-4144-8feb-aa7085a02582.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/208e4bfb-f08a-4144-8feb-aa7085a02582.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SwingyTwo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/SwingyTwo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/Swingy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/Swingy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/SwingyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/SwingyTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/HeroFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/HeroFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/armor/ArmorFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/armor/ArmorFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/helms/HelmFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/helms/HelmFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/GuitarWeapons.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/GuitarWeapons.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/WeaponFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/WeaponFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/storage/Storage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/storage/Storage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +149,7 @@
       <workItem from="1598699430508" duration="806000" />
       <workItem from="1598708567001" duration="1112000" />
       <workItem from="1598710671912" duration="9542000" />
-      <workItem from="1598729875470" duration="44542000" />
+      <workItem from="1598729875470" duration="50924000" />
     </task>
     <servers />
   </component>
@@ -188,10 +181,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="401" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.777@0.23.1280.777" timestamp="1598710855120" />
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1598899115575">
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1598963442293">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1598899115575" />
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1598963442293" />
     <state x="449" y="82" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598888261576">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -200,22 +193,22 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="254" height="192" key="DatabaseViewActions_Filter/0.23.1280.777@0.23.1280.777" timestamp="1598712497207" />
-    <state width="1238" height="220" key="GridCell.Tab.0.bottom" timestamp="1598962371554">
+    <state width="846" height="198" key="GridCell.Tab.0.bottom" timestamp="1598979363291">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="220" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1598962371554" />
-    <state width="1238" height="220" key="GridCell.Tab.0.center" timestamp="1598962371553">
+    <state width="846" height="198" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1598979363291" />
+    <state width="846" height="198" key="GridCell.Tab.0.center" timestamp="1598979363291">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="220" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1598962371553" />
-    <state width="1238" height="220" key="GridCell.Tab.0.left" timestamp="1598962371550">
+    <state width="846" height="198" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1598979363291" />
+    <state width="846" height="198" key="GridCell.Tab.0.left" timestamp="1598979363290">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="220" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1598962371550" />
-    <state width="1238" height="220" key="GridCell.Tab.0.right" timestamp="1598962371553">
+    <state width="846" height="198" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1598979363290" />
+    <state width="846" height="198" key="GridCell.Tab.0.right" timestamp="1598979363291">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="220" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1598962371553" />
+    <state width="846" height="198" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1598979363291" />
     <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1598953423461">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -236,10 +229,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="262" height="497" key="HiddenNamespacesPopup/0.23.1280.777@0.23.1280.777" timestamp="1598712559634" />
-    <state x="156" y="50" key="SettingsEditor" timestamp="1598947849467">
+    <state x="156" y="50" key="SettingsEditor" timestamp="1598973196531">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="156" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1598947849467" />
+    <state x="156" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1598973196531" />
     <state x="191" y="156" width="898" height="609" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598953235272">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

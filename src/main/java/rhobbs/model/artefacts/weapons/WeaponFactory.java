@@ -6,10 +6,9 @@ import org.junit.Test;
 
 public abstract class WeaponFactory {
   public static Weapon retrieveWeapon(String weaponType) {
-//    assertNotNull(weaponType);
-//    if (weaponType == null) {
-//      return null;
-//    }
+    if (weaponType == null) {
+      return null;
+    }
     switch (weaponType) {
       case "Acoustic Guitar":
         return GuitarWeapons.getAcousticGuitar();
@@ -29,8 +28,10 @@ public abstract class WeaponFactory {
         return DrumWeapons.getYamahaDrumKit();
       case "Spawn Drum Kit":
         return DrumWeapons.getSpawnDrumKit();
-      default:
+      case "none":
         return new Weapon("none", 0);
+      default:
+        return null;
     }
   }
 }

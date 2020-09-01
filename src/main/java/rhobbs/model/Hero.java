@@ -4,15 +4,21 @@ import rhobbs.model.artefacts.armor.Armor;
 import rhobbs.model.artefacts.helms.Helm;
 import rhobbs.model.artefacts.weapons.Weapon;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.Validation;
+import javax.validation.ValidatorFactory;
+import javax.validation.constraints.*;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import java.util.Set;
 
 public abstract class Hero {
 
   @NotNull(message = "Hero name can't be null.")
   @Size(min = 1, max = 20, message = "Hero name can't be less than 1 or more than 20 characters.")
+  @Pattern(
+          regexp = ("^[^\\s]+(\\s+[^\\s]+)*$"),
+          message = "Hero name can't have only, leading, or trailing white space")
   private String name;
 
   @NotNull(message = "Hero class type can't be null.")
@@ -48,7 +54,10 @@ public abstract class Hero {
   @Max(value = 2147483647, message =  "Hero defense can't exceed max signed integer value.")
   private int defense;
 
-  public Hero(
+  private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+  private static Validator validator = factory.getValidator();
+
+  Hero(
           String name,
           String classType,
           Weapon weapon,
@@ -65,9 +74,33 @@ public abstract class Hero {
     this.helm = helm;
     this.level = level;
     this.experience = experience;
-    this.hitPoints = hitPoints + helm.getHitPoints();
-    this.attack = weapon.getAttack();
-    this.defense = armor.getDefense();
+    this.hitPoints = hitPoints;
+    this.attack = 0;
+    this.defense = 0;
+  }
+
+  public void validateHero() throws Exception {
+    Set<ConstraintViolation<Hero>> cvs = validator.validate(this);
+    StringBuilder error = new StringBuilder();
+
+    if (cvs.size() > 0) {
+      for (ConstraintViolation<Hero> cv : cvs) {
+        error.append(cv.getPropertyPath() + ": " + cv.getMessage() + "\n");
+      }
+      throw new Exception(error.toString());
+    }
+  }
+
+  public void equipWeapon() {
+    this.attack = this.weapon.getAttack();
+  }
+
+  public void equipArmor() {
+    this.defense = this.armor.getDefense();
+  }
+
+  public void equipHelm() {
+    this.hitPoints += this.helm.getHitPoints();
   }
 
   public String getName() {
@@ -96,12 +129,17 @@ public abstract class Hero {
     this.weapon = weapon;
   }
 
-  public String getClassType() {
-    return classType;
+  public Helm getHelm() {
+    return helm;
   }
 
-  public void setClassType(String classType) {
-    this.classType = classType;
+  public void setHelm(Helm helm) {
+    this.helm = helm;
+    this.hitPoints += helm.getHitPoints();
+  }
+
+  public String getClassType() {
+    return classType;
   }
 
   public int getLevel() {
@@ -144,12 +182,5 @@ public abstract class Hero {
     this.defense = defense;
   }
 
-  public Helm getHelm() {
-    return helm;
-  }
 
-  public void setHelm(Helm helm) {
-    this.helm = helm;
-    this.hitPoints += helm.getHitPoints();
-  }
 }

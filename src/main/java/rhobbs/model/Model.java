@@ -6,9 +6,8 @@ import java.util.List;
 
 public class Model {
 
-//  private Connection conn;
-//  private List<String> heroes;
-  private Hero hero;
+  private Hero hero = null;
+  private Hero tempHero = null;
   private List<List<String>> storedHeroes;
 
   public Model() {
@@ -43,7 +42,7 @@ public class Model {
     try {
       List<String> selectedHero = Storage.selectHeroById(index);
       if (selectedHero.size() == 7) {
-        this.hero = HeroFactory.buildHero(
+        this.tempHero = HeroFactory.buildHero(
                 selectedHero.get(0),
                 selectedHero.get(1),
                 selectedHero.get(2),
@@ -52,9 +51,12 @@ public class Model {
                 Integer.parseInt(selectedHero.get(5)),
                 Integer.parseInt(selectedHero.get(6))
         );
-      } else {
-        System.out.println("problem in selectHero" + selectedHero.size());
       }
+      this.tempHero.validateHero();
+      this.tempHero.equipArmor();
+      this.tempHero.equipWeapon();
+      this.tempHero.equipHelm();
+      this.hero = this.tempHero;
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }

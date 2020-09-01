@@ -24,7 +24,7 @@ public class SwingyTests{
     switch (testIndex) {
       case 0:
         hero = new GuitarHero(
-                null,
+                "     ",
                 "",
                 "",
                 "",
@@ -36,12 +36,19 @@ public class SwingyTests{
         break;
     }
 
-
-    Set<ConstraintViolation<Hero>> cvs = validator.validate(hero);
-
-    for (ConstraintViolation<Hero> cv : cvs) {
-      System.out.println(cv.getPropertyPath() + ": " + cv.getMessage());
+//    hero = null;
+    try {
+      hero.validateHero();
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
     }
+
+
+//    Set<ConstraintViolation<Hero>> cvs = validator.validate(hero);
+//
+//    for (ConstraintViolation<Hero> cv : cvs) {
+//      System.out.println(cv.getPropertyPath() + ": " + cv.getMessage());
+//    }
   }
 }
 
