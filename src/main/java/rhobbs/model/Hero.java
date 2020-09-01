@@ -57,6 +57,8 @@ public abstract class Hero {
   private static ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
   private static Validator validator = factory.getValidator();
 
+  Hero() {}
+
   Hero(
           String name,
           String classType,
@@ -140,6 +142,10 @@ public abstract class Hero {
 
   public String getClassType() {
     return classType;
+  }
+
+  public void setClassType(String classType) {
+    this.classType = classType;
   }
 
   public int getLevel() {

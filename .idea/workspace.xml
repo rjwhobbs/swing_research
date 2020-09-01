@@ -15,11 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d699cb6a-6171-4644-8c55-bc7f3accf15e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/SwingyTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/SwingyTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/HeroFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/HeroFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/WeaponFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/WeaponFactory.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,19 +75,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Swingy">
-    <configuration name="App (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="rhobbs.App" />
-      <module name="SwingyTwo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="rhobbs.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.mycompany.app.App" />
       <module name="SwingyTwo" />
@@ -105,12 +88,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rhobbs.App" />
+      <module name="SwingyTwo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rhobbs.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Swingy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rhobbs.Swingy" />
       <module name="SwingyTwo" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="rhobbs.*" />
+          <option name="PATTERN" value="rhobbs.model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -149,7 +145,7 @@
       <workItem from="1598699430508" duration="806000" />
       <workItem from="1598708567001" duration="1112000" />
       <workItem from="1598710671912" duration="9542000" />
-      <workItem from="1598729875470" duration="50924000" />
+      <workItem from="1598729875470" duration="52938000" />
     </task>
     <servers />
   </component>
@@ -181,10 +177,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="401" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.777@0.23.1280.777" timestamp="1598710855120" />
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1598963442293">
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1598982873282">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1598963442293" />
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1598982873282" />
     <state x="449" y="82" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598888261576">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -193,22 +189,22 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="254" height="192" key="DatabaseViewActions_Filter/0.23.1280.777@0.23.1280.777" timestamp="1598712497207" />
-    <state width="846" height="198" key="GridCell.Tab.0.bottom" timestamp="1598979363291">
+    <state width="1238" height="220" key="GridCell.Tab.0.bottom" timestamp="1598979392455">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="846" height="198" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1598979363291" />
-    <state width="846" height="198" key="GridCell.Tab.0.center" timestamp="1598979363291">
+    <state width="1238" height="220" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1598979392455" />
+    <state width="1238" height="220" key="GridCell.Tab.0.center" timestamp="1598979392454">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="846" height="198" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1598979363291" />
-    <state width="846" height="198" key="GridCell.Tab.0.left" timestamp="1598979363290">
+    <state width="1238" height="220" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1598979392454" />
+    <state width="1238" height="220" key="GridCell.Tab.0.left" timestamp="1598979392454">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="846" height="198" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1598979363290" />
-    <state width="846" height="198" key="GridCell.Tab.0.right" timestamp="1598979363291">
+    <state width="1238" height="220" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1598979392454" />
+    <state width="1238" height="220" key="GridCell.Tab.0.right" timestamp="1598979392454">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="846" height="198" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1598979363291" />
+    <state width="1238" height="220" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1598979392454" />
     <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1598953423461">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
