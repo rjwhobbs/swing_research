@@ -24,8 +24,10 @@ public class ArmorFactory {
         return DrumArmor.getMeinlCrashCymbal();
       case "Zildjian Crash Cymbal":
         return DrumArmor.getZildjianCrashCymbal();
-      default:
+      case "none":
         return new Armor("none", 0);
+      default:
+        return null;
     }
   }
 }

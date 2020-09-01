@@ -43,6 +43,18 @@ public class ConsoleView {
     System.out.println("Helm: " + hero.getHelm().getHelmType());
   }
 
+  public static void chooseHeroName() {
+    System.out.print("Choose your hero's name: ");
+  }
+
+  public static void chooseHeroClass() {
+    System.out.println("Choose your hero's class:");
+    System.out.print(
+            "(1) Guitar Hero\n"
+                    + "(2) Bass Guitar Hero\n"
+                    + "(3) Drum Hero\n");
+  }
+
   public static void showUsersInput(String input) {
     System.out.println(input);
   }

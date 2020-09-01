@@ -3,6 +3,8 @@ package rhobbs.controller;
 import rhobbs.model.Model;
 import rhobbs.view.ConsoleView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Controller {
@@ -14,11 +16,14 @@ public class Controller {
   private boolean showStartScreen;
   private boolean showSelectHeroScreen;
   private boolean showSelectedHeroScreen;
+  private boolean showChooseHeroNameScreen;
+  private boolean showChooseHeroClassTypeScreen;
+  private boolean heroCreated;
 
   public Controller(Model model) {
 
     this.model = model;
-//    storedHeroes = this.model.getStoredHeroes();
+    List<String> userCreateHeroInput = new ArrayList<>();
     String input = "";
 
     Scanner scanner = new Scanner(System.in);
@@ -26,6 +31,9 @@ public class Controller {
     showStartScreen = true;
     showSelectHeroScreen = false;
     showSelectedHeroScreen = false;
+    showChooseHeroNameScreen = false;
+    showChooseHeroClassTypeScreen = false;
+    heroCreated = false;
 
     ConsoleView.showStartScreen();
 
@@ -53,6 +61,24 @@ public class Controller {
           break;
         }
       }
+      else if (showChooseHeroNameScreen) {
+        ConsoleView.chooseHeroName();
+        input = scanner.nextLine();
+        if (input.equals("EXIT")) {
+          break;
+        }
+        userCreateHeroInput.add(input);
+        showChooseHeroNameScreen = false;
+        showChooseHeroClassTypeScreen = true;
+      }
+      else if (showChooseHeroClassTypeScreen) {
+        ConsoleView.chooseHeroClass();
+        input = scanner.nextLine();
+        if (input.equals("EXIT")) {
+          break;
+        }
+        this.runChooseHeroClass(input, userCreateHeroInput);
+      }
     }
 
   }
@@ -68,7 +94,8 @@ public class Controller {
       }
     }
     else if (input.equals("2")) {
-      System.out.println("You selected 2");
+      showStartScreen = false;
+      showChooseHeroNameScreen = true;
     }
     else {
       ConsoleView.showInputNotRecognized(input);
@@ -86,10 +113,49 @@ public class Controller {
     }
   }
 
+  private void runCreateHeroScreen(String input, List<String> userInput) {
+    userInput.add(input);
+  }
+
+  private void runChooseHeroClass(String input, List<String> userInput) {
+    int selectedHeroClass;
+    if (validateSelectedHeroClass(input)) {
+      selectedHeroClass = Integer.parseInt(input);
+      switch (selectedHeroClass) {
+        case 1:
+          userInput.add("Guitar Hero");
+        case 2:
+          userInput.add("Bass Guitar Hero");
+        case 3:
+          userInput.add("Drum Hero");
+        default:
+          userInput.add("");
+      }
+//      System.out.println(userInput.get(0) + " " + userInput.get(1));
+
+    }
+    else {
+      ConsoleView.showInputNotRecognized(input);
+    }
+  }
+
   private boolean validateSelectedHeroIndex(String index) {
     try {
       int input = Integer.parseInt(index);
       if (input <= 0 || input > this.model.getStoredHeroes().size() || index.indexOf(0) == '+') {
+        return false;
+      }
+      return true;
+    }
+    catch (NumberFormatException e) {
+      return false;
+    }
+  }
+
+  private boolean validateSelectedHeroClass(String index) {
+    try {
+      int input = Integer.parseInt(index);
+      if (input <= 0 || input > 3 || index.indexOf(0) == '+' ) {
         return false;
       }
       return true;
