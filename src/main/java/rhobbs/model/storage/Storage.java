@@ -6,9 +6,8 @@ import java.util.List;
 
 public class Storage {
 
-  public static void storageInit() {
+  public static void storageInit() throws Exception {
     try {
-//      Connection conn = getConnection();
       if (selectHeroByName("Steve").size() == 0) {
         insertHero(
                 "Steve",
@@ -44,7 +43,7 @@ public class Storage {
       }
     }
     catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw new Exception(e.getMessage());
     }
   }
 
@@ -53,11 +52,21 @@ public class Storage {
     String sql;
     sql = "CREATE TABLE IF NOT EXISTS heroes ("
             + " id integer PRIMARY KEY,"
-            + " name varchar(20) NOT NULL UNIQUE,"
-            + " classType varchar(50) NOT NULL,"
-            + " weapon varchar(50) NOT NULL,"
-            + " armor varchar(50) NOT NULL,"
-            + " helm varchar(50) NOT NULL,"
+            + " name TEXT NOT NULL UNIQUE "
+            + " CHECK(typeof(\"name\") = \"text\" AND "
+            + " length(\"name\") <= 20), "
+            + " classType TEXT NOT NULL "
+            + " CHECK(typeof(\"classType\") = \"text\" AND "
+            + " length(\"classType\") <= 50),"
+            + " weapon TEXT NOT NULL "
+            + " CHECK(typeof(\"weapon\") = \"text\" AND "
+            + " length(\"weapon\") <= 50),"
+            + " armor varchar(50) NOT NULL "
+            + " CHECK(typeof(\"armor\") = \"text\" AND "
+            + " length(\"armor\") <= 50),"
+            + " helm varchar(50) NOT NULL "
+            + " CHECK(typeof(\"helm\") = \"text\" AND "
+            + " length(\"helm\") <= 50),"
             + " level integer NOT NULL,"
             + " xp integer NOT NULL);";
 
@@ -71,7 +80,7 @@ public class Storage {
     }
   }
 
-  public static List<List<String>> selectAllHeroes() {
+  public static List<List<String>> selectAllHeroes() throws Exception {
     List<List<String>> result = new ArrayList<>();
     String sql;
     sql = "SELECT * FROM heroes";
@@ -92,13 +101,12 @@ public class Storage {
         temp.add(res.getString(7));
         temp.add(res.getString(8));
         result.add(temp);
-//        temp = null; // Will this do what I think it will?
       }
       conn.close();
+      return result;
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw new Exception(e.getMessage());
     }
-    return result;
   }
 
   public static void insertHero(

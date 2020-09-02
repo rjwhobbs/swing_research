@@ -13,15 +13,20 @@ public class Model {
 
   private String errorException = "";
 
-  public Model() {
-    Storage.storageInit();
-    this.storedHeroes = Storage.selectAllHeroes();
+  public Model() {}
+
+  public void modelInit() throws Exception {
+    try {
+      Storage.storageInit();
+      this.storedHeroes = Storage.selectAllHeroes();
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
   }
 
   public void storeNewHero() {
-//    this.hero = new GuitarHero(name);
     try {
-//      conn = Storage.getConnection();
       System.out.println("Connected");
       Storage.insertHero(
               this.hero.getName(),
@@ -33,7 +38,7 @@ public class Model {
               this.hero.getExperience()
       );
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      errorException = e.getMessage();
     }
   }
 
@@ -41,7 +46,7 @@ public class Model {
     return this.storedHeroes;
   }
 
-  public void selectHero(String index) {
+  public void selectHero(String index) throws Exception {
     try {
       List<String> selectedHero = Storage.selectHeroById(index);
       if (selectedHero.size() == 7) {
@@ -61,7 +66,7 @@ public class Model {
       this.tempHero.equipHelm();
       this.hero = this.tempHero;
     } catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw new Exception(e.getMessage());
     }
   }
 
@@ -76,23 +81,27 @@ public class Model {
         this.hero = this.tempHero;
       }
       catch (Exception e) {
-        System.out.println(e.getMessage());
+        this.errorException = e.getMessage();
       }
     }
   }
 
-  public List<String> getStoredHeroByName(String name) {
+  public List<String> getStoredHeroByName(String name) throws Exception {
     List<String> temp = new ArrayList<>();
     try {
       temp = Storage.selectHeroByName(name);
     }
     catch (Exception e) {
-      System.out.println(e.getMessage());
+      throw new Exception(e.getMessage());
     }
     return temp;
   }
 
   public Hero getHero() {
     return this.hero;
+  }
+
+  public void clearErrorException() {
+    this.errorException = "";
   }
 }

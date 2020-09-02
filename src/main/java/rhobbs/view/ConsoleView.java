@@ -63,6 +63,11 @@ public class ConsoleView {
     System.out.println("Input not recognized: " + error);
   }
 
+  public static void showException(String exceptionMessage) {
+    System.out.print("Swingy error: ");
+    System.out.println(exceptionMessage);
+  }
+
   public static void showMessage(String message) {
     System.out.println(message);
   }
