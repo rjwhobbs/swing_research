@@ -116,7 +116,13 @@ public class Model {
           map[i][j] = 0;
         }
         else if (i != centerX || j != centerX) {
-          map[i][j] = random.nextInt(7);
+          if (random.nextInt(3) != 0) {
+            map[i][j] = random.nextInt(7);
+          }
+          else {
+            map[i][j] = 0;
+          }
+
         }
         else {
           map[i][j] = 0;
