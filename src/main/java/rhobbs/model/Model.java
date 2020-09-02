@@ -107,6 +107,7 @@ public class Model {
     int x = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
 //    int y = x;
     int centerX = x / 2;
+    int ib = 1;
 //    int centerY = centerX;
     int[][] map = new int[x][x];
 
@@ -117,12 +118,11 @@ public class Model {
         }
         else if (i != centerX || j != centerX) {
           if (random.nextInt(3) != 0) {
-            map[i][j] = random.nextInt(7);
+            map[i][j] = random.nextInt(4);
           }
           else {
             map[i][j] = 0;
           }
-
         }
         else {
           map[i][j] = 0;
@@ -133,6 +133,13 @@ public class Model {
     for (int i = 0; i < x; i++) {
       for (int j = 0; j < x; j++) {
         System.out.print(map[i][j] + " ");
+//        try {
+//          Thread.sleep(500);
+//        }
+//        catch (Exception e) {
+//
+//        }
+
       }
       System.out.println();
     }
