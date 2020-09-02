@@ -2,8 +2,10 @@ package rhobbs.model;
 
 import rhobbs.model.artefacts.armor.ArmorFactory;
 import rhobbs.model.artefacts.armor.BassGuitarArmor;
+import rhobbs.model.artefacts.armor.DrumArmor;
 import rhobbs.model.artefacts.helms.HelmFactory;
 import rhobbs.model.artefacts.weapons.BassGuitarWeapons;
+import rhobbs.model.artefacts.weapons.DrumWeapons;
 import rhobbs.model.artefacts.weapons.WeaponFactory;
 
 public class DrumHero extends Hero {
@@ -13,8 +15,8 @@ public class DrumHero extends Hero {
     super(
             name,
             "Drum Hero",
-            BassGuitarWeapons.getMexiPBass(),
-            BassGuitarArmor.getHartkeAmp(),
+            DrumWeapons.getPearlDrumKit(),
+            DrumArmor.getWuhanCrashCymbal(),
             HelmFactory.retrieveHelm("none"),
             1,
             0,

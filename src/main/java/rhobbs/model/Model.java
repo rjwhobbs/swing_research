@@ -2,6 +2,7 @@ package rhobbs.model;
 
 import rhobbs.model.storage.Storage;
 //import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Model {
@@ -10,13 +11,15 @@ public class Model {
   private Hero tempHero = null;
   private List<List<String>> storedHeroes;
 
+  private String errorException = "";
+
   public Model() {
     Storage.storageInit();
     this.storedHeroes = Storage.selectAllHeroes();
   }
 
-  public void saveNewHeroInDB(String name) {
-    this.hero = new GuitarHero(name);
+  public void storeNewHero() {
+//    this.hero = new GuitarHero(name);
     try {
 //      conn = Storage.getConnection();
       System.out.println("Connected");
@@ -60,6 +63,33 @@ public class Model {
     } catch (Exception e) {
       System.out.println(e.getMessage());
     }
+  }
+
+  public void createNewHero(String name, String classType) {
+    this.tempHero = HeroFactory.buildHero(name, classType);
+    if (this.tempHero != null) {
+      try {
+        this.tempHero.validateHero();
+        this.tempHero.equipArmor();
+        this.tempHero.equipWeapon();
+        this.tempHero.equipHelm();
+        this.hero = this.tempHero;
+      }
+      catch (Exception e) {
+        System.out.println(e.getMessage());
+      }
+    }
+  }
+
+  public List<String> getStoredHeroByName(String name) {
+    List<String> temp = new ArrayList<>();
+    try {
+      temp = Storage.selectHeroByName(name);
+    }
+    catch (Exception e) {
+      System.out.println(e.getMessage());
+    }
+    return temp;
   }
 
   public Hero getHero() {
