@@ -18,7 +18,7 @@ public class BassGuitarHero extends Hero {
             HelmFactory.retrieveHelm("none"),
             1,
             0,
-            70
+            85
     );
   }
 
@@ -29,8 +29,7 @@ public class BassGuitarHero extends Hero {
           String armor,
           String helm,
           int level,
-          int experience,
-          int hitPoints
+          int experience
   ) {
     super(name,
             "Bass Guitar Hero",
@@ -39,7 +38,7 @@ public class BassGuitarHero extends Hero {
             HelmFactory.retrieveHelm(helm),
             level,
             experience,
-            hitPoints
+            85
     );
   }
 }

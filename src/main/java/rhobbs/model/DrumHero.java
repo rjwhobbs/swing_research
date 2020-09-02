@@ -31,8 +31,7 @@ public class DrumHero extends Hero {
           String armor,
           String helm,
           int level,
-          int experience,
-          int hitPoints
+          int experience
   ) {
     super(name,
             "Drum Hero",
@@ -41,7 +40,7 @@ public class DrumHero extends Hero {
             HelmFactory.retrieveHelm(helm),
             level,
             experience,
-            hitPoints
+            70
     );
   }
 }

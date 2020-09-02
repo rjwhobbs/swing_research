@@ -18,6 +18,7 @@ public class Controller {
   private boolean showSelectedHeroScreen;
   private boolean showChooseHeroNameScreen;
   private boolean showChooseHeroClassTypeScreen;
+  private boolean showStartGameScreen;
   private boolean heroCreated;
 
   public Controller(Model model) {
@@ -78,6 +79,14 @@ public class Controller {
         }
         this.runChooseHeroClass(input, userCreateHeroInput);
       }
+      else if (showStartGameScreen) {
+        ConsoleView.showMessage("Lets start the game!");
+        ConsoleView.showHeroStats(this.model.getHero());
+        input = scanner.nextLine();
+        if (input.equals("EXIT")) {
+          break;
+        }
+      }
     }
 
   }
@@ -104,9 +113,13 @@ public class Controller {
   private void runSelectHero(String input) {
     if (this.validateSelectedHeroIndex(input)) {
       this.model.selectHero(input);
-//      ConsoleView.showHeroStats(this.model.getHero());
-      showSelectHeroScreen = false;
-      showSelectedHeroScreen = true;
+      if (this.model.getHero() != null) {
+        showSelectHeroScreen = false;
+        showStartGameScreen = true;
+      }
+      else {
+        ConsoleView.showMessage("There was an error selecting your hero, please try again");
+      }
     } else {
       ConsoleView.showInputNotRecognized(input);
     }
@@ -139,17 +152,15 @@ public class Controller {
           userInput.add("");
       }
 
+      this.model.createNewHero(userInput.get(0), userInput.get(1));
       if (this.model.getHero() != null) {
         this.model.storeNewHero();
-        ConsoleView.showMessage("Your new hero!");
-        ConsoleView.showHeroStats(this.model.getHero());
+        showChooseHeroClassTypeScreen = false;
+        showStartGameScreen = true;
       }
       else {
         ConsoleView.showMessage("There was a error creating your new hero.");
       }
-
-      showChooseHeroNameScreen = true;
-      showChooseHeroClassTypeScreen = false;
       userInput.clear();
     }
     else {

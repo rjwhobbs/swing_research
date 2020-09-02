@@ -25,11 +25,11 @@ public abstract class HeroFactory {
   ) {
     switch (classType) {
       case "Guitar Hero":
-        return new GuitarHero(name, weapon, armor, helm, level, experience, 100);
+        return new GuitarHero(name, weapon, armor, helm, level, experience);
       case "Bass Guitar Hero":
-        return new BassGuitarHero(name, weapon, armor, helm, level, experience, 100);
+        return new BassGuitarHero(name, weapon, armor, helm, level, experience);
       case "Drum Hero":
-        return new DrumHero(name, weapon, armor, helm, level, experience, 100);
+        return new DrumHero(name, weapon, armor, helm, level, experience);
       default:
         return null;
     }

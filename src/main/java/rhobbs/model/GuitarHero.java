@@ -29,8 +29,7 @@ public class GuitarHero extends Hero {
           String armor,
           String helm,
           int level,
-          int experience,
-          int hitPoints
+          int experience
   ) {
     super(name,
             "Guitar Hero",
@@ -39,7 +38,7 @@ public class GuitarHero extends Hero {
             HelmFactory.retrieveHelm(helm),
             level,
             experience,
-            hitPoints
+            100
     );
   }
 }

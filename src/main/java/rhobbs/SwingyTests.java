@@ -29,7 +29,6 @@ public class SwingyTests{
                 "",
                 "",
                 0,
-                -1,
                 -1
         );
       default:
