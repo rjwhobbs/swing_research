@@ -25,9 +25,8 @@ public class Model {
     }
   }
 
-  public void storeNewHero() {
+  public void storeNewHero() throws Exception {
     try {
-      System.out.println("Connected");
       Storage.insertHero(
               this.hero.getName(),
               this.hero.getClassType(),
@@ -38,7 +37,7 @@ public class Model {
               this.hero.getExperience()
       );
     } catch (Exception e) {
-      errorException = e.getMessage();
+      throw new Exception(e.getMessage());
     }
   }
 
@@ -70,7 +69,7 @@ public class Model {
     }
   }
 
-  public void createNewHero(String name, String classType) {
+  public void createNewHero(String name, String classType) throws Exception {
     this.tempHero = HeroFactory.buildHero(name, classType);
     if (this.tempHero != null) {
       try {
@@ -81,7 +80,7 @@ public class Model {
         this.hero = this.tempHero;
       }
       catch (Exception e) {
-        this.errorException = e.getMessage();
+        throw new Exception(e.getMessage());
       }
     }
   }

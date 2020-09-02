@@ -176,18 +176,27 @@ public class Controller {
           userInput.add("");
       }
 
-      this.model.createNewHero(userInput.get(0), userInput.get(1));
-      if (this.model.getHero() != null) {
-        this.model.storeNewHero();
-        showChooseHeroClassTypeScreen = false;
-        showStartGameScreen = true;
+      try {
+        this.model.createNewHero(userInput.get(0), userInput.get(1));
+        if (this.model.getHero() != null) {
+          this.model.storeNewHero();
+          showChooseHeroClassTypeScreen = false;
+          showStartGameScreen = true;
+        }
+        else {
+          ConsoleView.showMessage("There was a error creating your new hero.");
+          showChooseHeroNameScreen = true;
+          showChooseHeroClassTypeScreen = false;
+        }
+        userInput.clear();
       }
-      else {
-        ConsoleView.showMessage("There was a error creating your new hero.");
+      catch (Exception e) {
+        ConsoleView.showMessage("There was an error creating your hero");
+        ConsoleView.showException(e.getMessage());
+        userInput.clear();
         showChooseHeroNameScreen = true;
         showChooseHeroClassTypeScreen = false;
       }
-      userInput.clear();
     }
     else {
       ConsoleView.showInputNotRecognized(input);
