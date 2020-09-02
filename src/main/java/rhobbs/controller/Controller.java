@@ -90,15 +90,17 @@ public class Controller {
         this.runChooseHeroClass(input, userCreateHeroInput);
       }
       else if (showStartGameScreen) {
-        ConsoleView.showMessage("Lets start the game!");
-        ConsoleView.showHeroStats(this.model.getHero());
+        ConsoleView.showMessage("And so your quest begins! Hit ENTER to start.");
         input = scanner.nextLine();
         if (input.equals("EXIT")) {
           break;
         }
+        GamePlayController.startGame(this.model, scanner);
+        input = "EXIT";
       }
     }
-
+    ConsoleView.showMessage("Exiting repl...");
+    scanner.close();
   }
 
   private void runStart(String input) {

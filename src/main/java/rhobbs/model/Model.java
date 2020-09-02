@@ -4,12 +4,14 @@ import rhobbs.model.storage.Storage;
 //import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Model {
 
   private Hero hero = null;
   private Hero tempHero = null;
   private List<List<String>> storedHeroes;
+  private Random random;
 
   private String errorException = "";
 
@@ -98,6 +100,37 @@ public class Model {
 
   public Hero getHero() {
     return this.hero;
+  }
+
+  public void generateMap() {
+    random = new Random();
+    int x = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
+//    int y = x;
+    int centerX = x / 2;
+//    int centerY = centerX;
+    int[][] map = new int[x][x];
+
+    for (int i = 0; i < x; i++) {
+      for (int j = 0; j < x; j++) {
+        if ((i == 0 || j == 0) || (i == x - 1 || j == x - 1)) {
+          map[i][j] = 0;
+        }
+        else if (i != centerX || j != centerX) {
+          map[i][j] = random.nextInt(7);
+        }
+        else {
+          map[i][j] = 0;
+        }
+      }
+    }
+
+    for (int i = 0; i < x; i++) {
+      for (int j = 0; j < x; j++) {
+        System.out.print(map[i][j] + " ");
+      }
+      System.out.println();
+    }
+
   }
 
   public void clearErrorException() {
