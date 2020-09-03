@@ -211,4 +211,40 @@ public class Model {
 
     this.enemy = EnemyFactory.createEnemy(enemyType, enemyLevel);
   }
+
+  public void fight() {
+    int heroLevel = this.hero.getLevel() * 1000;
+    int heroXP = this.hero.getExperience();
+    int heroDef = this.hero.getDefense() * 10;
+    int heroAtt = this.hero.getAttack() * 10;
+
+    int enemyLevel = this.enemy.getLevel() * 1000;
+    int enemyDef = this.enemy.getDefense() * 10;
+    int enemyAtt = this.enemy.getAttack() * 10;
+
+    int heroWeight = (heroLevel + heroXP + heroDef + heroAtt) / 100;
+    int enemyWeight = (enemyLevel + enemyDef + enemyAtt) / 100;
+
+    int heroHP = this.hero.getHitPoints();
+    int enemyHP = this.enemy.getHitPoints();
+    int newHeroHP;
+    int newEnemyHP;
+
+    System.out.println("H " + heroWeight + " E " + enemyWeight);
+
+    int heroScore = random.nextInt(heroWeight);
+    int enemyScore = random.nextInt(enemyWeight);
+
+    // Element of luck
+    if (random.nextInt(3) == 1) {
+      heroScore += heroScore / 2;
+    }
+
+    System.out.println("HS " + heroScore + " ES " + enemyScore);
+
+//    if (heroScore >= enemyScore) {
+//
+//    }
+
+  }
 }

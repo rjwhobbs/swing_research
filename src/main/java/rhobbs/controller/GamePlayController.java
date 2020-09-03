@@ -95,7 +95,8 @@ public class GamePlayController {
       case "F":
       case "f":
         ConsoleView.showMessage("You fight the enemy");
-        if (random.nextInt(4) > 0) {
+        model.fight();
+        if (random.nextInt(10) > 0) {
           ConsoleView.showMessage("You fought the enemy and won!");
           if (random.nextInt(2) == 1) {
             showFightScreen = false;
@@ -119,7 +120,7 @@ public class GamePlayController {
           runFightScreen("F");
         }
         else {
-          ConsoleView.showMessage("You successfully ran from the enemy");
+          ConsoleView.showMessage("You successfully ran away from the enemy");
           showFightScreen = false;
           showMovementScreen = true;
         }
