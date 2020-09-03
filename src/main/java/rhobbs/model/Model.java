@@ -103,6 +103,10 @@ public class Model {
     return this.hero;
   }
 
+  public Enemy getEnemy() {
+    return this.enemy;
+  }
+
   public void generateMap() {
     int mapSize = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
     int centerX = mapSize / 2;
@@ -203,7 +207,7 @@ public class Model {
             "Grumpy sound engineer"
     };
     String enemyType = enemyTypes[random.nextInt(enemyTypes.length)];
-    int enemyLevel = this.map[this.coords[0]][this.coords[0]];
+    int enemyLevel = this.map[this.coords[0]][this.coords[1]];
 
     this.enemy = EnemyFactory.createEnemy(enemyType, enemyLevel);
   }

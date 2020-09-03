@@ -33,7 +33,6 @@ public class GamePlayController {
 
     while (!input.equals("EXIT") && !gameOver) {
       if (showMovementScreen) {
-        ConsoleView.showMessage("Your coordinates");
         ConsoleView.showCoords(model.getCurrentCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
         input = scanner.nextLine();
@@ -44,6 +43,7 @@ public class GamePlayController {
       }
       else if (showFightScreen) {
         ConsoleView.showMessage("You encountered an enemy.");
+        ConsoleView.showEnemyStats(GamePlayController.model.getEnemy());
         ConsoleView.showMessage("F to fight or R to run");
         input = scanner.nextLine();
         if (input.equals("EXIT")) {
@@ -66,57 +66,28 @@ public class GamePlayController {
     switch (input) {
       case "N":
       case "n":
-        ConsoleView.showMessage("You moved north.");
         model.moveNorth();
-        if (model.isAtEndOfMap()) {
-          ConsoleView.showMessage("You reached the end.");
-          showMovementScreen = false;
-          gameOver = true;
-        }
-        else if (model.coordHasEnemy()) {
-          showFightScreen = true;
-          showMovementScreen = false;
-        }
+        runCoordinateChecks();
         break;
       case "E":
       case "e":
-        ConsoleView.showMessage("You moved East.");
         model.moveEast();
-        if (model.isAtEndOfMap()) {
-          ConsoleView.showMessage("You reached the end.");
-          showMovementScreen = false;
-          gameOver = true;
-        }
+        runCoordinateChecks();
         break;
       case "S":
       case "s":
-        ConsoleView.showMessage("You moved South.");
         model.moveSouth();
-        if (model.isAtEndOfMap()) {
-          ConsoleView.showMessage("You reached the end.");
-          showMovementScreen = false;
-          gameOver = true;
-        }
+        runCoordinateChecks();
         break;
       case "W":
       case "w":
-        ConsoleView.showMessage("You moved west.");
         model.moveWest();
-        if (model.isAtEndOfMap()) {
-          ConsoleView.showMessage("You reached the end.");
-          showMovementScreen = false;
-          gameOver = true;
-        }
+        runCoordinateChecks();
         break;
       default:
         ConsoleView.showInputNotRecognized(input);
         break;
     }
-
-//    if (checkEnemy == 1) {
-//      showFightScreen = true;
-//      showMovementScreen = false;
-//    }
   }
 
   private static void runFightScreen(String input) {
@@ -124,7 +95,7 @@ public class GamePlayController {
       case "F":
       case "f":
         ConsoleView.showMessage("You fight the enemy");
-        if (random.nextInt(2) == 1) {
+        if (random.nextInt(4) > 0) {
           ConsoleView.showMessage("You fought the enemy and won!");
           if (random.nextInt(2) == 1) {
             showFightScreen = false;
@@ -175,6 +146,19 @@ public class GamePlayController {
       default:
         ConsoleView.showInputNotRecognized(input);
         break;
+    }
+  }
+
+  private static void runCoordinateChecks() {
+    if (model.isAtEndOfMap()) {
+      ConsoleView.showMessage("You reached the end.");
+      showMovementScreen = false;
+      gameOver = true;
+    }
+    else if (model.coordHasEnemy()) {
+      showFightScreen = true;
+      showMovementScreen = false;
+      model.generateEnemy();
     }
   }
 }

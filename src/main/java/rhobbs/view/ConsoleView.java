@@ -1,5 +1,6 @@
 package rhobbs.view;
 
+import rhobbs.model.Enemy;
 import rhobbs.model.Hero;
 
 import java.util.List;
@@ -41,6 +42,14 @@ public class ConsoleView {
     System.out.println("Weapon: " + hero.getWeapon().getType());
     System.out.println("Armor: " + hero.getArmor().getType());
     System.out.println("Helm: " + hero.getHelm().getHelmType());
+  }
+
+  public static void showEnemyStats(Enemy enemy) {
+    System.out.println(
+            "Lvl " + enemy.getLevel()
+            + " " + enemy.getEnemyType()
+            + " HP: " + enemy.getHitPoints()
+    );
   }
 
   public static void chooseHeroName() {
