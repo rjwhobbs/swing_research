@@ -123,7 +123,7 @@ public class Controller {
   }
 
   private void runSelectHero(String input) {
-    if (this.validateSelectedHeroIndex(input)) {
+    if (this.checkSelectedHeroIndex(input)) {
       try {
         this.model.selectHero(input);
         if (this.model.getHero() != null) {
@@ -165,7 +165,7 @@ public class Controller {
 
   private void runChooseHeroClass(String input, List<String> userInput) {
     int selectedHeroClass;
-    if (validateSelectedHeroClass(input)) {
+    if (checkSelectedHeroClassIndex(input)) {
       selectedHeroClass = Integer.parseInt(input);
       switch (selectedHeroClass) {
         case 1:
@@ -205,7 +205,7 @@ public class Controller {
     }
   }
 
-  private boolean validateSelectedHeroIndex(String index) {
+  private boolean checkSelectedHeroIndex(String index) {
     try {
       int input = Integer.parseInt(index);
       if (input <= 0 || input > this.model.getStoredHeroes().size() || index.indexOf(0) == '+') {
@@ -218,7 +218,7 @@ public class Controller {
     }
   }
 
-  private boolean validateSelectedHeroClass(String index) {
+  private boolean checkSelectedHeroClassIndex(String index) {
     try {
       int input = Integer.parseInt(index);
       if (input <= 0 || input > 3 || index.indexOf(0) == '+' ) {

@@ -15,10 +15,11 @@
   <component name="ChangeListManager">
     <list default="true" id="d699cb6a-6171-4644-8c55-bc7f3accf15e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/controller/GamePlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/controller/GamePlayController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/HeroBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/HeroDirector.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/view/ConsoleView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +149,7 @@
       <workItem from="1598699430508" duration="806000" />
       <workItem from="1598708567001" duration="1112000" />
       <workItem from="1598710671912" duration="9542000" />
-      <workItem from="1598729875470" duration="94619000" />
+      <workItem from="1598729875470" duration="99900000" />
     </task>
     <servers />
   </component>
@@ -180,10 +181,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="401" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.777@0.23.1280.777" timestamp="1598710855120" />
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1599134868280">
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1599146658769">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599134868280" />
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599146658769" />
     <state x="449" y="82" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598888261576">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -192,22 +193,22 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="254" height="192" key="DatabaseViewActions_Filter/0.23.1280.777@0.23.1280.777" timestamp="1598712497207" />
-    <state width="1238" height="241" key="GridCell.Tab.0.bottom" timestamp="1599137502157">
+    <state width="1238" height="241" key="GridCell.Tab.0.bottom" timestamp="1599146008186">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="241" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599137502157" />
-    <state width="1238" height="241" key="GridCell.Tab.0.center" timestamp="1599137502156">
+    <state width="1238" height="241" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599146008186" />
+    <state width="1238" height="241" key="GridCell.Tab.0.center" timestamp="1599146008185">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="241" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599137502156" />
-    <state width="1238" height="241" key="GridCell.Tab.0.left" timestamp="1599137502155">
+    <state width="1238" height="241" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599146008185" />
+    <state width="1238" height="241" key="GridCell.Tab.0.left" timestamp="1599146008184">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="241" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599137502155" />
-    <state width="1238" height="241" key="GridCell.Tab.0.right" timestamp="1599137502156">
+    <state width="1238" height="241" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599146008184" />
+    <state width="1238" height="241" key="GridCell.Tab.0.right" timestamp="1599146008185">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="241" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599137502156" />
+    <state width="1238" height="241" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599146008185" />
     <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1598953423461">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -228,10 +229,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="262" height="497" key="HiddenNamespacesPopup/0.23.1280.777@0.23.1280.777" timestamp="1598712559634" />
-    <state x="156" y="50" key="SettingsEditor" timestamp="1599115983094">
+    <state x="156" y="50" key="SettingsEditor" timestamp="1599145536976">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="156" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1599115983094" />
+    <state x="156" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1599145536976" />
     <state x="191" y="156" width="898" height="609" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598953235272">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

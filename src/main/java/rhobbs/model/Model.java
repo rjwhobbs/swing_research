@@ -10,12 +10,11 @@ public class Model {
 
   private Hero hero = null;
   private Hero tempHero = null;
+  private Enemy enemy;
   private List<List<String>> storedHeroes;
-  private Random random;
+  private Random random = new Random();
   private int[] coords = {0,0};
   int[][] map;
-
-  private String errorException = "";
 
   public Model() {}
 
@@ -105,7 +104,6 @@ public class Model {
   }
 
   public void generateMap() {
-    random = new Random();
     int mapSize = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
     int centerX = mapSize / 2;
     int ib = 1;
@@ -153,11 +151,7 @@ public class Model {
 
   }
 
-  public void clearErrorException() {
-    this.errorException = "";
-  }
-
-  public int[] getCoords() {
+  public int[] getCurrentCoords() {
     return this.coords;
   }
 
@@ -186,10 +180,31 @@ public class Model {
 //    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
   }
 
+  public boolean coordHasEnemy() {
+    if (this.map[this.coords[0]][this.coords[1]] > 0) {
+      return true;
+    }
+    return false;
+  }
+
   public boolean isAtEndOfMap() {
     if (this.map[this.coords[0]][this.coords[1]] == -1) {
       return true;
     }
     return false;
+  }
+
+  public void generateEnemy() {
+    String[] enemyTypes = {
+            "Clueless audience member",
+            "Venue DJ",
+            "Drunk fan",
+            "Venue owner",
+            "Grumpy sound engineer"
+    };
+    String enemyType = enemyTypes[random.nextInt(enemyTypes.length)];
+    int enemyLevel = this.map[this.coords[0]][this.coords[0]];
+
+    this.enemy = EnemyFactory.createEnemy(enemyType, enemyLevel);
   }
 }

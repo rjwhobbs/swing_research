@@ -34,7 +34,7 @@ public class GamePlayController {
     while (!input.equals("EXIT") && !gameOver) {
       if (showMovementScreen) {
         ConsoleView.showMessage("Your coordinates");
-        ConsoleView.showCoords(model.getCoords());
+        ConsoleView.showCoords(model.getCurrentCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
         input = scanner.nextLine();
         if (input.equals("EXIT")) {
@@ -72,6 +72,10 @@ public class GamePlayController {
           ConsoleView.showMessage("You reached the end.");
           showMovementScreen = false;
           gameOver = true;
+        }
+        else if (model.coordHasEnemy()) {
+          showFightScreen = true;
+          showMovementScreen = false;
         }
         break;
       case "E":
