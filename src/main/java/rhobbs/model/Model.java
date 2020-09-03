@@ -110,15 +110,21 @@ public class Model {
     int ib = 1;
 //    int centerY = centerX;
     int[][] map = new int[x][x];
+    int maxEnemyLevel = this.hero.getLevel() + 2;
+    int[] enemyArray = new int[maxEnemyLevel];
+
+    for (int e = 0; e < maxEnemyLevel; e++ ) {
+      enemyArray[e] = e + 1;
+    }
 
     for (int i = 0; i < x; i++) {
       for (int j = 0; j < x; j++) {
         if ((i == 0 || j == 0) || (i == x - 1 || j == x - 1)) {
-          map[i][j] = 0;
+          map[i][j] = -1;
         }
         else if (i != centerX || j != centerX) {
           if (random.nextInt(3) != 0) {
-            map[i][j] = random.nextInt(4);
+            map[i][j] = enemyArray[random.nextInt(maxEnemyLevel)];
           }
           else {
             map[i][j] = 0;
