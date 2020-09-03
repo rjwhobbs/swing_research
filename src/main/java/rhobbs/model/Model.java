@@ -12,6 +12,8 @@ public class Model {
   private Hero tempHero = null;
   private List<List<String>> storedHeroes;
   private Random random;
+  private int[] coords = {0,0};
+  int[][] map;
 
   private String errorException = "";
 
@@ -104,22 +106,21 @@ public class Model {
 
   public void generateMap() {
     random = new Random();
-    int x = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
-//    int y = x;
-    int centerX = x / 2;
+    int mapSize = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
+    int centerX = mapSize / 2;
     int ib = 1;
-//    int centerY = centerX;
-    int[][] map = new int[x][x];
+    map = new int[mapSize][mapSize];
     int maxEnemyLevel = this.hero.getLevel() + 2;
     int[] enemyArray = new int[maxEnemyLevel];
+    this.setCoords(centerX, centerX);
 
     for (int e = 0; e < maxEnemyLevel; e++ ) {
       enemyArray[e] = e + 1;
     }
 
-    for (int i = 0; i < x; i++) {
-      for (int j = 0; j < x; j++) {
-        if ((i == 0 || j == 0) || (i == x - 1 || j == x - 1)) {
+    for (int i = 0; i < mapSize; i++) {
+      for (int j = 0; j < mapSize; j++) {
+        if ((i == 0 || j == 0) || (i == mapSize - 1 || j == mapSize - 1)) {
           map[i][j] = -1;
         }
         else if (i != centerX || j != centerX) {
@@ -136,8 +137,8 @@ public class Model {
       }
     }
 
-    for (int i = 0; i < x; i++) {
-      for (int j = 0; j < x; j++) {
+    for (int i = 0; i < mapSize; i++) {
+      for (int j = 0; j < mapSize; j++) {
         System.out.print(map[i][j] + " ");
 //        try {
 //          Thread.sleep(500);
@@ -154,5 +155,41 @@ public class Model {
 
   public void clearErrorException() {
     this.errorException = "";
+  }
+
+  public int[] getCoords() {
+    return this.coords;
+  }
+
+  public void setCoords(int x, int y) {
+    this.coords[0] = x;
+    this.coords[1] = y;
+  }
+
+  public void moveNorth() {
+    this.coords[0] -= 1;
+//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
+  }
+
+  public void moveEast() {
+    this.coords[1] += 1;
+//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
+  }
+
+  public void moveWest() {
+    this.coords[1] -= 1;
+//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
+  }
+
+  public void moveSouth() {
+    this.coords[0] += 1;
+//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
+  }
+
+  public boolean isAtEndOfMap() {
+    if (this.map[this.coords[0]][this.coords[1]] == -1) {
+      return true;
+    }
+    return false;
   }
 }

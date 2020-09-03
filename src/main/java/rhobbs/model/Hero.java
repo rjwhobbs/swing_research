@@ -46,6 +46,10 @@ public abstract class Hero {
   @Max(value = 2147483647, message =  "Hero hit points can't exceed max signed integer value.")
   private int hitPoints;
 
+  @Min(value = 0, message = "Hero hit points can't be less than 0.")
+  @Max(value = 2147483647, message =  "Hero hit points can't exceed max signed integer value.")
+  private int maxHitPoints;
+
   @Min(value = 0, message = "Hero attack can't be less than 0.")
   @Max(value = 2147483647, message =  "Hero attack can't exceed max signed integer value.")
   private int attack;
@@ -77,6 +81,7 @@ public abstract class Hero {
     this.level = level;
     this.experience = experience;
     this.hitPoints = hitPoints;
+    this.maxHitPoints = hitPoints;
     this.attack = 0;
     this.defense = 0;
   }
@@ -103,6 +108,7 @@ public abstract class Hero {
 
   public void equipHelm() {
     this.hitPoints += this.helm.getHitPoints();
+    this.maxHitPoints += this.helm.getHitPoints();
   }
 
   public String getName() {
@@ -137,7 +143,6 @@ public abstract class Hero {
 
   public void setHelm(Helm helm) {
     this.helm = helm;
-    this.hitPoints += helm.getHitPoints();
   }
 
   public String getClassType() {
@@ -170,6 +175,14 @@ public abstract class Hero {
 
   public void setHitPoints(int hitPoints) {
     this.hitPoints = hitPoints;
+  }
+
+  public int getMaxHitPoints() {
+    return maxHitPoints;
+  }
+
+  public void setMaxHitPoints(int maxHitPoints) {
+    this.maxHitPoints = maxHitPoints;
   }
 
   public int getAttack() {

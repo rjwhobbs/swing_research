@@ -55,6 +55,10 @@ public class ConsoleView {
                     + "(3) Drum Hero\n");
   }
 
+  public static void showCoords(int[] coords) {
+    System.out.println("Your coords: (" + (coords[0] + 1) + "," + (coords[1] + 1) + ")");
+  }
+
   public static void showUsersInput(String input) {
     System.out.println(input);
   }

@@ -14,8 +14,11 @@ public class GamePlayController {
   private static boolean showFightScreen;
   private static boolean showPickUpScreen;
   private static boolean gameOver;
+  private static Model model;
 
   static void startGame(Model model, Scanner scanner) {
+
+    GamePlayController.model = model;
 
     String input = "";
 
@@ -24,13 +27,14 @@ public class GamePlayController {
     showPickUpScreen = false;
     gameOver = false;
 
-    ConsoleView.showMessage("You made it here");
     ConsoleView.showMessage("The hero you chose:");
     ConsoleView.showHeroStats(model.getHero());
-
+    model.generateMap();
 
     while (!input.equals("EXIT") && !gameOver) {
       if (showMovementScreen) {
+        ConsoleView.showMessage("Your coordinates");
+        ConsoleView.showCoords(model.getCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
         input = scanner.nextLine();
         if (input.equals("EXIT")) {
@@ -56,41 +60,59 @@ public class GamePlayController {
         runPickScreen(input);
       }
     }
-//    model.generateMap();
   }
 
   private static void runMovementScreen(String input) {
-
     switch (input) {
       case "N":
       case "n":
         ConsoleView.showMessage("You moved north.");
-        checkEnemy = random.nextInt(2);
+        model.moveNorth();
+        if (model.isAtEndOfMap()) {
+          ConsoleView.showMessage("You reached the end.");
+          showMovementScreen = false;
+          gameOver = true;
+        }
         break;
       case "E":
       case "e":
         ConsoleView.showMessage("You moved East.");
-        checkEnemy = random.nextInt(2);
+        model.moveEast();
+        if (model.isAtEndOfMap()) {
+          ConsoleView.showMessage("You reached the end.");
+          showMovementScreen = false;
+          gameOver = true;
+        }
         break;
       case "S":
       case "s":
         ConsoleView.showMessage("You moved South.");
-        checkEnemy = random.nextInt(2);
+        model.moveSouth();
+        if (model.isAtEndOfMap()) {
+          ConsoleView.showMessage("You reached the end.");
+          showMovementScreen = false;
+          gameOver = true;
+        }
         break;
       case "W":
       case "w":
         ConsoleView.showMessage("You moved west.");
-        checkEnemy = random.nextInt(2);
+        model.moveWest();
+        if (model.isAtEndOfMap()) {
+          ConsoleView.showMessage("You reached the end.");
+          showMovementScreen = false;
+          gameOver = true;
+        }
         break;
       default:
         ConsoleView.showInputNotRecognized(input);
         break;
     }
 
-    if (checkEnemy == 1) {
-      showFightScreen = true;
-      showMovementScreen = false;
-    }
+//    if (checkEnemy == 1) {
+//      showFightScreen = true;
+//      showMovementScreen = false;
+//    }
   }
 
   private static void runFightScreen(String input) {
