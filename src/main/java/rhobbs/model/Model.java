@@ -15,6 +15,7 @@ public class Model {
   private Random random = new Random();
   private int[] coords = {0,0};
   int[][] map;
+  private boolean heroDefeated = false;
 
   public Model() {}
 
@@ -212,7 +213,7 @@ public class Model {
     this.enemy = EnemyFactory.createEnemy(enemyType, enemyLevel);
   }
 
-  public void fight() {
+  public boolean stillFighting() {
     int heroLevel = this.hero.getLevel() * 1000;
     int heroXP = this.hero.getExperience();
     int heroDef = this.hero.getDefense() * 10;
@@ -227,8 +228,8 @@ public class Model {
 
     int heroHP = this.hero.getHitPoints();
     int enemyHP = this.enemy.getHitPoints();
-    int newHeroHP;
-    int newEnemyHP;
+    int postHeroHP;
+    int postEnemyHP;
 
     System.out.println("H " + heroWeight + " E " + enemyWeight);
 
@@ -236,15 +237,39 @@ public class Model {
     int enemyScore = random.nextInt(enemyWeight);
 
     // Element of luck
-    if (random.nextInt(3) == 1) {
-      heroScore += heroScore / 2;
+    // 50 % chance to double score
+    if (random.nextInt(2) == 1) {
+      System.out.println("Doubled");
+      heroScore *= 2;
     }
 
     System.out.println("HS " + heroScore + " ES " + enemyScore);
 
-//    if (heroScore >= enemyScore) {
-//
-//    }
+    if (heroScore >= enemyScore) {
+      enemyHP -= heroScore;
+      if (enemyHP <= 0) {
+        this.enemy.setHitPoints(0);
+        return false;
+      }
+      else {
+        this.enemy.setHitPoints(enemyHP);
+      }
+    }
+    else {
+      heroHP -= enemyScore;
+      if (heroHP <= 0) {
+        this.hero.setHitPoints(0);
+        this.heroDefeated = true;
+        return false;
+      }
+      else {
+        this.hero.setHitPoints(heroHP);
+      }
+    }
+    return true;
+  }
 
+  public boolean isHeroDefeated() {
+    return heroDefeated;
   }
 }

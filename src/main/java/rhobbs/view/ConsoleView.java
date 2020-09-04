@@ -56,6 +56,10 @@ public class ConsoleView {
     System.out.println("Your HP: " + hero.getHitPoints());
   }
 
+  public static void showEnemyHP(Enemy enemy) {
+    System.out.println("Your foes HP: " + enemy.getHitPoints());
+  }
+
   public static void chooseHeroName() {
     System.out.print("Choose your hero's name: ");
   }
