@@ -349,4 +349,8 @@ public class Model {
   public void setPrevCoords(int[] prevCoords) {
     this.prevCoords = prevCoords;
   }
+
+  public Artefact getArtefact() {
+    return artefact;
+  }
 }

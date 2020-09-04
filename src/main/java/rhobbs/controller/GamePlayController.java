@@ -64,7 +64,9 @@ public class GamePlayController {
         runLoopFightScreen();
       }
       else if (showPickUpScreen) {
-        ConsoleView.showMessage("The enemy dropped an item, pick it up? (Y/N)");
+        ConsoleView.showMessage("The enemy dropped an item...");
+        ConsoleView.showArtefactStats(GamePlayController.model.getArtefact());
+        ConsoleView.showMessage("Equip it? (Y/N)");
         input = scanner.nextLine();
         if (input.equals("EXIT")) {
           break;
@@ -143,7 +145,12 @@ public class GamePlayController {
       else {
         ConsoleView.showMessage("You defeated your foe!");
         ConsoleView.showMessage("You take a moment to regain some health");
-        showMovementScreen = true;
+        if (model.didDropArtefact()) {
+          showPickUpScreen = true;
+        }
+        else {
+          showMovementScreen = true;
+        }
       }
       showLoopFightScreen = false;
     }
@@ -153,20 +160,19 @@ public class GamePlayController {
     switch (input) {
       case "Y":
       case "y":
-        ConsoleView.showMessage("You picked up the item.");
-        showPickUpScreen = false;
-        showMovementScreen = true;
+        model.equipArtefact();
+        ConsoleView.showMessage("You equip the item.");
         break;
       case "N":
       case "n":
-        ConsoleView.showMessage("You left the itme.");
-        showPickUpScreen = false;
-        showMovementScreen = true;
+        ConsoleView.showMessage("You left the item.");
         break;
       default:
         ConsoleView.showInputNotRecognized(input);
         break;
     }
+    showPickUpScreen = false;
+    showMovementScreen = true;
   }
 
   private static void runCoordinateChecks() {

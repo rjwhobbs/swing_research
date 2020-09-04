@@ -2,6 +2,7 @@ package rhobbs.view;
 
 import rhobbs.model.Enemy;
 import rhobbs.model.Hero;
+import rhobbs.model.artefacts.Artefact;
 
 import java.util.List;
 
@@ -62,6 +63,28 @@ public class ConsoleView {
 
   public static void chooseHeroName() {
     System.out.print("Choose your hero's name: ");
+  }
+
+  public static void showArtefactStats(Artefact artefact) {
+    String pointsType = "";
+
+    switch (artefact.getType()) {
+      case "Helm":
+        pointsType = "HP";
+        break;
+      case "Weapon":
+        pointsType = "attack";
+        break;
+      case "Armor":
+        pointsType = "defense";
+        break;
+    }
+    System.out.println(
+            artefact.getSubType()
+                    + " " + artefact.getType()
+                    + " adds " + artefact.getPoints()
+                    + " " + pointsType
+    );
   }
 
   public static void chooseHeroClass() {
