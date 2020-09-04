@@ -18,7 +18,7 @@ public class DrumHero extends Hero {
             DrumWeapons.getPearlDrumKit(),
             DrumArmor.getWuhanCrashCymbal(),
             HelmFactory.retrieveHelm("none"),
-            1,
+            0,
             0,
             70
     );

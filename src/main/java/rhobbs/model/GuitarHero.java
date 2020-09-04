@@ -16,7 +16,7 @@ public class GuitarHero extends Hero {
             GuitarWeapons.getAcousticGuitar(),
             GuitarArmor.getMarshallAmp(),
             HelmFactory.retrieveHelm("none"),
-            1,
+            0,
             0,
             100
     );

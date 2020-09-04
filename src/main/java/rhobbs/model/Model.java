@@ -166,22 +166,18 @@ public class Model {
 
   public void moveNorth() {
     this.coords[0] -= 1;
-//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
   }
 
   public void moveEast() {
     this.coords[1] += 1;
-//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
   }
 
   public void moveWest() {
     this.coords[1] -= 1;
-//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
   }
 
   public void moveSouth() {
     this.coords[0] += 1;
-//    System.out.println("mc " + this.map[this.coords[0]][this.coords[1]]);
   }
 
   public boolean coordHasEnemy() {
@@ -214,7 +210,7 @@ public class Model {
 
   public boolean stillFighting() {
     int heroLevel = this.hero.getLevel() * 1000;
-    int heroXP = this.hero.getExperience();
+    int heroXP = this.hero.getExperience() / 10;
     int heroDef = this.hero.getDefense() * 10;
     int heroAtt = this.hero.getAttack() * 10;
 
@@ -228,6 +224,8 @@ public class Model {
     int heroHP = this.hero.getHitPoints();
     int enemyHP = this.enemy.getHitPoints();
     int heroHPRecovery = 0;
+    // 2 = 1 out of 2 chance, 3 == 1 out of 3 chance etc
+    int chanceOfLuck = this.makeChanceOfLuck(this.hero.getLevel());
 
     System.out.println("H " + heroWeight + " E " + enemyWeight);
 
@@ -235,8 +233,7 @@ public class Model {
     int enemyScore = random.nextInt(enemyWeight);
 
     // Element of luck
-    // 50 % chance to double score
-    if (random.nextInt(2) == 1) {
+    if (random.nextInt(chanceOfLuck) == chanceOfLuck - 1) {
       System.out.println("Doubled");
       heroScore *= 2;
       enemyScore /= 2;
@@ -283,7 +280,7 @@ public class Model {
   private void updateHeroStats() {
     int updatedXP = 0;
     int levelCheck;
-    int level = this.hero.getLevel();
+    int nextLevel = this.hero.getLevel() + 1;
     if (this.hero.getLevel() > this.enemy.getLevel()) {
       updatedXP = (100 / ((this.hero.getLevel() - this.enemy.getLevel() + 1))) * 10;
     }
@@ -295,9 +292,22 @@ public class Model {
     }
     this.hero.setExperience(updatedXP + this.hero.getExperience());
 
-    levelCheck = (level * 1000) + (((level - 1) * (level - 1) * 450));
+    levelCheck = (nextLevel * 1000) + (((nextLevel - 1) * (nextLevel - 1) * 450));
     if (this.hero.getExperience() >= levelCheck ) {
+      this.hero.setLevel(nextLevel);
+    }
+  }
 
+  private int makeChanceOfLuck(int level) {
+    switch (level) {
+      case 0:
+        return 1;
+      case 1:
+        return 2;
+      case 2:
+        return 3;
+      default:
+        return 4;
     }
   }
 }

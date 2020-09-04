@@ -16,7 +16,7 @@ public class Storage {
                 "none",
                 "Hard Rock Cafe Cap",
                 2,
-                0
+                2450
         );
       }
       if (selectHeroByName("Brenda").size() == 0) {
@@ -27,7 +27,7 @@ public class Storage {
                 "Hartke Amp",
                 "Black Vans Hoodie",
                 3,
-                500
+                4800
         );
       }
       if (selectHeroByName("Sarel").size() == 0) {
@@ -38,7 +38,7 @@ public class Storage {
                 "none",
                 "Toy Machine Beanie",
                 1,
-                0
+                1000
         );
       }
     }

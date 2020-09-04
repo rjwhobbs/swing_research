@@ -16,7 +16,7 @@ public class BassGuitarHero extends Hero {
             BassGuitarWeapons.getMexiPBass(),
             BassGuitarArmor.getHartkeAmp(),
             HelmFactory.retrieveHelm("none"),
-            1,
+            0,
             0,
             85
     );
