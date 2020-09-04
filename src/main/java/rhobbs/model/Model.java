@@ -140,19 +140,12 @@ public class Model {
       }
     }
 
-    for (int i = 0; i < mapSize; i++) {
-      for (int j = 0; j < mapSize; j++) {
-        System.out.print(map[i][j] + " ");
-//        try {
-//          Thread.sleep(500);
-//        }
-//        catch (Exception e) {
-//
-//        }
-
-      }
-      System.out.println();
-    }
+//    for (int i = 0; i < mapSize; i++) {
+//      for (int j = 0; j < mapSize; j++) {
+//        System.out.print(map[i][j] + " ");
+//      }
+//      System.out.println();
+//    }
 
   }
 
@@ -228,8 +221,7 @@ public class Model {
 
     int heroHP = this.hero.getHitPoints();
     int enemyHP = this.enemy.getHitPoints();
-    int postHeroHP;
-    int postEnemyHP;
+    int heroHPRecovery = 0;
 
     System.out.println("H " + heroWeight + " E " + enemyWeight);
 
@@ -241,6 +233,7 @@ public class Model {
     if (random.nextInt(2) == 1) {
       System.out.println("Doubled");
       heroScore *= 2;
+      enemyScore /= 2;
     }
 
     System.out.println("HS " + heroScore + " ES " + enemyScore);
@@ -248,7 +241,13 @@ public class Model {
     if (heroScore >= enemyScore) {
       enemyHP -= heroScore;
       if (enemyHP <= 0) {
+        heroHPRecovery += this.hero.getHitPoints() + heroScore;
+        if (heroHPRecovery >= this.hero.getMaxHitPoints()) {
+          heroHPRecovery = this.hero.getMaxHitPoints();
+        }
+        this.hero.setHitPoints(heroHPRecovery);
         this.enemy.setHitPoints(0);
+        this.updateXP();
         return false;
       }
       else {
@@ -271,5 +270,19 @@ public class Model {
 
   public boolean isHeroDefeated() {
     return heroDefeated;
+  }
+
+  private void updateXP() {
+    int updatedXP = 0;
+    if (this.hero.getLevel() > this.enemy.getLevel()) {
+      updatedXP = (100 / ((this.hero.getLevel() - this.enemy.getLevel() + 1))) * 10;
+    }
+    else if (this.hero.getLevel() == this.enemy.getLevel()) {
+      updatedXP = 600;
+    }
+    else if (this.hero.getLevel() < this.enemy.getLevel()) {
+      updatedXP = 500 + (300 * (this.enemy.getLevel() - this.hero.getLevel()));
+    }
+    this.hero.setExperience(updatedXP + this.hero.getExperience());
   }
 }

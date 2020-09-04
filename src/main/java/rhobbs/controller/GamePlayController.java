@@ -14,7 +14,7 @@ public class GamePlayController {
   private static boolean showFightScreen;
   private static boolean showLoopFightScreen;
   private static boolean showPickUpScreen;
-  private static boolean gameOver;
+  private static boolean gameOverScreen;
   private static Model model;
 
   static void startGame(Model model, Scanner scanner) {
@@ -27,14 +27,15 @@ public class GamePlayController {
     showFightScreen = false;
     showLoopFightScreen = false;
     showPickUpScreen = false;
-    gameOver = false;
+    gameOverScreen = false;
 
-    ConsoleView.showMessage("The hero you chose:");
-    ConsoleView.showHeroStats(model.getHero());
+//    ConsoleView.showMessage("The hero you chose:");
+//    ConsoleView.showHeroStats(model.getHero());
     model.generateMap();
 
-    while (!input.equals("EXIT") && !gameOver) {
+    while (!input.equals("EXIT") && !gameOverScreen) {
       if (showMovementScreen) {
+        ConsoleView.showHeroStats(GamePlayController.model.getHero());
         ConsoleView.showCoords(model.getCurrentCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
         input = scanner.nextLine();
@@ -154,12 +155,11 @@ public class GamePlayController {
         ConsoleView.showHeroHP(model.getHero());
         ConsoleView.showEnemyHP(model.getEnemy());
         ConsoleView.showMessage("You were defeated!");
-        gameOver = true;
+        gameOverScreen = true;
       }
       else {
-        ConsoleView.showHeroHP(model.getHero());
-        ConsoleView.showEnemyHP(model.getEnemy());
         ConsoleView.showMessage("You defeated your foe!");
+        ConsoleView.showMessage("You take a moment to regain some health");
         showMovementScreen = true;
       }
       showLoopFightScreen = false;
@@ -190,7 +190,7 @@ public class GamePlayController {
     if (model.isAtEndOfMap()) {
       ConsoleView.showMessage("You reached the end.");
       showMovementScreen = false;
-      gameOver = true;
+      gameOverScreen = true;
     }
     else if (model.coordHasEnemy()) {
       showFightScreen = true;
