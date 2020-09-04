@@ -1,6 +1,6 @@
 package rhobbs.model.artefacts;
 
-public class ArtefactTypes {
+public class ArtefactSubTypes {
 
   private static String[] guitarWeapons = {"Acoustic Guitar", "Flying V", "Fender Strat"};
   private static String[] bassGuitarWeapons = {"Squier JBass", "Mexican PBass", "Double Bass"};

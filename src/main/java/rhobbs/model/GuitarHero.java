@@ -18,7 +18,7 @@ public class GuitarHero extends Hero {
             HelmFactory.retrieveHelm("none"),
             0,
             0,
-            100
+            HeroConstants.GuitarHeroHP
     );
   }
 
@@ -38,7 +38,13 @@ public class GuitarHero extends Hero {
             HelmFactory.retrieveHelm(helm),
             level,
             experience,
-            100
+            HeroConstants.GuitarHeroHP
     );
+  }
+
+  @Override
+  public void equipHelm() {
+    this.hitPoints += this.helm.getPoints();
+    this.maxHitPoints = HeroConstants.GuitarHeroHP + this.helm.getPoints();
   }
 }

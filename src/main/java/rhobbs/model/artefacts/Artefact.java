@@ -1,15 +1,19 @@
 package rhobbs.model.artefacts;
 
-import java.awt.geom.Area;
-
 public class Artefact {
+
   public String type;
+  public String subType;
   public int points;
 
-  Artefact() {};
+  public Artefact() {};
 
   public String getType() {
-    return this.type;
+    return type;
+  }
+
+  public String getSubType() {
+    return this.subType;
   }
 
   public int getPoints() {

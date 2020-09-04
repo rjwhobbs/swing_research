@@ -15,13 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d699cb6a-6171-4644-8c55-bc7f3accf15e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/Artefact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/Artefact.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/armor/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/armor/Armor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/helms/Helm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/helms/Helm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/view/ConsoleView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/DropArtefact.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/DropArtefact.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +146,7 @@
       <workItem from="1598699430508" duration="806000" />
       <workItem from="1598708567001" duration="1112000" />
       <workItem from="1598710671912" duration="9542000" />
-      <workItem from="1598729875470" duration="124473000" />
+      <workItem from="1598729875470" duration="128167000" />
     </task>
     <servers />
   </component>
@@ -183,10 +178,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="401" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1280.777@0.23.1280.777" timestamp="1598710855120" />
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1599244545452">
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser" timestamp="1599246442229">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599244545452" />
+    <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599246442229" />
     <state x="449" y="82" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1598888261576">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

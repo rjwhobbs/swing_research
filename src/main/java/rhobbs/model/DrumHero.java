@@ -20,7 +20,7 @@ public class DrumHero extends Hero {
             HelmFactory.retrieveHelm("none"),
             0,
             0,
-            70
+            HeroConstants.DrumHeroHP
     );
   }
 
@@ -40,7 +40,13 @@ public class DrumHero extends Hero {
             HelmFactory.retrieveHelm(helm),
             level,
             experience,
-            70
+            HeroConstants.DrumHeroHP
     );
+  }
+
+  @Override
+  public void equipHelm() {
+    this.hitPoints += this.helm.getPoints();
+    this.maxHitPoints = HeroConstants.DrumHeroHP + this.helm.getPoints();
   }
 }

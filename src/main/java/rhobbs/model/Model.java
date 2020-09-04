@@ -1,10 +1,7 @@
 package rhobbs.model;
 
 import rhobbs.model.artefacts.Artefact;
-import rhobbs.model.artefacts.ArtefactTypes;
 import rhobbs.model.artefacts.DropArtefact;
-import rhobbs.model.artefacts.helms.HelmFactory;
-import rhobbs.model.artefacts.weapons.WeaponFactory;
 import rhobbs.model.storage.Storage;
 //import java.sql.Connection;
 import java.util.ArrayList;
@@ -41,9 +38,9 @@ public class Model {
       Storage.insertHero(
               this.hero.getName(),
               this.hero.getClassType(),
-              this.hero.getWeapon().getType(),
-              this.hero.getArmor().getType(),
-              this.hero.getHelm().getType(),
+              this.hero.getWeapon().getSubType(),
+              this.hero.getArmor().getSubType(),
+              this.hero.getHelm().getSubType(),
               this.hero.getLevel(),
               this.hero.getExperience()
       );
@@ -307,7 +304,7 @@ public class Model {
     }
   }
 
-  public boolean didDropItem() {
+  public boolean didDropArtefact() {
 
     if (random.nextInt(100) >= 49) {
       return false;
@@ -315,6 +312,23 @@ public class Model {
 
     this.artefact = DropArtefact.generateArtefact(this.hero, this.enemy);
     return true;
+  }
+
+  public void equipArtefact() {
+    String artefactType = this.artefact.getType();
+    if (artefactType.equals("Helm")) {
+      this.hero.setHelm(this.artefact);
+      this.hero.equipHelm();
+    }
+    else if (artefactType.equals("Weapon")) {
+      this.hero.setWeapon(this.artefact);
+      this.hero.equipHelm();
+    }
+    else {
+      this.hero.setArmor(this.artefact);
+      this.hero.equipArmor();
+    }
+    this.artefact = null;
   }
 
   private int makeChanceOfLuck(int level) {

@@ -1,5 +1,6 @@
 package rhobbs.model;
 
+import rhobbs.model.artefacts.Artefact;
 import rhobbs.model.artefacts.armor.Armor;
 import rhobbs.model.artefacts.helms.Helm;
 import rhobbs.model.artefacts.weapons.Weapon;
@@ -26,13 +27,13 @@ public abstract class Hero {
   private String classType;
 
   @NotNull(message = "Hero weapon can't be null.")
-  private Weapon weapon;
+  private Artefact weapon;
 
   @NotNull(message = "Hero armor can't be null.")
-  private Armor armor;
+  private Artefact armor;
 
   @NotNull(message = "Hero helm can't be null.")
-  private Helm helm;
+  Artefact helm;
 
   @Min(value = 0, message = "Hero level can't be less than 0.")
   @Max(value = 2147483647, message =  "Hero level can't exceed max signed integer value.")
@@ -44,11 +45,11 @@ public abstract class Hero {
 
   @Min(value = 0, message = "Hero hit points can't be less than 0.")
   @Max(value = 2147483647, message =  "Hero hit points can't exceed max signed integer value.")
-  private int hitPoints;
+  int hitPoints;
 
   @Min(value = 0, message = "Hero hit points can't be less than 0.")
   @Max(value = 2147483647, message =  "Hero hit points can't exceed max signed integer value.")
-  private int maxHitPoints;
+  int maxHitPoints;
 
   @Min(value = 0, message = "Hero attack can't be less than 0.")
   @Max(value = 2147483647, message =  "Hero attack can't exceed max signed integer value.")
@@ -106,10 +107,7 @@ public abstract class Hero {
     this.defense = this.armor.getPoints();
   }
 
-  public void equipHelm() {
-    this.hitPoints += this.helm.getPoints();
-    this.maxHitPoints += this.helm.getPoints();
-  }
+  public abstract void equipHelm();
 
   public String getName() {
     return name;
@@ -119,29 +117,29 @@ public abstract class Hero {
     this.name = name;
   }
 
-  public Weapon getWeapon() {
+  public Artefact getWeapon() {
     return weapon;
   }
 
-  public Armor getArmor() {
+  public Artefact getArmor() {
     return armor;
   }
 
-  public void setArmor(Armor armor) {
+  public void setArmor(Artefact armor) {
     this.defense = armor.getPoints();
     this.armor = armor;
   }
 
-  public void setWeapon(Weapon weapon) {
+  public void setWeapon(Artefact weapon) {
     this.attack = weapon.getPoints();
     this.weapon = weapon;
   }
 
-  public Helm getHelm() {
+  public Artefact getHelm() {
     return helm;
   }
 
-  public void setHelm(Helm helm) {
+  public void setHelm(Artefact helm) {
     this.helm = helm;
   }
 
