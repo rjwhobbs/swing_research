@@ -45,7 +45,8 @@ public class GamePlayController {
         runMovementScreen(input);
       }
       else if (showFightScreen) {
-        ConsoleView.showMessage("You encountered an enemy.");
+        ConsoleView.showMessage("You encountered an enemy at: ");
+        ConsoleView.showCoords(model.getCurrentCoords());
         ConsoleView.showEnemyStats(GamePlayController.model.getEnemy());
         ConsoleView.showMessage("F to fight or R to run");
         input = scanner.nextLine();
@@ -108,34 +109,16 @@ public class GamePlayController {
         ConsoleView.showMessage("And so your battle begins!");
         showFightScreen = false;
         showLoopFightScreen = true;
-//        if (model.stillFighting()) {
-//          ConsoleView.showHeroHP(model.getHero());
-//        }
-//        if (random.nextInt(10) > 0) {
-//          ConsoleView.showMessage("You fought the enemy and won!");
-//          if (random.nextInt(2) == 1) {
-//            showFightScreen = false;
-//            showPickUpScreen = true;
-//          }
-//          else {
-//            showFightScreen = false;
-//            showMovementScreen = true;
-//          }
-//        }
-//        else {
-//          ConsoleView.showMessage("You fought the enemy and lost");
-//          showFightScreen = false;
-//          gameOver = true;
-//        }
         break;
       case "R":
       case "r":
         if (random.nextInt(2) == 1) {
-          ConsoleView.showMessage("You where unable to run from the enemy");
+          ConsoleView.showMessage("You where unable to run from the enemy.");
           runFightScreen("F");
         }
         else {
-          ConsoleView.showMessage("You successfully ran away from the enemy");
+          ConsoleView.showMessage("You successfully ran away from the enemy.");
+          model.setCoords(model.getPrevCoords()[0], model.getPrevCoords()[1]);
           showFightScreen = false;
           showMovementScreen = true;
         }

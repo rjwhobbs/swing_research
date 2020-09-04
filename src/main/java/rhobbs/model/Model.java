@@ -14,6 +14,7 @@ public class Model {
   private List<List<String>> storedHeroes;
   private Random random = new Random();
   private int[] coords = {0,0};
+  private int[] prevCoords = {0,0};
   int[][] map;
   private boolean heroDefeated = false;
 
@@ -165,19 +166,29 @@ public class Model {
   }
 
   public void moveNorth() {
+    this.prevCoords[0] = this.coords[0];
+    this.prevCoords[1] = this.coords[1];
     this.coords[0] -= 1;
   }
 
   public void moveEast() {
+    this.prevCoords[0] = this.coords[0];
+    this.prevCoords[1] = this.coords[1];
     this.coords[1] += 1;
   }
 
   public void moveWest() {
+    this.prevCoords[0] = this.coords[0];
+    this.prevCoords[1] = this.coords[1];
     this.coords[1] -= 1;
   }
 
   public void moveSouth() {
+    this.prevCoords[0] = this.coords[0];
+    this.prevCoords[1] = this.coords[1];
+    System.out.println("XXX" + prevCoords[0] + " " + prevCoords[1]);
     this.coords[0] += 1;
+    System.out.println("CCC" + prevCoords[0] + " " + prevCoords[1]);
   }
 
   public boolean coordHasEnemy() {
@@ -227,7 +238,7 @@ public class Model {
     // 2 = 1 out of 2 chance, 3 == 1 out of 3 chance etc
     int chanceOfLuck = this.makeChanceOfLuck(this.hero.getLevel());
 
-    System.out.println("H " + heroWeight + " E " + enemyWeight);
+//    System.out.println("H " + heroWeight + " E " + enemyWeight);
 
     int heroScore = random.nextInt(heroWeight);
     int enemyScore = random.nextInt(enemyWeight);
@@ -239,7 +250,7 @@ public class Model {
       enemyScore /= 2;
     }
 
-    System.out.println("HS " + heroScore + " ES " + enemyScore);
+//    System.out.println("HS " + heroScore + " ES " + enemyScore);
 
     if (heroScore >= enemyScore) {
       enemyHP -= heroScore;
@@ -309,5 +320,13 @@ public class Model {
       default:
         return 4;
     }
+  }
+
+  public int[] getPrevCoords() {
+    return prevCoords;
+  }
+
+  public void setPrevCoords(int[] prevCoords) {
+    this.prevCoords = prevCoords;
   }
 }
