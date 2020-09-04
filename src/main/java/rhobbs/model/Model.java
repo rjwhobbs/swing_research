@@ -247,7 +247,7 @@ public class Model {
         }
         this.hero.setHitPoints(heroHPRecovery);
         this.enemy.setHitPoints(0);
-        this.updateXP();
+        this.updateHeroStats();
         return false;
       }
       else {
@@ -272,8 +272,10 @@ public class Model {
     return heroDefeated;
   }
 
-  private void updateXP() {
+  private void updateHeroStats() {
     int updatedXP = 0;
+    int levelCheck;
+    int level = this.hero.getLevel();
     if (this.hero.getLevel() > this.enemy.getLevel()) {
       updatedXP = (100 / ((this.hero.getLevel() - this.enemy.getLevel() + 1))) * 10;
     }
@@ -284,5 +286,10 @@ public class Model {
       updatedXP = 500 + (300 * (this.enemy.getLevel() - this.hero.getLevel()));
     }
     this.hero.setExperience(updatedXP + this.hero.getExperience());
+
+    levelCheck = (level * 1000) + (((level - 1) * (level - 1) * 450));
+    if (this.hero.getExperience() >= levelCheck ) {
+
+    }
   }
 }

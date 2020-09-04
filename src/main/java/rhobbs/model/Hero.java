@@ -34,7 +34,7 @@ public abstract class Hero {
   @NotNull(message = "Hero helm can't be null.")
   private Helm helm;
 
-  @Min(value = 1, message = "Hero level can't be less than 1.")
+  @Min(value = 0, message = "Hero level can't be less than 0.")
   @Max(value = 2147483647, message =  "Hero level can't exceed max signed integer value.")
   private int level;
 
