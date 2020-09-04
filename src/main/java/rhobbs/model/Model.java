@@ -1,5 +1,6 @@
 package rhobbs.model;
 
+import rhobbs.model.artefacts.Artefact;
 import rhobbs.model.storage.Storage;
 //import java.sql.Connection;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ public class Model {
   private Hero hero = null;
   private Hero tempHero = null;
   private Enemy enemy;
+  private Artefact droppedArtefact;
   private List<List<String>> storedHeroes;
   private Random random = new Random();
   private int[] coords = {0,0};
@@ -186,9 +188,7 @@ public class Model {
   public void moveSouth() {
     this.prevCoords[0] = this.coords[0];
     this.prevCoords[1] = this.coords[1];
-    System.out.println("XXX" + prevCoords[0] + " " + prevCoords[1]);
     this.coords[0] += 1;
-    System.out.println("CCC" + prevCoords[0] + " " + prevCoords[1]);
   }
 
   public boolean coordHasEnemy() {
@@ -309,16 +309,26 @@ public class Model {
     }
   }
 
+  public boolean didDropItem() {
+
+    String[] artefactsArr = {"Helm", "Weapon", "Armor"};
+
+    if (random.nextInt(100) >= 49) {
+      return false;
+    }
+
+    return true;
+
+  }
+
   private int makeChanceOfLuck(int level) {
     switch (level) {
       case 0:
         return 1;
       case 1:
         return 2;
-      case 2:
-        return 3;
       default:
-        return 4;
+        return 3;
     }
   }
 

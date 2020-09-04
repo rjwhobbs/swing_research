@@ -112,7 +112,7 @@ public class GamePlayController {
         break;
       case "R":
       case "r":
-        if (random.nextInt(2) == 1) {
+        if (random.nextInt(100) >= 49) {
           ConsoleView.showMessage("You where unable to run from the enemy.");
           runFightScreen("F");
         }

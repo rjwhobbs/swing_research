@@ -1,21 +1,20 @@
 package rhobbs.model.artefacts.helms;
 
-public class Helm {
+import rhobbs.model.artefacts.Artefact;
 
-  private final String helmType;
-  private final int hitPoints;
+public class Helm extends Artefact {
 
   Helm(String helmType, int hitPoints) {
-    this.helmType = helmType;
-    this.hitPoints = hitPoints;
+    this.type = helmType;
+    this.points = hitPoints;
   }
 
   public String getHelmType() {
-    return helmType;
+    return type;
   }
 
   public int getHitPoints() {
-    return hitPoints;
+    return points;
   }
 
 }

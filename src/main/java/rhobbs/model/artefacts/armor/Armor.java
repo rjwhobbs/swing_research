@@ -1,12 +1,12 @@
 package rhobbs.model.artefacts.armor;
 
-public class Armor {
-  private String type;
-  private int defense;
+import rhobbs.model.artefacts.Artefact;
+
+public class Armor extends Artefact {
 
   Armor(String type, int defense) {
     this.type = type;
-    this.defense = defense;
+    this.points = defense;
   }
 
   public String getType() {
@@ -14,6 +14,6 @@ public class Armor {
   }
 
   public int getDefense() {
-    return defense;
+    return points;
   }
 }
