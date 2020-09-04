@@ -41,7 +41,7 @@ public class ConsoleView {
     System.out.println("HP: " + hero.getHitPoints());
     System.out.println("Weapon: " + hero.getWeapon().getType());
     System.out.println("Armor: " + hero.getArmor().getType());
-    System.out.println("Helm: " + hero.getHelm().getHelmType());
+    System.out.println("Helm: " + hero.getHelm().getType());
   }
 
   public static void showEnemyStats(Enemy enemy) {

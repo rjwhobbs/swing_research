@@ -8,12 +8,4 @@ public class Weapon extends Artefact {
     this.type = type;
     this.points = attack;
   }
-
-  public String getType() {
-    return type;
-  }
-
-  public int getAttack() {
-    return points;
-  }
 }

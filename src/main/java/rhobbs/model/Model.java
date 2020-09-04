@@ -1,6 +1,10 @@
 package rhobbs.model;
 
 import rhobbs.model.artefacts.Artefact;
+import rhobbs.model.artefacts.ArtefactTypes;
+import rhobbs.model.artefacts.DropArtefact;
+import rhobbs.model.artefacts.helms.HelmFactory;
+import rhobbs.model.artefacts.weapons.WeaponFactory;
 import rhobbs.model.storage.Storage;
 //import java.sql.Connection;
 import java.util.ArrayList;
@@ -12,7 +16,7 @@ public class Model {
   private Hero hero = null;
   private Hero tempHero = null;
   private Enemy enemy;
-  private Artefact droppedArtefact;
+  private Artefact artefact;
   private List<List<String>> storedHeroes;
   private Random random = new Random();
   private int[] coords = {0,0};
@@ -39,7 +43,7 @@ public class Model {
               this.hero.getClassType(),
               this.hero.getWeapon().getType(),
               this.hero.getArmor().getType(),
-              this.hero.getHelm().getHelmType(),
+              this.hero.getHelm().getType(),
               this.hero.getLevel(),
               this.hero.getExperience()
       );
@@ -192,17 +196,11 @@ public class Model {
   }
 
   public boolean coordHasEnemy() {
-    if (this.map[this.coords[0]][this.coords[1]] > 0) {
-      return true;
-    }
-    return false;
+    return this.map[this.coords[0]][this.coords[1]] > 0;
   }
 
   public boolean isAtEndOfMap() {
-    if (this.map[this.coords[0]][this.coords[1]] == -1) {
-      return true;
-    }
-    return false;
+    return this.map[this.coords[0]][this.coords[1]] == -1;
   }
 
   public void generateEnemy() {
@@ -311,14 +309,12 @@ public class Model {
 
   public boolean didDropItem() {
 
-    String[] artefactsArr = {"Helm", "Weapon", "Armor"};
-
     if (random.nextInt(100) >= 49) {
       return false;
     }
 
+    this.artefact = DropArtefact.generateArtefact(this.hero, this.enemy);
     return true;
-
   }
 
   private int makeChanceOfLuck(int level) {

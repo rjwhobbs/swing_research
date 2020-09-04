@@ -99,16 +99,16 @@ public abstract class Hero {
   }
 
   public void equipWeapon() {
-    this.attack = this.weapon.getAttack();
+    this.attack = this.weapon.getPoints();
   }
 
   public void equipArmor() {
-    this.defense = this.armor.getDefense();
+    this.defense = this.armor.getPoints();
   }
 
   public void equipHelm() {
-    this.hitPoints += this.helm.getHitPoints();
-    this.maxHitPoints += this.helm.getHitPoints();
+    this.hitPoints += this.helm.getPoints();
+    this.maxHitPoints += this.helm.getPoints();
   }
 
   public String getName() {
@@ -128,12 +128,12 @@ public abstract class Hero {
   }
 
   public void setArmor(Armor armor) {
-    this.defense = armor.getDefense();
+    this.defense = armor.getPoints();
     this.armor = armor;
   }
 
   public void setWeapon(Weapon weapon) {
-    this.attack = weapon.getAttack();
+    this.attack = weapon.getPoints();
     this.weapon = weapon;
   }
 

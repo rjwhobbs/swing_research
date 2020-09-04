@@ -8,13 +8,4 @@ public class Helm extends Artefact {
     this.type = helmType;
     this.points = hitPoints;
   }
-
-  public String getHelmType() {
-    return type;
-  }
-
-  public int getHitPoints() {
-    return points;
-  }
-
 }
