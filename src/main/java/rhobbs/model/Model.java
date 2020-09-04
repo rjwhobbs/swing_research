@@ -111,9 +111,12 @@ public class Model {
   public void generateMap() {
     int mapSize = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
     int centerX = mapSize / 2;
+    int heroLevel = this.hero.getLevel();
     int ib = 1;
+    int placeEnemyChance = this.hero.getLevel() == 0 ? 100 : 3;
     map = new int[mapSize][mapSize];
     int maxEnemyLevel = this.hero.getLevel() + 2;
+    int minEnemyLevel = this.hero.getLevel() - 1 > 0 ? this.hero.getLevel() - 1 : 0;
     int[] enemyArray = new int[maxEnemyLevel];
     this.setCoords(centerX, centerX);
 
@@ -127,8 +130,11 @@ public class Model {
           map[i][j] = -1;
         }
         else if (i != centerX || j != centerX) {
-          if (random.nextInt(3) != 0) {
+          if (random.nextInt(placeEnemyChance) != 0) {
             map[i][j] = enemyArray[random.nextInt(maxEnemyLevel)];
+            if (map[i][j] < heroLevel && map[i][j] != 0 ) {
+              map[i][j] = random.nextInt(maxEnemyLevel + 1 - minEnemyLevel) + minEnemyLevel;
+            }
           }
           else {
             map[i][j] = 0;
@@ -140,12 +146,12 @@ public class Model {
       }
     }
 
-//    for (int i = 0; i < mapSize; i++) {
-//      for (int j = 0; j < mapSize; j++) {
-//        System.out.print(map[i][j] + " ");
-//      }
-//      System.out.println();
-//    }
+    for (int i = 0; i < mapSize; i++) {
+      for (int j = 0; j < mapSize; j++) {
+        System.out.print(map[i][j] + " ");
+      }
+      System.out.println();
+    }
 
   }
 
@@ -241,6 +247,7 @@ public class Model {
     if (heroScore >= enemyScore) {
       enemyHP -= heroScore;
       if (enemyHP <= 0) {
+        // The hero won
         heroHPRecovery += this.hero.getHitPoints() + heroScore;
         if (heroHPRecovery >= this.hero.getMaxHitPoints()) {
           heroHPRecovery = this.hero.getMaxHitPoints();
@@ -248,6 +255,7 @@ public class Model {
         this.hero.setHitPoints(heroHPRecovery);
         this.enemy.setHitPoints(0);
         this.updateHeroStats();
+        this.map[this.coords[0]][this.coords[1]] = 0;
         return false;
       }
       else {
