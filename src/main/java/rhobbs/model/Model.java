@@ -322,7 +322,7 @@ public class Model {
     }
     else if (artefactType.equals("Weapon")) {
       this.hero.setWeapon(this.artefact);
-      this.hero.equipHelm();
+      this.hero.equipWeapon();
     }
     else {
       this.hero.setArmor(this.artefact);
