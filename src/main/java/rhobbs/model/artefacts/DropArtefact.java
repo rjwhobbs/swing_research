@@ -127,6 +127,23 @@ public class DropArtefact {
           );
         }
       }
+      else if (randArtefact.equals("Armor")) {
+        if (hero.getClassType().equals("Bass Guitar Hero")) {
+          artefact = ArmorFactory.retrieveArmor(
+                  ArtefactConstants.getBassGuitarArmor()[2]
+          );
+        }
+        else if (hero.getClassType().equals("Guitar Hero")) {
+          artefact = ArmorFactory.retrieveArmor(
+                  ArtefactConstants.getGuitarArmor()[2]
+          );
+        }
+        else if (hero.getClassType().equals("Drum Hero")) {
+          artefact = ArmorFactory.retrieveArmor(
+                  ArtefactConstants.getDrumArmor()[2]
+          );
+        }
+      }
     }
 
     // if this happens I will need to save it in the DB.
