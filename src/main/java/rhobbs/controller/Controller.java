@@ -79,7 +79,6 @@ public class Controller {
         if (input.equals("EXIT")) {
           break;
         }
-//        userCreateHeroInput.add(input);
         this.runChooseHeroNameScreen(input, userCreateHeroInput);
       }
       else if (showChooseHeroClassTypeScreen) {
@@ -100,7 +99,7 @@ public class Controller {
         input = "EXIT";
       }
     }
-    ConsoleView.showMessage("Exiting repl...");
+    ConsoleView.showMessage("Exiting...");
     scanner.close();
   }
 

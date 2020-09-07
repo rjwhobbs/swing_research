@@ -12,7 +12,7 @@ public abstract class EnemyFactory {
       case "Venue owner":
         return new Enemy(enemyType, level, 150, 100, 50);
       case "Grumpy sound engineer":
-        return new Enemy(enemyType, level, 200, 200, 200);
+        return new Enemy(enemyType, level, 200, 120, 120);
       default:
         return null;
     }
