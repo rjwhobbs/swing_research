@@ -40,12 +40,20 @@ public class ConsoleView {
   }
 
   public static void showHeroStats(Hero hero) {
-    System.out.println(hero.getName() + " Lvl " + hero.getLevel() + " " + hero.getClassType());
-    System.out.println("XP: " + hero.getExperience());
-    System.out.println("HP: " + hero.getHitPoints());
-    System.out.println("Weapon: " + hero.getWeapon().getSubType());
-    System.out.println("Armor: " + hero.getArmor().getSubType());
-    System.out.println("Helm: " + hero.getHelm().getSubType());
+    System.out.print(hero.getName() + " Lvl " + hero.getLevel() + " " + hero.getClassType());
+    System.out.println(" , XP: " + hero.getExperience() + ", HP: " + hero.getHitPoints());
+    System.out.print(
+            "Axe: " + hero.getWeapon().getSubType()
+                    + " (+" + hero.getWeapon().getPoints() + ") | "
+    );
+    System.out.print(
+            "Defense: " + hero.getArmor().getSubType()
+                    + " (+" + hero.getArmor().getPoints() + ") | "
+    );
+    System.out.println(
+            "Helm: " + hero.getHelm().getSubType()
+                    + " (+" + hero.getHelm().getPoints() + ")"
+    );
   }
 
   public static void showEnemyStats(Enemy enemy) {
