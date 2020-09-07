@@ -1,10 +1,21 @@
 package rhobbs.model.artefacts.armor;
 
+import rhobbs.model.artefacts.ArtefactConstants;
+
 public class GuitarArmor {
 
-  private static Armor marshallAmp = new Armor("Marshall Amp", 60);
-  private static Armor mesaBoogieAmp = new Armor("Mesa Boogie Amp", 120);
-  private static Armor voxAmp = new Armor("Vox Amp", 240);
+  private static Armor marshallAmp = new Armor(
+          "Marshall Amp",
+          ArtefactConstants.getGuitarArmorDefense()[0]
+  );
+  private static Armor mesaBoogieAmp = new Armor(
+          "Mesa Boogie Amp",
+          ArtefactConstants.getGuitarArmorDefense()[1]
+  );
+  private static Armor voxAmp = new Armor(
+          "Vox Amp",
+          ArtefactConstants.getGuitarArmorDefense()[3]
+  );
 
   public static Armor getMarshallAmp() {
     return marshallAmp;

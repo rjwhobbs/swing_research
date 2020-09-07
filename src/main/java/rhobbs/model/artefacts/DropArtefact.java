@@ -20,45 +20,45 @@ public class DropArtefact {
     int levelGap = enemy.getLevel() - hero.getLevel();
 
     if (levelGap < 0) {
-      artefact = HelmFactory.retrieveHelm(ArtefactSubTypes.getHelmTypes()[0]);
+      artefact = HelmFactory.retrieveHelm(ArtefactConstants.getHelmTypes()[0]);
     }
     else if (levelGap == 0) {
       if (randArtefact.equals("Helm")) {
         artefact = HelmFactory.retrieveHelm(
-                ArtefactSubTypes.getHelmTypes()[random.nextInt(2)]
+                ArtefactConstants.getHelmTypes()[random.nextInt(2)]
         );
       }
       else if (randArtefact.equals("Weapon")) {
         if (hero.getClassType().equals("Bass Guitar Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getBassGuitarWeapons()[1]
+                  ArtefactConstants.getBassGuitarWeapons()[1]
           );
         }
         else if (hero.getClassType().equals("Guitar Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getGuitarWeapons()[1]
+                  ArtefactConstants.getGuitarWeapons()[1]
           );
         }
         else if (hero.getClassType().equals("Drum Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getDrumWeapons()[1]
+                  ArtefactConstants.getDrumWeapons()[1]
           );
         }
       }
       else if (randArtefact.equals("Armor")) {
         if (hero.getClassType().equals("Bass Guitar Hero")) {
           artefact = ArmorFactory.retrieveArmor(
-                  ArtefactSubTypes.getBassGuitarArmor()[1]
+                  ArtefactConstants.getBassGuitarArmor()[1]
           );
         }
         else if (hero.getClassType().equals("Guitar Hero")) {
           artefact = ArmorFactory.retrieveArmor(
-                  ArtefactSubTypes.getGuitarArmor()[1]
+                  ArtefactConstants.getGuitarArmor()[1]
           );
         }
         else if (hero.getClassType().equals("Drum Hero")) {
           artefact = ArmorFactory.retrieveArmor(
-                  ArtefactSubTypes.getDrumArmor()[1]
+                  ArtefactConstants.getDrumArmor()[1]
           );
         }
       }
@@ -66,40 +66,40 @@ public class DropArtefact {
     else if (levelGap == 1) {
       if (randArtefact.equals("Helm")) {
         artefact = HelmFactory.retrieveHelm(
-                ArtefactSubTypes.getHelmTypes()[1]
+                ArtefactConstants.getHelmTypes()[1]
         );
       }
       else if (randArtefact.equals("Weapon")) {
         if (hero.getClassType().equals("Bass Guitar Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getBassGuitarWeapons()[random.nextInt(2) + 1]
+                  ArtefactConstants.getBassGuitarWeapons()[random.nextInt(2) + 1]
           );
         }
         else if (hero.getClassType().equals("Guitar Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getGuitarWeapons()[random.nextInt(2) + 1]
+                  ArtefactConstants.getGuitarWeapons()[random.nextInt(2) + 1]
           );
         }
         else if (hero.getClassType().equals("Drum Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getDrumWeapons()[random.nextInt(2) + 1]
+                  ArtefactConstants.getDrumWeapons()[random.nextInt(2) + 1]
           );
         }
       }
       else if (randArtefact.equals("Armor")) {
         if (hero.getClassType().equals("Bass Guitar Hero")) {
           artefact = ArmorFactory.retrieveArmor(
-                  ArtefactSubTypes.getBassGuitarArmor()[random.nextInt(2) + 1]
+                  ArtefactConstants.getBassGuitarArmor()[random.nextInt(2) + 1]
           );
         }
         else if (hero.getClassType().equals("Guitar Hero")) {
           artefact = ArmorFactory.retrieveArmor(
-                  ArtefactSubTypes.getGuitarArmor()[random.nextInt(2) + 1]
+                  ArtefactConstants.getGuitarArmor()[random.nextInt(2) + 1]
           );
         }
         else if (hero.getClassType().equals("Drum Hero")) {
           artefact = ArmorFactory.retrieveArmor(
-                  ArtefactSubTypes.getDrumArmor()[random.nextInt(2) + 1]
+                  ArtefactConstants.getDrumArmor()[random.nextInt(2) + 1]
           );
         }
       }
@@ -107,23 +107,23 @@ public class DropArtefact {
     else if (levelGap >= 2) {
       if (randArtefact.equals("Helm")) {
         artefact = HelmFactory.retrieveHelm(
-                ArtefactSubTypes.getHelmTypes()[2]
+                ArtefactConstants.getHelmTypes()[2]
         );
       }
       else if (randArtefact.equals("Weapon")) {
         if (hero.getClassType().equals("Bass Guitar Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getBassGuitarWeapons()[2]
+                  ArtefactConstants.getBassGuitarWeapons()[2]
           );
         }
         else if (hero.getClassType().equals("Guitar Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getGuitarWeapons()[2]
+                  ArtefactConstants.getGuitarWeapons()[2]
           );
         }
         else if (hero.getClassType().equals("Drum Hero")) {
           artefact = WeaponFactory.retrieveWeapon(
-                  ArtefactSubTypes.getDrumWeapons()[2]
+                  ArtefactConstants.getDrumWeapons()[2]
           );
         }
       }
