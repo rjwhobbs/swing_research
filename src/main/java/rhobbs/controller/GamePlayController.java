@@ -29,14 +29,12 @@ public class GamePlayController {
     showPickUpScreen = false;
     gameOverScreen = false;
 
-//    ConsoleView.showMessage("The hero you chose:");
-//    ConsoleView.showHeroStats(model.getHero());
     model.generateMap();
 
     while (!input.equals("EXIT") && !gameOverScreen) {
       if (showMovementScreen) {
         ConsoleView.showHeroStats(GamePlayController.model.getHero());
-        ConsoleView.showCoords(model.getCurrentCoords());
+        ConsoleView.showYourCoords(model.getCurrentCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
         input = scanner.nextLine();
         if (input.equals("EXIT")) {
@@ -45,8 +43,7 @@ public class GamePlayController {
         runMovementScreen(input);
       }
       else if (showFightScreen) {
-        ConsoleView.showMessage("You encountered an enemy at: ");
-        ConsoleView.showCoords(model.getCurrentCoords());
+        ConsoleView.showEnemyCoords(GamePlayController.model.getCurrentCoords());
         ConsoleView.showEnemyStats(GamePlayController.model.getEnemy());
         ConsoleView.showMessage("F to fight or R to run");
         input = scanner.nextLine();
@@ -64,6 +61,7 @@ public class GamePlayController {
         runLoopFightScreen();
       }
       else if (showPickUpScreen) {
+        ConsoleView.showHeroStats(GamePlayController.model.getHero());
         ConsoleView.showMessage("The enemy dropped an item...");
         ConsoleView.showArtefactStats(GamePlayController.model.getArtefact());
         ConsoleView.showMessage("Equip it? (Y/N)");
@@ -177,7 +175,7 @@ public class GamePlayController {
 
   private static void runCoordinateChecks() {
     if (model.isAtEndOfMap()) {
-      ConsoleView.showMessage("You reached the end.");
+      ConsoleView.showMessage("Congratulations! You reached the end of the map.");
       showMovementScreen = false;
       gameOverScreen = true;
     }

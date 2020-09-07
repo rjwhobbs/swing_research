@@ -64,12 +64,14 @@ public class ConsoleView {
     );
   }
 
+
+
   public static void showHeroHP(Hero hero) {
     System.out.println("Your HP: " + hero.getHitPoints());
   }
 
   public static void showEnemyHP(Enemy enemy) {
-    System.out.println("Your foes HP: " + enemy.getHitPoints());
+    System.out.println("Enemy's HP: " + enemy.getHitPoints());
   }
 
   public static void chooseHeroName() {
@@ -106,8 +108,12 @@ public class ConsoleView {
                     + "(3) Drum Hero\n");
   }
 
-  public static void showCoords(int[] coords) {
+  public static void showYourCoords(int[] coords) {
     System.out.println("Your coords: (" + (coords[0] + 1) + "," + (coords[1] + 1) + ")");
+  }
+
+  public static void showEnemyCoords(int[] coords) {
+    System.out.println("You encountered an enemy at: (" + (coords[0] + 1) + "," + (coords[1] + 1) + ")");
   }
 
   public static void showUsersInput(String input) {

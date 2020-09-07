@@ -172,13 +172,20 @@ public class Storage {
     }
   }
 
-  private static void updateHero(String col, String val, String name) throws Exception{
-    String sql = "UPDATE heroes SET " + col + " = ? WHERE name = ?";
+  private static void updateHero(
+          String colOne,
+          String colTwo,
+          String valOne,
+          int valTwo ,
+          String name
+  ) throws Exception {
+    String sql = "UPDATE heroes SET " + colOne + " = ? , " + colTwo + " = ? WHERE name = ?";
     try {
       Connection conn = Storage.getConnection();
       PreparedStatement pstmt = conn.prepareStatement(sql);
-      pstmt.setString(1, val);
-      pstmt.setString(2, name);
+      pstmt.setString(1, valOne);
+      pstmt.setInt(2, valTwo);
+      pstmt.setString(3, name);
       pstmt.executeUpdate();
       conn.close();
     }
@@ -202,27 +209,27 @@ public class Storage {
     }
   }
 
-  public static void saveArmor(String name, String armor) throws Exception {
+  public static void saveArmor(String name, String armor, int armourPoints) throws Exception {
     try {
-      updateHero("armor", armor, name);
+      updateHero("armor", "defense", armor, armourPoints, name);
     }
     catch (Exception e) {
       throw new Exception(e.getMessage());
     }
   }
 
-  public static void saveWeapon(String name, String weapon) throws Exception {
+  public static void saveWeapon(String name, String weapon, int attackPoints) throws Exception {
     try {
-      updateHero("weapon", weapon, name);
+      updateHero("weapon", "attack", weapon, attackPoints, name);
     }
     catch (Exception e) {
       throw new Exception(e.getMessage());
     }
   }
 
-  public static void saveHelm(String name, String helm) throws Exception {
+  public static void saveHelm(String name, String helm, int helmPoints) throws Exception {
     try {
-      updateHero("helm", helm, name);
+      updateHero("helm", "helm_hp", helm, helmPoints, name);
     }
     catch (Exception e) {
       throw new Exception(e.getMessage());

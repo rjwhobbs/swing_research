@@ -55,22 +55,22 @@
     </column>
     <column id="16" parent="6" name="attack">
       <Position>9</Position>
-      <DataType>interger|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="17" parent="6" name="defense">
       <Position>10</Position>
-      <DataType>interger|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="18" parent="6" name="helm_hp">
       <Position>11</Position>
-      <DataType>interger|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="19" parent="6" name="hero_hp">
       <Position>12</Position>
-      <DataType>interger|0s</DataType>
+      <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <index id="20" parent="6" name="sqlite_autoindex_heroes_1">

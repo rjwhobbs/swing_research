@@ -237,19 +237,14 @@ public class Model {
     // 2 = 1 out of 2 chance, 3 == 1 out of 3 chance etc
     int chanceOfLuck = this.makeChanceOfLuck(this.hero.getLevel());
 
-//    System.out.println("H " + heroWeight + " E " + enemyWeight);
-
     int heroScore = random.nextInt(heroWeight);
     int enemyScore = random.nextInt(enemyWeight);
 
     // Element of luck
     if (random.nextInt(chanceOfLuck) == chanceOfLuck - 1) {
-      System.out.println("Doubled");
       heroScore *= 2;
       enemyScore /= 2;
     }
-
-//    System.out.println("HS " + heroScore + " ES " + enemyScore);
 
     if (heroScore >= enemyScore) {
       enemyHP -= heroScore;
@@ -331,15 +326,27 @@ public class Model {
       if (artefactType.equals("Helm")) {
         this.hero.setHelm(this.artefact);
         this.hero.equipHelm();
-        Storage.saveHelm(this.hero.getName(), this.hero.getHelm().getSubType());
+        Storage.saveHelm(
+                this.hero.getName(),
+                this.hero.getHelm().getSubType(),
+                this.hero.getHelm().getPoints()
+        );
       } else if (artefactType.equals("Weapon")) {
         this.hero.setWeapon(this.artefact);
         this.hero.equipWeapon();
-        Storage.saveWeapon(this.hero.getName(), this.hero.getWeapon().getSubType());
+        Storage.saveWeapon(
+                this.hero.getName(),
+                this.hero.getWeapon().getSubType(),
+                this.hero.getWeapon().getPoints()
+        );
       } else {
         this.hero.setArmor(this.artefact);
         this.hero.equipArmor();
-        Storage.saveArmor(this.hero.getName(), this.hero.getArmor().getSubType());
+        Storage.saveArmor(
+                this.hero.getName(),
+                this.hero.getArmor().getSubType(),
+                this.hero.getWeapon().getPoints()
+        );
       }
       this.artefact = null;
     }
