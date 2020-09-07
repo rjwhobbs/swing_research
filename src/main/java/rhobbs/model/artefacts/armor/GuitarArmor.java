@@ -9,7 +9,7 @@ public class GuitarArmor {
           ArtefactConstants.getGuitarArmorDefense()[0]
   );
   private static Armor mesaBoogieAmp = new Armor(
-          "Mesa Boogie Amp",
+          "MesaBoogie Amp",
           ArtefactConstants.getGuitarArmorDefense()[1]
   );
   private static Armor voxAmp = new Armor(
