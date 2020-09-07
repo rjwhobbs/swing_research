@@ -20,6 +20,7 @@ public class Model {
   private int[] prevCoords = {0,0};
   int[][] map;
   private boolean heroDefeated = false;
+  private boolean levelGained = false;
 
   public Model() {}
 
@@ -295,20 +296,23 @@ public class Model {
     else if (this.hero.getLevel() < this.enemy.getLevel()) {
       updatedXP = 500 + (300 * (this.enemy.getLevel() - this.hero.getLevel()));
     }
-    try {
+//    try {
       this.hero.setExperience(updatedXP + this.hero.getExperience());
 //      Storage.updateXP(this.hero.getName(), this.hero.getExperience());
 
       levelCheck = (nextLevel * 1000) + (((nextLevel - 1) * (nextLevel - 1) * 450));
       if (this.hero.getExperience() >= levelCheck) {
         this.hero.setLevel(nextLevel);
+        this.levelGained = true;
 //        Storage.updateLevel(this.hero.getName(), this.hero.getLevel());
+      } else {
+        this.levelGained = false;
       }
-    }
-    catch (Exception e) {
-      System.out.println("Error in update stats");
-      System.out.println(e.getMessage());
-    }
+//    }
+//    catch (Exception e) {
+//      System.out.println("Error in update stats");
+//      System.out.println(e.getMessage());
+//    }
   }
 
   public boolean didDropArtefact() {
@@ -403,4 +407,7 @@ public class Model {
     }
   }
 
+  public boolean isLevelGained() {
+    return levelGained;
+  }
 }

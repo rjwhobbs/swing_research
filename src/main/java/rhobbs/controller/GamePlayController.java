@@ -137,11 +137,15 @@ public class GamePlayController {
       if (model.isHeroDefeated()) {
         ConsoleView.showHeroHP(model.getHero());
         ConsoleView.showEnemyHP(model.getEnemy());
-        ConsoleView.showMessage("You were defeated!");
+        ConsoleView.showMessage("Ahh no! You were defeated!");
+        ConsoleView.showMessage("Since you didn't reach the end of the map your stats won't be saved.");
         gameOverScreen = true;
       }
       else {
         ConsoleView.showMessage("You defeated your foe!");
+        if (model.isLevelGained()) {
+          ConsoleView.showMessage("And you gained a level!");
+        }
         ConsoleView.showMessage("You take a moment to regain some health");
         if (model.didDropArtefact()) {
           showPickUpScreen = true;
