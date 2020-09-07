@@ -14,7 +14,7 @@ public class GuitarArmor {
   );
   private static Armor voxAmp = new Armor(
           "Vox Amp",
-          ArtefactConstants.getGuitarArmorDefense()[3]
+          ArtefactConstants.getGuitarArmorDefense()[2]
   );
 
   public static Armor getMarshallAmp() {
