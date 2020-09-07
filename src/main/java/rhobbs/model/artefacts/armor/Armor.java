@@ -4,9 +4,9 @@ import rhobbs.model.artefacts.Artefact;
 
 public class Armor extends Artefact {
 
-  Armor(String type, int defense) {
+  Armor(String subType, int defense) {
     this.type = "Armor";
-    this.subType = type;
+    this.subType = subType;
     this.points = defense;
   }
 }

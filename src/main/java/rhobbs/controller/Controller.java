@@ -43,6 +43,7 @@ public class Controller {
     }
     catch (Exception e) {
       ConsoleView.showMessage("There was an error setting up the hero data base.");
+      ConsoleView.showMessage("The game cannot function correctly without this.");
       ConsoleView.showException(e.getMessage());
       ConsoleView.showMessage("Exiting game.");
       input = "EXIT";

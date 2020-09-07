@@ -141,6 +141,30 @@ public class Storage {
     }
   }
 
+  private static void updateHero(String col, String val, String name) throws Exception{
+    String sql = "UPDATE heroes SET " + col + " = ? WHERE name = ?";
+    try {
+      Connection conn = Storage.getConnection();
+      PreparedStatement pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, val);
+      pstmt.setString(2, name);
+      pstmt.executeUpdate();
+      conn.close();
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
+  public static void saveWeapon(String name, String weapon) throws Exception {
+    try {
+      updateHero("weapon", weapon, name);
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
   public static List<String> selectHeroByName(String name) throws Exception {
     List<String> selectedHero = new ArrayList<>();
     String sql;

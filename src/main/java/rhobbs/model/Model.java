@@ -27,6 +27,7 @@ public class Model {
     try {
       Storage.storageInit();
       this.storedHeroes = Storage.selectAllHeroes();
+      Storage.saveWeapon("Steve", "More testing");
     }
     catch (Exception e) {
       throw new Exception(e.getMessage());
@@ -150,12 +151,12 @@ public class Model {
       }
     }
 
-    for (int i = 0; i < mapSize; i++) {
-      for (int j = 0; j < mapSize; j++) {
-        System.out.print(map[i][j] + " ");
-      }
-      System.out.println();
-    }
+//    for (int i = 0; i < mapSize; i++) {
+//      for (int j = 0; j < mapSize; j++) {
+//        System.out.print(map[i][j] + " ");
+//      }
+//      System.out.println();
+//    }
 
   }
 
@@ -305,7 +306,6 @@ public class Model {
   }
 
   public boolean didDropArtefact() {
-
     if (random.nextInt(100) >= 49) {
       return false;
     }
@@ -316,19 +316,23 @@ public class Model {
 
   public void equipArtefact() {
     String artefactType = this.artefact.getType();
-    if (artefactType.equals("Helm")) {
-      this.hero.setHelm(this.artefact);
-      this.hero.equipHelm();
+    try {
+      if (artefactType.equals("Helm")) {
+        this.hero.setHelm(this.artefact);
+        this.hero.equipHelm();
+      } else if (artefactType.equals("Weapon")) {
+        this.hero.setWeapon(this.artefact);
+        this.hero.equipWeapon();
+        Storage.saveWeapon(this.hero.getName(), this.hero.getWeapon().getSubType());
+      } else {
+        this.hero.setArmor(this.artefact);
+        this.hero.equipArmor();
+      }
+      this.artefact = null;
     }
-    else if (artefactType.equals("Weapon")) {
-      this.hero.setWeapon(this.artefact);
-      this.hero.equipWeapon();
+    catch (Exception e) {
+      System.out.println("Error in equip Artefact." + e.getMessage());
     }
-    else {
-      this.hero.setArmor(this.artefact);
-      this.hero.equipArmor();
-    }
-    this.artefact = null;
   }
 
   private int makeChanceOfLuck(int level) {
