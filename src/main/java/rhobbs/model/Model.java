@@ -397,7 +397,7 @@ public class Model {
       Storage.saveArmor(
               this.hero.getName(),
               this.hero.getArmor().getSubType(),
-              this.hero.getWeapon().getPoints()
+              this.hero.getArmor().getPoints()
       );
       Storage.updateLevel(this.hero.getName(), this.hero.getLevel());
       Storage.updateXP(this.hero.getName(), this.hero.getExperience());
