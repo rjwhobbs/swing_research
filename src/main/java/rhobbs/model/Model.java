@@ -244,7 +244,9 @@ public class Model {
     // Element of luck
     if (random.nextInt(chanceOfLuck) == chanceOfLuck - 1) {
       heroScore *= 2;
-      enemyScore /= 2;
+      if (chanceOfLuck == 1) {
+        enemyScore /= 2;
+      }
     }
 
     if (heroScore >= enemyScore) {
