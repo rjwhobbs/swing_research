@@ -130,9 +130,9 @@ public class DropArtefact {
     }
 
     // if this happens I will need to save it in the DB.
-    if (enemy.getEnemyType().equals("Grumpy sound engineer")) {
-      artefact.setPoints(artefact.getPoints() + 30);
-    }
+//    if (enemy.getEnemyType().equals("Grumpy sound engineer")) {
+//      artefact.setPoints(artefact.getPoints() + 30);
+//    }
 
     return artefact;
 

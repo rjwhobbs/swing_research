@@ -175,7 +175,13 @@ public class GamePlayController {
 
   private static void runCoordinateChecks() {
     if (model.isAtEndOfMap()) {
-      ConsoleView.showMessage("Congratulations! You reached the end of the map.");
+      ConsoleView.showMessage("Congratulations! You reached the end of the map, your stats will be saved.");
+      try {
+        model.saveHero();
+      }
+      catch (Exception e) {
+        ConsoleView.showException(e.getMessage());
+      }
       showMovementScreen = false;
       gameOverScreen = true;
     }

@@ -297,12 +297,12 @@ public class Model {
     }
     try {
       this.hero.setExperience(updatedXP + this.hero.getExperience());
-      Storage.updateXP(this.hero.getName(), this.hero.getExperience());
+//      Storage.updateXP(this.hero.getName(), this.hero.getExperience());
 
       levelCheck = (nextLevel * 1000) + (((nextLevel - 1) * (nextLevel - 1) * 450));
       if (this.hero.getExperience() >= levelCheck) {
         this.hero.setLevel(nextLevel);
-        Storage.updateLevel(this.hero.getName(), this.hero.getLevel());
+//        Storage.updateLevel(this.hero.getName(), this.hero.getLevel());
       }
     }
     catch (Exception e) {
@@ -322,37 +322,37 @@ public class Model {
 
   public void equipArtefact() {
     String artefactType = this.artefact.getType();
-    try {
+//    try {
       if (artefactType.equals("Helm")) {
         this.hero.setHelm(this.artefact);
         this.hero.equipHelm();
-        Storage.saveHelm(
-                this.hero.getName(),
-                this.hero.getHelm().getSubType(),
-                this.hero.getHelm().getPoints()
-        );
+//        Storage.saveHelm(
+//                this.hero.getName(),
+//                this.hero.getHelm().getSubType(),
+//                this.hero.getHelm().getPoints()
+//        );
       } else if (artefactType.equals("Weapon")) {
         this.hero.setWeapon(this.artefact);
         this.hero.equipWeapon();
-        Storage.saveWeapon(
-                this.hero.getName(),
-                this.hero.getWeapon().getSubType(),
-                this.hero.getWeapon().getPoints()
-        );
+//        Storage.saveWeapon(
+//                this.hero.getName(),
+//                this.hero.getWeapon().getSubType(),
+//                this.hero.getWeapon().getPoints()
+//        );
       } else {
         this.hero.setArmor(this.artefact);
         this.hero.equipArmor();
-        Storage.saveArmor(
-                this.hero.getName(),
-                this.hero.getArmor().getSubType(),
-                this.hero.getWeapon().getPoints()
-        );
+//        Storage.saveArmor(
+//                this.hero.getName(),
+//                this.hero.getArmor().getSubType(),
+//                this.hero.getWeapon().getPoints()
+//        );
       }
       this.artefact = null;
-    }
-    catch (Exception e) {
-      System.out.println("Error in equip Artefact. " + e.getMessage());
-    }
+//    }
+//    catch (Exception e) {
+//      System.out.println("Error in equip Artefact. " + e.getMessage());
+//    }
   }
 
   private int makeChanceOfLuck(int level) {
@@ -377,4 +377,30 @@ public class Model {
   public Artefact getArtefact() {
     return artefact;
   }
+
+  public void saveHero() throws Exception {
+    try {
+      Storage.saveHelm(
+              this.hero.getName(),
+              this.hero.getHelm().getSubType(),
+              this.hero.getHelm().getPoints()
+      );
+      Storage.saveWeapon(
+              this.hero.getName(),
+              this.hero.getWeapon().getSubType(),
+              this.hero.getWeapon().getPoints()
+      );
+      Storage.saveArmor(
+              this.hero.getName(),
+              this.hero.getArmor().getSubType(),
+              this.hero.getWeapon().getPoints()
+      );
+      Storage.updateLevel(this.hero.getName(), this.hero.getLevel());
+      Storage.updateXP(this.hero.getName(), this.hero.getExperience());
+    }
+    catch (Exception e) {
+      throw new Exception("Unable to save hero to DB. " + e.getMessage());
+    }
+  }
+
 }

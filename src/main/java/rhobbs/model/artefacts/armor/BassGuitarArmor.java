@@ -6,15 +6,15 @@ public class BassGuitarArmor {
 
   private static Armor hartkeAmp = new Armor(
           "Hartke Amp",
-          ArtefactConstants.getBassGuitarWeaponsAttack()[0]
+          ArtefactConstants.getBassGuitarArmorDefense()[0]
   );
   private static Armor fenderAmp = new Armor(
           "Fender Amp",
-          ArtefactConstants.getBassGuitarWeaponsAttack()[1]
+          ArtefactConstants.getBassGuitarArmorDefense()[1]
   );
   private static Armor ampegAllTubeAmp = new Armor(
           "Ampeg All Tube Amp",
-          ArtefactConstants.getBassGuitarWeaponsAttack()[2]
+          ArtefactConstants.getBassGuitarArmorDefense()[2]
   );
 
   public static Armor getHartkeAmp() {
