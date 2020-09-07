@@ -19,17 +19,20 @@ public class ConsoleView {
   }
 
   public static void listAvailableHeroes(List<List<String>> allHeroes) {
+    int totalHP;
     System.out.println("Choose your hero:");
     for (List<String> hero: allHeroes) {
+      totalHP = Integer.parseInt(hero.get(10)) + Integer.parseInt(hero.get(11));
       System.out.print(
               " (" + hero.get(0) + ") "
                       + hero.get(1)
                       + " Lvl " + hero.get(6)
                       + " " + hero.get(2) + "\n"
-                      + " Axe: " + hero.get(3)
-                      + ", Defense: " + hero.get(4)
-                      + ", Helm: " + hero.get(5)
+                      + " Axe: " + hero.get(3) + " (" + hero.get(8) + " attack)"
+                      + ", Defense: " + hero.get(4) + " (" + hero.get(9) + " defense)"
+                      + "\n Helm: " + hero.get(5) + " (" + hero.get(10) + " hp bonus)"
                       + ", XP: " + hero.get(7)
+                      + ", Total HP: " + totalHP
                       + "\n -------\n"
       );
     }

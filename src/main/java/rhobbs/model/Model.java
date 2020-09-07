@@ -42,7 +42,11 @@ public class Model {
               this.hero.getArmor().getSubType(),
               this.hero.getHelm().getSubType(),
               this.hero.getLevel(),
-              this.hero.getExperience()
+              this.hero.getExperience(),
+              this.hero.getWeapon().getPoints(),
+              this.hero.getArmor().getPoints(),
+              this.hero.getHelm().getPoints(),
+              this.hero.getHitPoints()
       );
     } catch (Exception e) {
       throw new Exception(e.getMessage());

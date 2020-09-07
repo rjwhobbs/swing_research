@@ -1,5 +1,8 @@
 package rhobbs.model.storage;
 
+import rhobbs.model.HeroConstants;
+import rhobbs.model.artefacts.ArtefactConstants;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,22 +15,30 @@ public class Storage {
         insertHero(
                 "Steve",
                 "Guitar Hero",
-                "Flying V",
+                ArtefactConstants.getGuitarWeapons()[1],
                 "none",
                 "Hard Rock Cafe Cap",
                 2,
-                2450
+                2450,
+                ArtefactConstants.getDrumWeaponsAttack()[1],
+                0,
+                ArtefactConstants.getHelmPoints()[0],
+                HeroConstants.getGuitarHeroHP()
         );
       }
       if (selectHeroByName("Brenda").size() == 0) {
         insertHero(
                 "Brenda",
                 "Bass Guitar Hero",
-                "Mexican PBass",
-                "Hartke Amp",
+                ArtefactConstants.getBassGuitarWeapons()[1],
+                ArtefactConstants.getBassGuitarArmor()[0],
                 "Black Vans Hoodie",
                 3,
-                4800
+                4800,
+                ArtefactConstants.getBassGuitarWeaponsAttack()[1],
+                ArtefactConstants.getDrumArmorDefense()[0],
+                ArtefactConstants.getHelmPoints()[2],
+                HeroConstants.getBassGuitarHeroHP()
         );
       }
       if (selectHeroByName("Sarel").size() == 0) {
@@ -38,7 +49,11 @@ public class Storage {
                 "none",
                 "Toy Machine Beanie",
                 1,
-                1000
+                1000,
+                ArtefactConstants.getDrumWeaponsAttack()[1],
+                0,
+                ArtefactConstants.getHelmPoints()[1],
+                HeroConstants.getDrumHeroHP()
         );
       }
     }
@@ -68,7 +83,11 @@ public class Storage {
             + " CHECK(typeof(\"helm\") = \"text\" AND "
             + " length(\"helm\") <= 50),"
             + " level integer NOT NULL,"
-            + " xp integer NOT NULL);";
+            + " xp integer NOT NULL, "
+            + " attack integer NOT NULL, "
+            + " defense integer NOT NULL,"
+            + " helm_hp integer NOT NULL,"
+            + " hero_hp integer NOT NULL);";
 
     try {
       Connection conn = DriverManager.getConnection(url);
@@ -100,6 +119,10 @@ public class Storage {
         temp.add(res.getString(6));
         temp.add(res.getString(7));
         temp.add(res.getString(8));
+        temp.add(res.getString(9));
+        temp.add(res.getString(10));
+        temp.add(res.getString(11));
+        temp.add(res.getString(12));
         result.add(temp);
       }
       conn.close();
@@ -116,12 +139,16 @@ public class Storage {
           String armor,
           String helm,
           int level,
-          int xp
+          int xp,
+          int attack,
+          int defense,
+          int helmHp,
+          int hp
   ) throws Exception {
     String sql;
     sql = "INSERT INTO heroes"
-            + " (name, classType, weapon, armor, helm, level, xp)"
-            + " VALUES(?, ?, ?, ?, ?, ?, ?)";
+            + " (name, classType, weapon, armor, helm, level, xp, attack, defense, helm_hp, hero_hp)"
+            + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     try {
       Connection conn = Storage.getConnection();
@@ -133,6 +160,10 @@ public class Storage {
       pstmt.setString(5, helm);
       pstmt.setInt(6, level);
       pstmt.setInt(7, xp);
+      pstmt.setInt(8, attack);
+      pstmt.setInt(9, defense);
+      pstmt.setInt(10, helmHp);
+      pstmt.setInt(11, hp);
       pstmt.executeUpdate();
       conn.close();
     } catch (SQLException e) {
