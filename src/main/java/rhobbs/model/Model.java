@@ -27,7 +27,6 @@ public class Model {
     try {
       Storage.storageInit();
       this.storedHeroes = Storage.selectAllHeroes();
-      Storage.saveWeapon("Steve", "More testing");
     }
     catch (Exception e) {
       throw new Exception(e.getMessage());
@@ -297,11 +296,19 @@ public class Model {
     else if (this.hero.getLevel() < this.enemy.getLevel()) {
       updatedXP = 500 + (300 * (this.enemy.getLevel() - this.hero.getLevel()));
     }
-    this.hero.setExperience(updatedXP + this.hero.getExperience());
+    try {
+      this.hero.setExperience(updatedXP + this.hero.getExperience());
+      Storage.updateXP(this.hero.getName(), this.hero.getExperience());
 
-    levelCheck = (nextLevel * 1000) + (((nextLevel - 1) * (nextLevel - 1) * 450));
-    if (this.hero.getExperience() >= levelCheck ) {
-      this.hero.setLevel(nextLevel);
+      levelCheck = (nextLevel * 1000) + (((nextLevel - 1) * (nextLevel - 1) * 450));
+      if (this.hero.getExperience() >= levelCheck) {
+        this.hero.setLevel(nextLevel);
+        Storage.updateLevel(this.hero.getName(), this.hero.getLevel());
+      }
+    }
+    catch (Exception e) {
+      System.out.println("Error in update stats");
+      System.out.println(e.getMessage());
     }
   }
 
@@ -320,6 +327,7 @@ public class Model {
       if (artefactType.equals("Helm")) {
         this.hero.setHelm(this.artefact);
         this.hero.equipHelm();
+        Storage.saveHelm(this.hero.getName(), this.hero.getHelm().getSubType());
       } else if (artefactType.equals("Weapon")) {
         this.hero.setWeapon(this.artefact);
         this.hero.equipWeapon();
@@ -327,11 +335,12 @@ public class Model {
       } else {
         this.hero.setArmor(this.artefact);
         this.hero.equipArmor();
+        Storage.saveArmor(this.hero.getName(), this.hero.getArmor().getSubType());
       }
       this.artefact = null;
     }
     catch (Exception e) {
-      System.out.println("Error in equip Artefact." + e.getMessage());
+      System.out.println("Error in equip Artefact. " + e.getMessage());
     }
   }
 

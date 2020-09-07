@@ -156,9 +156,60 @@ public class Storage {
     }
   }
 
+  private static void updateHero(String col, int val, String name) throws Exception{
+    String sql = "UPDATE heroes SET " + col + " = ? WHERE name = ?";
+    try {
+      Connection conn = Storage.getConnection();
+      PreparedStatement pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, val);
+      pstmt.setString(2, name);
+      pstmt.executeUpdate();
+      conn.close();
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
+  public static void saveArmor(String name, String armor) throws Exception {
+    try {
+      updateHero("armor", armor, name);
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
   public static void saveWeapon(String name, String weapon) throws Exception {
     try {
       updateHero("weapon", weapon, name);
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
+  public static void saveHelm(String name, String helm) throws Exception {
+    try {
+      updateHero("helm", helm, name);
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
+  public static void updateLevel(String name, int level) throws Exception {
+    try {
+      updateHero("level", level, name);
+    }
+    catch (Exception e) {
+      throw new Exception(e.getMessage());
+    }
+  }
+
+  public static void updateXP(String name, int xp) throws Exception {
+    try {
+      updateHero("xp", xp, name);
     }
     catch (Exception e) {
       throw new Exception(e.getMessage());
