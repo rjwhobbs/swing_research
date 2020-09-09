@@ -20,18 +20,21 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
 
     this.heroList = heroList;
     String[] heroTitle = new String[this.heroList.size()];
+    final String[] heroIds = new String[this.heroList.size()];
     StringBuilder heroString = new StringBuilder();
 
     for (int i = 0; i < this.heroList.size(); i++) {
       heroString.append(this.heroList.get(i).get(1));
       heroString.append(" " + this.heroList.get(i).get(2));
+      heroIds[i] = this.heroList.get(i).get(0);
       heroTitle[i] = heroString.toString();
       heroString.delete(0, heroString.length());
     }
 
     JComboBox selectHeroList = new JComboBox(heroTitle);
     selectHeroList.setSelectedIndex(0);
-    heroId = selectHeroList.getSelectedIndex() + 1;
+    heroId = selectHeroList.getSelectedIndex();
+//    selectHeroList.
     selectHeroList.addActionListener(this);
 
 
@@ -39,7 +42,7 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
     selectHero.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        GUIController.handler(ControlCommands.selectHeroById, heroId + "");
+        GUIController.handler(ControlCommands.selectHeroById, heroIds[heroId]);
       }
     });
     heroStats = new JLabel();
@@ -48,10 +51,10 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
 
 
     heroStats.setHorizontalAlignment(JLabel.CENTER);
-    updateLabel("" + selectHeroList.getSelectedIndex());
+    displayHeroStats(heroId);
     heroStats.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-    heroStats.setPreferredSize(new Dimension(177, 122 + 10));
+    heroStats.setPreferredSize(new Dimension(330, 150));
 
     add(selectHeroList, BorderLayout.PAGE_START);
     add(heroStats, BorderLayout.CENTER);
@@ -61,11 +64,26 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
 
   public void actionPerformed(ActionEvent e) {
     JComboBox cb = (JComboBox) e.getSource();
-    heroId = cb.getSelectedIndex() + 1;
-    updateLabel("" + cb.getSelectedIndex());
+    heroId = cb.getSelectedIndex();
+    displayHeroStats(heroId);
   }
 
-  protected void updateLabel(String name) {
-      heroStats.setText(name);
+  protected void displayHeroStats(int index) {
+    int totalHP = Integer.parseInt(heroList.get(index).get(10))
+            + Integer.parseInt(heroList.get(index).get(11));
+
+    String heroStatsString =  heroList.get(index).get(1)
+            + " Lvl " + heroList.get(index).get(6)
+            + " " + heroList.get(index).get(2)
+            + "\nAxe: " + heroList.get(index).get(3) + " (" + heroList.get(index).get(8) + " attack)"
+            + "\nDefense: " + heroList.get(index).get(4) + " (" + heroList.get(index).get(9) + " defense)"
+            + "\nHelm: " + heroList.get(index).get(5) + " (" + heroList.get(index).get(10) + " hp bonus)"
+            + "\nXP: " + heroList.get(index).get(7)
+            + "\nTotal HP: " + totalHP;
+
+    heroStats.setText("<html>" + heroStatsString.replaceAll("<","&lt;")
+              .replaceAll(">", "&gt;")
+              .replaceAll("\n", "<br/>")
+              + "</html>");
   }
 }
