@@ -11,6 +11,7 @@ import java.util.List;
 public class GUIView extends javax.swing.JFrame implements WindowManager{
 
   private javax.swing.JButton startSelectScreen;
+  private JLabel errorOnStart;
   JPanel mainPanel;
   private static SelectScreen selectScreen;
   private static SelectScreenCombo selectScreenCombo;
@@ -22,6 +23,7 @@ public class GUIView extends javax.swing.JFrame implements WindowManager{
   private void initComponents() {
 
     mainPanel = new JPanel();
+    errorOnStart = new JLabel();
     startSelectScreen = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,6 +57,7 @@ public class GUIView extends javax.swing.JFrame implements WindowManager{
 //
 //    pack();
     mainPanel.add(startSelectScreen);
+    mainPanel.add(errorOnStart);
     this.add(mainPanel);
     setLocationRelativeTo(null);
     setVisible(true);
@@ -69,6 +72,19 @@ public class GUIView extends javax.swing.JFrame implements WindowManager{
 
   public void showStats(String stats) {
     selectScreen.setSelectStats(stats);
+  }
+
+  public void showErrorOnStart(String error) {
+    errorOnStart.setText(
+            "<html>" + error.replaceAll("<","&lt;")
+                    .replaceAll(">", "&gt;")
+                    .replaceAll("\n", "<br/>")
+                    + "</html>"
+    );
+  }
+
+  public void disableStartSelectScreen() {
+    startSelectScreen.setEnabled(false);
   }
 
 }

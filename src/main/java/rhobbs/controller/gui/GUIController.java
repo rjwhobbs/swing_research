@@ -15,7 +15,11 @@ public class GUIController {
       this.model.modelInit();
     }
     catch (Exception e) {
-      System.out.println(e.getMessage());
+      this.windowManager.disableStartSelectScreen();
+      String error = "There was an error setting up the hero data base."
+              + "\nThe game cannot function correctly without this."
+              + "\n" + e.getMessage();
+      this.windowManager.showErrorOnStart(error);
     }
 
   }
