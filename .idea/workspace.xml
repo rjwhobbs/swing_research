@@ -15,7 +15,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d699cb6a-6171-4644-8c55-bc7f3accf15e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/Swingy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/Swingy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/controller/Controller.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/controller/GamePlayController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/controller/console/GamePlayController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/ConsoleView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/view/console/ConsoleView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,15 +66,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/rhobbs" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="rhobbs.view" />
       <recent name="rhobbs.controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/rhobbs" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Swingy">
@@ -145,7 +148,7 @@
       <workItem from="1598699430508" duration="806000" />
       <workItem from="1598708567001" duration="1112000" />
       <workItem from="1598710671912" duration="9542000" />
-      <workItem from="1598729875470" duration="158530000" />
+      <workItem from="1598729875470" duration="163721000" />
     </task>
     <servers />
   </component>
@@ -181,6 +184,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599492545980" />
+    <state x="414" y="291" width="452" height="245" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1599564067772">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="414" y="291" width="452" height="245" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.23.1280.777@0.23.1280.777" timestamp="1599564067772" />
     <state x="449" y="73" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1599250860896">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -189,22 +196,22 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="254" height="192" key="DatabaseViewActions_Filter/0.23.1280.777@0.23.1280.777" timestamp="1598712497207" />
-    <state width="1238" height="368" key="GridCell.Tab.0.bottom" timestamp="1599501777609">
+    <state width="1238" height="95" key="GridCell.Tab.0.bottom" timestamp="1599565072056">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="368" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599501777609" />
-    <state width="1238" height="368" key="GridCell.Tab.0.center" timestamp="1599501777608">
+    <state width="1238" height="95" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599565072056" />
+    <state width="1238" height="95" key="GridCell.Tab.0.center" timestamp="1599565072052">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="368" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599501777608" />
-    <state width="1238" height="368" key="GridCell.Tab.0.left" timestamp="1599501777606">
+    <state width="1238" height="95" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599565072052" />
+    <state width="1238" height="95" key="GridCell.Tab.0.left" timestamp="1599565072050">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="368" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599501777606" />
-    <state width="1238" height="368" key="GridCell.Tab.0.right" timestamp="1599501777608">
+    <state width="1238" height="95" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599565072050" />
+    <state width="1238" height="95" key="GridCell.Tab.0.right" timestamp="1599565072055">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="368" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599501777608" />
+    <state width="1238" height="95" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599565072055" />
     <state width="1238" height="246" key="GridCell.Tab.1.bottom" timestamp="1599463974029">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -225,10 +232,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="262" height="497" key="HiddenNamespacesPopup/0.23.1280.777@0.23.1280.777" timestamp="1598712559634" />
-    <state x="156" y="50" key="SettingsEditor" timestamp="1599490293781">
+    <state x="156" y="50" key="SettingsEditor" timestamp="1599578225145">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="156" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1599490293781" />
+    <state x="156" y="50" key="SettingsEditor/0.23.1280.777@0.23.1280.777" timestamp="1599578225145" />
     <state x="191" y="156" width="898" height="609" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1598953235272">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

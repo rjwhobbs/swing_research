@@ -1,7 +1,7 @@
-package rhobbs.controller;
+package rhobbs.controller.console;
 
 import rhobbs.model.Model;
-import rhobbs.view.ConsoleView;
+import rhobbs.view.console.ConsoleView;
 
 import java.util.ArrayList;
 import java.util.List;

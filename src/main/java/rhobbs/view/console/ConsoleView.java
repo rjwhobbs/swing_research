@@ -1,4 +1,4 @@
-package rhobbs.view;
+package rhobbs.view.console;
 
 import rhobbs.model.Enemy;
 import rhobbs.model.Hero;
