@@ -1,50 +1,71 @@
 package rhobbs.view.gui;
 
+import rhobbs.controller.gui.ControlCommands;
+import rhobbs.controller.gui.GUIController;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
+
 public class SelectScreenCombo extends JPanel implements ActionListener {
-  JLabel picture;
+  JLabel heroStats;
+  JButton selectHero;
+  int heroId;
   private List<List<String>> heroList;
 
   public SelectScreenCombo(List<List<String>> heroList) {
     super(new BorderLayout());
+
     this.heroList = heroList;
-    String[] heroNames = new String[this.heroList.size()];
+    String[] heroTitle = new String[this.heroList.size()];
+    StringBuilder heroString = new StringBuilder();
 
     for (int i = 0; i < this.heroList.size(); i++) {
-      heroNames[i] = this.heroList.get(i).get(1);
+      heroString.append(this.heroList.get(i).get(1));
+      heroString.append(" " + this.heroList.get(i).get(2));
+      heroTitle[i] = heroString.toString();
+      heroString.delete(0, heroString.length());
     }
 
-//    String[] petStrings = {"Bird", "Cat", "Dog", "Rabbit", "Pig"};
-
-    JComboBox selectHeroList = new JComboBox(heroNames);
+    JComboBox selectHeroList = new JComboBox(heroTitle);
     selectHeroList.setSelectedIndex(0);
+    heroId = selectHeroList.getSelectedIndex() + 1;
     selectHeroList.addActionListener(this);
 
-    picture = new JLabel();
-    picture.setFont(picture.getFont().deriveFont(Font.ITALIC));
-    picture.setHorizontalAlignment(JLabel.CENTER);
-    updateLabel("" + selectHeroList.getSelectedIndex());
-    picture.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
-    picture.setPreferredSize(new Dimension(177, 122 + 10));
+    selectHero = new JButton();
+    selectHero.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.handler(ControlCommands.selectHeroById, heroId + "");
+      }
+    });
+    heroStats = new JLabel();
+//    heroStats.setFont(heroStats.getFont().deriveFont(Font.ITALIC));
+    selectHero.setText("Select hero");
+
+
+    heroStats.setHorizontalAlignment(JLabel.CENTER);
+    updateLabel("" + selectHeroList.getSelectedIndex());
+    heroStats.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+
+    heroStats.setPreferredSize(new Dimension(177, 122 + 10));
 
     add(selectHeroList, BorderLayout.PAGE_START);
-    add(picture, BorderLayout.PAGE_END);
+    add(heroStats, BorderLayout.CENTER);
+    add(selectHero, BorderLayout.PAGE_END);
     setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
   }
 
   public void actionPerformed(ActionEvent e) {
     JComboBox cb = (JComboBox) e.getSource();
-    String petName = (String) cb.getSelectedItem();
+    heroId = cb.getSelectedIndex() + 1;
     updateLabel("" + cb.getSelectedIndex());
   }
 
   protected void updateLabel(String name) {
-      picture.setText(name);
+      heroStats.setText(name);
   }
 }

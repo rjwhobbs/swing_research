@@ -2,21 +2,23 @@ package rhobbs.view.gui;
 
 import rhobbs.controller.gui.ControlCommands;
 import rhobbs.controller.gui.GUIController;
+import rhobbs.model.Hero;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class GUIView extends javax.swing.JFrame implements WindowManager{
+public class RootView extends javax.swing.JFrame implements WindowManager {
 
   private javax.swing.JButton startSelectScreen;
   private JLabel errorOnStart;
   JPanel mainPanel;
   private static SelectScreen selectScreen;
   private static SelectScreenCombo selectScreenCombo;
+  private static GameView gameView;
 
-  public GUIView() {
+  public RootView() {
     initComponents();
   }
 
@@ -64,14 +66,19 @@ public class GUIView extends javax.swing.JFrame implements WindowManager{
   }
 
   public void showSelectScreen(List<List<String>> heroList) {
-//    String[] petStrings = {"Bird", "Cat", "Dog", "Rabbit", "Pig"};
     selectScreenCombo = new SelectScreenCombo(heroList);
     setContentPane(selectScreenCombo);
     pack();
   }
 
-  public void showStats(String stats) {
+  public void showSelectScreenStats(String stats) {
     selectScreen.setSelectStats(stats);
+  }
+
+  public void showGameView(Hero hero) {
+    gameView = new GameView(hero);
+    setContentPane(gameView);
+    pack();
   }
 
   public void showErrorOnStart(String error) {

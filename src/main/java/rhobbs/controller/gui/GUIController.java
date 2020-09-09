@@ -30,7 +30,24 @@ public class GUIController {
         windowManager.showSelectScreen(model.getStoredHeroes());
         break;
       case ControlCommands.showStats:
-        windowManager.showStats("these are stats");
+        windowManager.showSelectScreenStats("these are stats");
+        break;
+      case ControlCommands.showGameView:
+        windowManager.showGameView(model.getHero());
+        break;
+    }
+  }
+
+  public static void handler(String input, String index) {
+    switch (input) {
+      case ControlCommands.selectHeroById:
+        try {
+          model.selectHero(index);
+          handler(ControlCommands.showGameView);
+        }
+        catch (Exception e) {
+         System.out.println(e.getMessage());
+        }
         break;
     }
   }
