@@ -16,7 +16,7 @@ public class Swingy {
 //      new SwingyTests(0);
 //      Controller controller = new Controller(new Model());
       GUIView guiView = new GUIView();
-      GUIController guiController = new GUIController(guiView);
+      GUIController guiController = new GUIController(guiView, new Model());
 //      guiView.setVisible(true);
    }
 }
