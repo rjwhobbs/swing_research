@@ -1,6 +1,12 @@
 package rhobbs.view.gui;
 
-public class GUIView extends javax.swing.JFrame {
+import rhobbs.controller.gui.ControlCommands;
+import rhobbs.controller.gui.GUIController;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class GUIView extends javax.swing.JFrame implements WindowManager{
 
   private javax.swing.JButton startSelectScreen;
 
@@ -15,6 +21,13 @@ public class GUIView extends javax.swing.JFrame {
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     startSelectScreen.setText("Lets Go!");
+
+    startSelectScreen.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.handler(ControlCommands.showSelect);
+      }
+    });
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -35,6 +48,13 @@ public class GUIView extends javax.swing.JFrame {
 
     pack();
     setLocationRelativeTo(null);
+    setVisible(true);
+  }
+
+  public void showSelectScreen() {
+    SelectScreen selectScreen = new SelectScreen(this);
+    setContentPane(selectScreen);
+    pack();
   }
 
 }

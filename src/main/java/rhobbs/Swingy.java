@@ -4,6 +4,7 @@ package rhobbs;
 //import rhobbs.model.Model;
 
 import rhobbs.controller.console.Controller;
+import rhobbs.controller.gui.GUIController;
 import rhobbs.model.Model;
 import rhobbs.view.gui.GUIView;
 
@@ -15,6 +16,7 @@ public class Swingy {
 //      new SwingyTests(0);
 //      Controller controller = new Controller(new Model());
       GUIView guiView = new GUIView();
-      guiView.setVisible(true);
+      GUIController guiController = new GUIController(guiView);
+//      guiView.setVisible(true);
    }
 }
