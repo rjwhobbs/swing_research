@@ -13,4 +13,5 @@ public interface WindowManager {
   public void showSelectScreenError(String error);
   public void disableStartSelectScreen();
   public void showGameView(Hero hero);
+  public void showCurrentCoords(int[] currentCoords);
 }

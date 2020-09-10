@@ -1,5 +1,7 @@
 package rhobbs.view.gui;
 
+import rhobbs.controller.gui.ControlCommands;
+import rhobbs.controller.gui.GUIController;
 import rhobbs.model.Hero;
 
 import javax.swing.*;
@@ -50,7 +52,6 @@ public class GameView extends JPanel {
     leaveItemButton = new JButton();
 
     gameInfoLabel.setBackground(new Color(255, 255, 255));
-    gameInfoLabel.setText("<html>You won!\n<br/> And hera are more words \n<br/>There are awalys more words \n<br/>oh your coords()\n</html>");
     gameInfoLabel.setAutoscrolls(true);
     gameInfoLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
 
@@ -73,7 +74,7 @@ public class GameView extends JPanel {
     attackButton.setText("Attack!");
     gameViewTitleLabel.setText("Title");
     errorLabel.setText("Oh nos, errors!");
-    currentCoordsLabel.setText("(23,24)");
+//    currentCoordsLabel.setText("(23,24)");
     currentCoordsLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
     pickUpButton.setText("Pickup item");
     pickUpButton.addActionListener(new ActionListener() {
@@ -161,6 +162,34 @@ public class GameView extends JPanel {
                                                     .addComponent(leaveItemButton))))
                             .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
     );
+
+    moveNorthButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.movementHandler(ControlCommands.moveNorth);
+      }
+    });
+
+    moveSouthButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.movementHandler(ControlCommands.moveSouth);
+      }
+    });
+
+    moveEastButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.movementHandler(ControlCommands.moveEast);
+      }
+    });
+
+    moveWestButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.movementHandler(ControlCommands.moveWest);
+      }
+    });
   }
 
   public void setHeroStatsLabel(Hero hero) {
@@ -174,5 +203,9 @@ public class GameView extends JPanel {
             + "<br/>XP: " + hero.getExperience()
             + "<html>";
     heroStatsLabel.setText(heroStatsString);
+  }
+
+  public void setCurrentCoordsLabel(String coords) {
+    currentCoordsLabel.setText(coords);
   }
 }

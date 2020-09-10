@@ -40,7 +40,9 @@ public class GUIController {
         windowManager.showSelectScreenStats("these are stats");
         break;
       case ControlCommands.showGameView:
+        model.generateMap();
         windowManager.showGameView(model.getHero());
+        windowManager.showCurrentCoords(model.getCurrentCoords());
         break;
     }
   }
@@ -79,9 +81,24 @@ public class GUIController {
     }
   }
 
-  public static void gamePlayHandler(String input) {
+  public static void movementHandler(String input) {
     switch (input) {
-
+      case ControlCommands.moveNorth:
+        model.moveNorth();
+        windowManager.showCurrentCoords(model.getCurrentCoords());
+        break;
+      case ControlCommands.moveEast:
+        model.moveEast();
+        windowManager.showCurrentCoords(model.getCurrentCoords());
+        break;
+      case ControlCommands.moveSouth:
+        model.moveSouth();
+        windowManager.showCurrentCoords(model.getCurrentCoords());
+        break;
+      case ControlCommands.moveWest:
+        model.moveWest();
+        windowManager.showCurrentCoords(model.getCurrentCoords());
+        break;
     }
   }
 }

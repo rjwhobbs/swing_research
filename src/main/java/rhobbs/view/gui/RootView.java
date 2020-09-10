@@ -118,5 +118,11 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     startSelectScreen.setEnabled(false);
   }
 
+  public void showCurrentCoords(int[] currentCoords){
+    String coords = "(" + (currentCoords[0] + 1)
+            + "," + (currentCoords[1] + 1) + ")";
+    gameView.setCurrentCoordsLabel(coords);
+  };
+
 }
 
