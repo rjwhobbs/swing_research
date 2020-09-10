@@ -64,12 +64,24 @@ public class GUIController {
       case ControlCommands.createNewHero:
         try {
           model.createNewHero(valueOne, valueTwo);
-          handler(ControlCommands.showGameView);
+          if (model.getHero() != null) {
+            model.storeNewHero();
+            handler(ControlCommands.showGameView);
+          }
+          else {
+            windowManager.showCreateScreenError("Hero was not initialized.");
+          }
         }
         catch (Exception e) {
           windowManager.showCreateScreenError(e.getMessage());
         }
         break;
+    }
+  }
+
+  public static void gamePlayHandler(String input) {
+    switch (input) {
+
     }
   }
 }

@@ -27,24 +27,13 @@ public class GameView extends JPanel {
   private javax.swing.JLabel gameViewTitleLabel;
   private javax.swing.JLabel errorLabel;
   private javax.swing.JLabel currentCoordsLabel;
-//  private javax.swing.JPanel jPanel2;
 
   GameView(Hero hero) {
     initComponents(hero);
-//    super(new BorderLayout());
-//
-//    heroInfo = new JLabel();
-//    heroInfo.setText(hero.getName());
-//    heroInfo.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-//    heroInfo.setPreferredSize(new Dimension(200, 200));
-//
-//    add(heroInfo, BorderLayout.PAGE_START);
-//    setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
   }
 
   private void initComponents(Hero hero) {
 
-//    jPanel2 = new javax.swing.JPanel();
     gameInfoLabel = new JLabel();
     heroStatsLabel = new JLabel();
     moveNorthButton = new JButton();
