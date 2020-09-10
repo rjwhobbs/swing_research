@@ -17,6 +17,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   private static StartScreen startScreen;
   private static SelectScreen selectScreen;
   private static SelectScreenCombo selectScreenCombo;
+  private static CreateScreen createScreen;
   private static GameView gameView;
 
   public RootView() {
@@ -59,6 +60,12 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   public void showSelectScreen(List<List<String>> heroList) {
     selectScreenCombo = new SelectScreenCombo(heroList);
     setContentPane(selectScreenCombo);
+    pack();
+  }
+
+  public void showCreateScreen(){
+    createScreen = new CreateScreen();
+    setContentPane(createScreen);
     pack();
   }
 

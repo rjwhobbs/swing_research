@@ -33,6 +33,9 @@ public class GUIController {
       case ControlCommands.showSelect:
         windowManager.showSelectScreen(model.getStoredHeroes());
         break;
+      case ControlCommands.showCreateScreen:
+        windowManager.showCreateScreen();
+        break;
       case ControlCommands.showStats:
         windowManager.showSelectScreenStats("these are stats");
         break;
@@ -42,16 +45,24 @@ public class GUIController {
     }
   }
 
-  public static void handler(String input, String index) {
+  public static void handler(String input, String value) {
     switch (input) {
       case ControlCommands.selectHeroById:
         try {
-          model.selectHero(index);
+          model.selectHero(value);
           handler(ControlCommands.showGameView);
         }
         catch (Exception e) {
          windowManager.showSelectScreenError(e.getMessage());
         }
+        break;
+    }
+  }
+
+  public static void handler(String input, String valueOne, String valueTwo) {
+    switch (input) {
+      case ControlCommands.createNewHero:
+//        try {}
         break;
     }
   }

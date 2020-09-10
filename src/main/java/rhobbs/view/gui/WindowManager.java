@@ -5,6 +5,7 @@ import java.util.List;
 public interface WindowManager {
   public void showStartScreen();
   public void showSelectScreen(List<List<String>> heroList);
+  public void showCreateScreen();
   public void showSelectScreenStats(String stats);
   public void upDateGameViewHeroStats(Hero hero);
   public void showErrorOnStart(String error);

@@ -43,6 +43,13 @@ public class StartScreen extends JPanel {
         GUIController.handler(ControlCommands.showSelect);
       }
     });
+
+    createHeroButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.handler(ControlCommands.showCreateScreen);
+      }
+    });
   }
 
 }
