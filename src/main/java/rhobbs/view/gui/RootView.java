@@ -14,6 +14,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   private javax.swing.JButton startSelectScreen;
   private JLabel errorOnStart;
   JPanel mainPanel;
+  private static StartScreen startScreen;
   private static SelectScreen selectScreen;
   private static SelectScreenCombo selectScreenCombo;
   private static GameView gameView;
@@ -36,33 +37,23 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     startSelectScreen.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        GUIController.handler(ControlCommands.showSelect);
+        GUIController.handler(ControlCommands.showStartScreen);
       }
     });
 
-//    javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-//    getContentPane().setLayout(layout);
-//    layout.setHorizontalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                    .addGroup(layout.createSequentialGroup()
-//                            .addGap(179, 179, 179)
-//                            .addComponent(startSelectScreen)
-//                            .addContainerGap(183, Short.MAX_VALUE))
-//    );
-//    layout.setVerticalGroup(
-//            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-//                    .addGroup(layout.createSequentialGroup()
-//                            .addGap(113, 113, 113)
-//                            .addComponent(startSelectScreen)
-//                            .addContainerGap(122, Short.MAX_VALUE))
-//    );
-//
-//    pack();
     mainPanel.add(startSelectScreen);
     mainPanel.add(errorOnStart);
     this.add(mainPanel);
-    setLocation(200, 200);
+//    setLocation(200, 200);
+    setResizable(false);
+    setLocationRelativeTo(null);
     setVisible(true);
+  }
+
+  public void showStartScreen() {
+    startScreen = new StartScreen();
+    setContentPane(startScreen);
+    pack();
   }
 
   public void showSelectScreen(List<List<String>> heroList) {

@@ -27,6 +27,9 @@ public class GUIController {
 
   public static void handler(String input) {
     switch (input) {
+      case ControlCommands.showStartScreen:
+        windowManager.showStartScreen();
+        break;
       case ControlCommands.showSelect:
         windowManager.showSelectScreen(model.getStoredHeroes());
         break;

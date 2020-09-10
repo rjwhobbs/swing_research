@@ -1,6 +1,7 @@
 package rhobbs.controller.gui;
 
 public class ControlCommands {
+  public static final String showStartScreen = "SHOW_START_SCREEN";
   public static final String showSelect = "SHOW_SELECT";
   public static final String showSelectError = "SHOW_SELECT_ERROR";
   public static final String showStats = "SHOW_STATS";

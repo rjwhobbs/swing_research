@@ -59,7 +59,7 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
     heroStats.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
     heroStats.setPreferredSize(new Dimension(330, 150));
-    selectHeroError.setPreferredSize(new Dimension(300, 150));
+    selectHeroError.setPreferredSize(new Dimension(180, 150));
 
     add(screenTitle, BorderLayout.PAGE_START);
     add(selectHeroList, BorderLayout.LINE_START);

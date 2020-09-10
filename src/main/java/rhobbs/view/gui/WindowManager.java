@@ -3,6 +3,7 @@ import rhobbs.model.Hero;
 
 import java.util.List;
 public interface WindowManager {
+  public void showStartScreen();
   public void showSelectScreen(List<List<String>> heroList);
   public void showSelectScreenStats(String stats);
   public void upDateGameViewHeroStats(Hero hero);
