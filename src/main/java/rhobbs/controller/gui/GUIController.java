@@ -62,7 +62,13 @@ public class GUIController {
   public static void handler(String input, String valueOne, String valueTwo) {
     switch (input) {
       case ControlCommands.createNewHero:
-//        try {}
+        try {
+          model.createNewHero(valueOne, valueTwo);
+          handler(ControlCommands.showGameView);
+        }
+        catch (Exception e) {
+          windowManager.showCreateScreenError(e.getMessage());
+        }
         break;
     }
   }

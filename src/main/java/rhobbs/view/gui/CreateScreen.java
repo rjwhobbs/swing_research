@@ -1,5 +1,8 @@
 package rhobbs.view.gui;
 
+import rhobbs.controller.gui.ControlCommands;
+import rhobbs.controller.gui.GUIController;
+
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -20,14 +23,16 @@ public class CreateScreen extends JPanel {
   private JPanel subPanelOne;
   private JPanel subPanelTwo;
   private String userInput = "";
+  private String userClassChoice;
+//  private JScrollPane scrollPane;
 
   CreateScreen() {
     super(new BorderLayout());
 
-    String[] heroClasses = {"Guitar Hero", "Bass Guitar Hero", "Drum Hero"};
+    final String[] heroClasses = {"Guitar Hero", "Bass Guitar Hero", "Drum Hero"};
 
     titlelabel = new JLabel("Create a new hero.");
-    titlelabel.setPreferredSize(new Dimension(600, 100));
+    titlelabel.setPreferredSize(new Dimension(600, 50));
     titlelabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 10));
     titlelabel.setHorizontalAlignment(JLabel.CENTER);
     titlelabel.setVerticalAlignment(JLabel.CENTER);
@@ -36,11 +41,16 @@ public class CreateScreen extends JPanel {
 //    menuLabel.setPreferredSize(new Dimension(200,20));
     userTextLabel = new JLabel("Enter your hero's name:");
     errorLabel = new JLabel();
-    errorLabel.setPreferredSize(new Dimension(500, 50));
-    errorLabel.setAutoscrolls(true);
+    errorLabel.setPreferredSize(new Dimension(500, 80));
+//    scrollPane = new JScrollPane(errorLabel);
+//    scrollPane.setPreferredSize(new Dimension(500, 100));
+
+
 
     userTextInputField = new JTextField(14);
     heroClassesMenu = new JComboBox(heroClasses);
+    heroClassesMenu.setSelectedIndex(0);
+    userClassChoice = heroClasses[heroClassesMenu.getSelectedIndex()];
 
     createHeroButton = new JButton("Create Hero");
     createHeroButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -68,7 +78,19 @@ public class CreateScreen extends JPanel {
     createHeroButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
-        errorLabel.setText(userInput);
+        GUIController.handler(
+                ControlCommands.createNewHero,
+                userInput,
+                userClassChoice
+        );
+      }
+    });
+
+    heroClassesMenu.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        JComboBox cb = (JComboBox) e.getSource();
+        userClassChoice = heroClasses[cb.getSelectedIndex()];
       }
     });
 
@@ -88,5 +110,9 @@ public class CreateScreen extends JPanel {
         userInput = userTextInputField.getText();
       }
     });
+  }
+
+  public void setCreateScreenError(String error) {
+    errorLabel.setText(error);
   }
 }
