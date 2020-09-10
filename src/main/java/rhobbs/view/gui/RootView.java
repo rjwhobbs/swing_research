@@ -29,7 +29,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     startSelectScreen = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    this.setSize(400, 400);
+    this.setSize(600, 400);
 
     startSelectScreen.setText("Lets Go!");
 
@@ -61,7 +61,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     mainPanel.add(startSelectScreen);
     mainPanel.add(errorOnStart);
     this.add(mainPanel);
-    setLocationRelativeTo(null);
+    setLocation(200, 200);
     setVisible(true);
   }
 
@@ -69,6 +69,18 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     selectScreenCombo = new SelectScreenCombo(heroList);
     setContentPane(selectScreenCombo);
     pack();
+  }
+
+  public void showSelectScreenError(String error) {
+    String errorReason = "There was an error selecting your hero\n"
+                        + error
+                        + "\nPlease try again";
+    selectScreenCombo.setSelectHeroError(
+            "<html>" + errorReason.replaceAll("<","&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll("\n", "<br/>")
+            + "</html>"
+    );
   }
 
   public void showSelectScreenStats(String stats) {
@@ -80,6 +92,10 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     setContentPane(gameView);
     pack();
   }
+
+  public void upDateGameViewHeroStats(Hero hero) {
+    gameView.setHeroStatsLabel(hero);
+  };
 
   public void showErrorOnStart(String error) {
     errorOnStart.setText(

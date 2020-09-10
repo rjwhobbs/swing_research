@@ -10,7 +10,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class SelectScreenCombo extends JPanel implements ActionListener {
+  JLabel screenTitle;
   JLabel heroStats;
+  JLabel selectHeroError;
   JButton selectHero;
   int heroId;
   private List<List<String>> heroList;
@@ -19,7 +21,7 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
     super(new BorderLayout());
 
     this.heroList = heroList;
-    String[] heroTitle = new String[this.heroList.size()];
+    String[] heroTitles = new String[this.heroList.size()];
     final String[] heroIds = new String[this.heroList.size()];
     StringBuilder heroString = new StringBuilder();
 
@@ -27,45 +29,55 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
       heroString.append(this.heroList.get(i).get(1));
       heroString.append(" " + this.heroList.get(i).get(2));
       heroIds[i] = this.heroList.get(i).get(0);
-      heroTitle[i] = heroString.toString();
+      heroTitles[i] = heroString.toString();
       heroString.delete(0, heroString.length());
     }
 
-    JComboBox selectHeroList = new JComboBox(heroTitle);
+    JComboBox selectHeroList = new JComboBox(heroTitles);
     selectHeroList.setSelectedIndex(0);
     heroId = selectHeroList.getSelectedIndex();
 //    selectHeroList.
     selectHeroList.addActionListener(this);
 
-
+    screenTitle = new JLabel();
+    selectHeroError = new JLabel();
     selectHero = new JButton();
+    heroStats = new JLabel();
     selectHero.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         GUIController.handler(ControlCommands.selectHeroById, heroIds[heroId]);
       }
     });
-    heroStats = new JLabel();
-//    heroStats.setFont(heroStats.getFont().deriveFont(Font.ITALIC));
+
+    screenTitle.setText("Choose your hero!");
     selectHero.setText("Select hero");
 
-
     heroStats.setHorizontalAlignment(JLabel.CENTER);
+    screenTitle.setHorizontalAlignment(JLabel.CENTER);
     displayHeroStats(heroId);
     heroStats.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
     heroStats.setPreferredSize(new Dimension(330, 150));
+    selectHeroError.setPreferredSize(new Dimension(300, 150));
 
-    add(selectHeroList, BorderLayout.PAGE_START);
+    add(screenTitle, BorderLayout.PAGE_START);
+    add(selectHeroList, BorderLayout.LINE_START);
     add(heroStats, BorderLayout.CENTER);
+    add(selectHeroError, BorderLayout.LINE_END);
     add(selectHero, BorderLayout.PAGE_END);
     setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
   }
 
   public void actionPerformed(ActionEvent e) {
+    selectHeroError.setText("");
     JComboBox cb = (JComboBox) e.getSource();
     heroId = cb.getSelectedIndex();
     displayHeroStats(heroId);
+  }
+
+  public void setSelectHeroError(String error) {
+    selectHeroError.setText(error);
   }
 
   protected void displayHeroStats(int index) {

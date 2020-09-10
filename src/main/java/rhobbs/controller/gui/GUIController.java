@@ -11,6 +11,7 @@ public class GUIController {
   public GUIController(WindowManager windowManager, Model model) {
     this.windowManager = windowManager;
     this.model = model;
+    // Seems the UI makes the screen before this can run, might need to handle this.
     try {
       this.model.modelInit();
     }
@@ -46,7 +47,7 @@ public class GUIController {
           handler(ControlCommands.showGameView);
         }
         catch (Exception e) {
-         System.out.println(e.getMessage());
+         windowManager.showSelectScreenError(e.getMessage());
         }
         break;
     }
