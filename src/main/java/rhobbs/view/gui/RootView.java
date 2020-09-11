@@ -2,7 +2,9 @@ package rhobbs.view.gui;
 
 import rhobbs.controller.gui.ControlCommands;
 import rhobbs.controller.gui.GUIController;
+import rhobbs.model.Enemy;
 import rhobbs.model.Hero;
+import rhobbs.model.artefacts.Artefact;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -106,11 +108,51 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   };
 
   public void showGameInfo(String info) {
-    gameView.setGameInfoLabel("<html>" + info.replaceAll("<","&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll("\n", "<br/>")
-            + "</html>");
+    gameView.setGameInfoLabel(labelFormatter(info));
   };
+
+  public void showGameInfo(String info, Enemy enemy) {
+    String message = "You encountered an Enemy!"
+            + "\nLvl " + enemy.getLevel()
+            + " " + enemy.getEnemyType()
+            + "\nHP: " + enemy.getHitPoints()
+            + "\nFight or Run?";
+    gameView.setGameInfoLabel(labelFormatter(message));
+  };
+
+  public void showGameInfo(String info, Hero hero, Enemy enemy) {
+    String message = info + "\nYour HP: " + hero.getHitPoints()
+            + "\nEnemy HP: " + enemy.getHitPoints();
+    gameView.setGameInfoLabel(labelFormatter(message));
+  };
+
+  public void showGameInfo(String info, Hero hero, Artefact artefact) {
+    String artefactInfo = "";
+    if (artefact != null) {
+      String pointsType = "";
+      switch (artefact.getType()) {
+        case "Helm":
+          pointsType = "HP";
+          break;
+        case "Weapon":
+          pointsType = "attack";
+          break;
+        case "Armor":
+          pointsType = "defense";
+          break;
+      }
+      artefactInfo = "Your foe dropped an item:"
+              + "\n" + artefact.getSubType()
+              + " " + artefact.getType()
+              + "\nadds " + artefact.getPoints()
+              + " " + pointsType
+              + "\nPick it up or leave it?";
+    }
+    String message = info + "\nYour HP: " + hero.getHitPoints()
+            + "\n" + artefactInfo;
+    gameView.setGameInfoLabel(labelFormatter(message));
+  };
+
 
   public void showGameViewError(String error) {
     gameView.setGameViewErrorLabel( "<html>" + error.replaceAll("<","&lt;")
@@ -150,8 +192,15 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     gameView.setAttackButtonEnabled(b);
   };
 
-  public void setPickUpLeaveEnabled(boolean b) {
+  public void setPickupLeaveEnabled(boolean b) {
     gameView.setPickUpLeaveButtonsEnabled(b);
   };
+
+  private static String labelFormatter(String input) {
+    return "<html>" + input.replaceAll("<","&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll("\n", "<br/>")
+            + "</html>";
+  }
 }
 

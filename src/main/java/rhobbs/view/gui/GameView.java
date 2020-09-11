@@ -52,7 +52,6 @@ public class GameView extends JPanel {
     leaveItemButton = new JButton();
 
     gameInfoLabel.setBackground(new Color(255, 255, 255));
-//    gameInfoLabel.setAutoscrolls(true);
     gameInfoLabel.setPreferredSize(new Dimension(200, 500));
     gameInfoLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
 
@@ -175,6 +174,27 @@ public class GameView extends JPanel {
       @Override
       public void actionPerformed(ActionEvent e) {
         GUIController.movementHandler(ControlCommands.moveWest);
+      }
+    });
+
+    fightButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.fightHandler(ControlCommands.startFight);
+      }
+    });
+
+    runButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.fightHandler(ControlCommands.run);
+      }
+    });
+
+    attackButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.fightHandler(ControlCommands.continueFight);
       }
     });
   }

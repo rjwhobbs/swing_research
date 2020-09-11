@@ -13,4 +13,7 @@ public class ControlCommands {
   public static final String moveEast = "MOVE_EAST";
   public static final String moveSouth = "MOVE_SOUTH";
   public static final String moveWest = "MOVE_WEST";
+  public static final String startFight = "START_FIGHT";
+  public static final String run = "RUN";
+  public static final String continueFight = "CONTINUE_FIGHT";
 }

@@ -4,10 +4,13 @@ import rhobbs.model.Model;
 import rhobbs.view.console.ConsoleView;
 import rhobbs.view.gui.WindowManager;
 
+import java.util.Random;
+
 public class GUIController {
 
   static Model model;
   static WindowManager windowManager;
+  static Random random = new Random();
 
   public GUIController(WindowManager windowManager, Model model) {
     this.windowManager = windowManager;
@@ -44,7 +47,7 @@ public class GUIController {
         model.generateMap();
         windowManager.showGameView(model.getHero());
         windowManager.showCurrentCoords(model.getCurrentCoords());
-        enableMovement();
+        enableMovementButtons();
         break;
     }
   }
@@ -110,57 +113,122 @@ public class GUIController {
     runCoordinateChecks();
   }
 
-  private static void enableMovement() {
+  public static void fightHandler(String input) {
+    switch (input) {
+      case ControlCommands.startFight:
+        windowManager.showGameInfo("And so your fight begins!\nHit attack!");
+        enableAttackButton();
+        break;
+      case ControlCommands.run:
+        if (random.nextInt(100) >= 49) {
+          windowManager.showGameInfo(
+                  "You where unable to run from your enemy."
+                  +"\nYou have no choice but to attack!"
+          );
+          enableAttackButton();
+        }
+        else {
+          windowManager.showGameInfo("You successfully ran away from your enemy!");
+          model.setCoords(model.getPrevCoords()[0], model.getPrevCoords()[1]);
+          windowManager.showCurrentCoords(model.getCurrentCoords());
+          enableMovementButtons();
+        }
+        break;
+      case ControlCommands.continueFight:
+        runFightLoop();
+        break;
+    }
+  }
+
+  private static void runCoordinateChecks() {
+    if (model.isAtEndOfMap()) {
+      windowManager.showGameInfo(
+              "Congratulations! You reached the end of the map!\nYour stats will be saved."
+      );
+      disableAllButtons();
+      try {
+        model.saveHero();
+      }
+      catch (Exception e) {
+        windowManager.showGameViewError(e.getMessage());
+      }
+    }
+    else if (model.coordHasEnemy()) {
+      model.generateEnemy();
+      windowManager.showGameInfo("", model.getEnemy());
+      enableFightStartButtons();
+    }
+  }
+
+  private static void runFightLoop() {
+    if (model.stillFighting()) {
+      windowManager.showGameInfo("Attack!", model.getHero(), model.getEnemy());
+    }
+    else {
+      if (model.isHeroDefeated()) {
+        windowManager.showGameInfo(
+                "Ahh no! You were defeated!"
+                        + "\nSince you didn't reach the end of the map your stats won't be saved.",
+                model.getHero(),
+                model.getEnemy()
+        );
+        disableAllButtons();
+      }
+      else {
+        StringBuilder info = new StringBuilder();
+        info.append("You defeated your foe!");
+        if (model.isLevelGained()) {
+          info.append("\nAnd you gained a level!");
+        }
+        info.append("\nYou take a moment to regain some health");
+        if (model.didDropArtefact()) {
+          enablePickupButtons();
+        }
+        else {
+          enableMovementButtons();
+        }
+        windowManager.showGameInfo(
+                info.toString(),
+                model.getHero(),
+                model.getArtefact()
+        );
+      }
+    }
+    windowManager.upDateGameViewHeroStats(model.getHero());
+  }
+
+  private static void enableMovementButtons() {
     windowManager.setMovementEnabled(true);
     windowManager.setFightRunEnabled(false);
     windowManager.setAttackEnabled(false);
-    windowManager.setPickUpLeaveEnabled(false);
+    windowManager.setPickupLeaveEnabled(false);
   }
 
-  private static void enableFightStart() {
+  private static void enableFightStartButtons() {
     windowManager.setMovementEnabled(false);
     windowManager.setFightRunEnabled(true);
     windowManager.setAttackEnabled(false);
-    windowManager.setPickUpLeaveEnabled(false);
+    windowManager.setPickupLeaveEnabled(false);
   }
 
-  private static void enableAttack() {
+  private static void enableAttackButton() {
     windowManager.setMovementEnabled(false);
     windowManager.setFightRunEnabled(false);
     windowManager.setAttackEnabled(true);
-    windowManager.setPickUpLeaveEnabled(false);
+    windowManager.setPickupLeaveEnabled(false);
   }
 
-  private static void enablePickUp() {
+  private static void enablePickupButtons() {
     windowManager.setMovementEnabled(false);
     windowManager.setFightRunEnabled(false);
     windowManager.setAttackEnabled(false);
-    windowManager.setPickUpLeaveEnabled(true);
+    windowManager.setPickupLeaveEnabled(true);
   }
 
   private static void disableAllButtons() {
     windowManager.setMovementEnabled(false);
     windowManager.setFightRunEnabled(false);
     windowManager.setAttackEnabled(false);
-    windowManager.setPickUpLeaveEnabled(false);
-  }
-
-  private static void runCoordinateChecks() {
-    if (model.isAtEndOfMap()) {
-      windowManager.showGameInfo(
-              "Congratulations! You reached the end of the map, your stats will be saved."
-      );
-      windowManager.showGameViewError("OH NOES\nERRRSS sfioifweofihworighworighworighorhg");
-      disableAllButtons();
-      try {
-        model.saveHero();
-      }
-      catch (Exception e) {
-        ConsoleView.showException(e.getMessage());
-      }
-    }
-    else if (model.coordHasEnemy()) {
-      model.generateEnemy();
-    }
+    windowManager.setPickupLeaveEnabled(false);
   }
 }

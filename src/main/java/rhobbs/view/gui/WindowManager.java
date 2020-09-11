@@ -1,5 +1,7 @@
 package rhobbs.view.gui;
+import rhobbs.model.Enemy;
 import rhobbs.model.Hero;
+import rhobbs.model.artefacts.Artefact;
 
 import java.util.List;
 public interface WindowManager {
@@ -17,7 +19,10 @@ public interface WindowManager {
   public void setMovementEnabled(boolean b);
   public void setFightRunEnabled(boolean b);
   public void setAttackEnabled(boolean b);
-  public void setPickUpLeaveEnabled(boolean b);
+  public void setPickupLeaveEnabled(boolean b);
   public void showGameInfo(String info);
+  public void showGameInfo(String info, Enemy enemy);
+  public void showGameInfo(String info, Hero hero, Enemy enemy);
+  public void showGameInfo(String info, Hero hero, Artefact artefact);
   public void showGameViewError(String error);
 }
