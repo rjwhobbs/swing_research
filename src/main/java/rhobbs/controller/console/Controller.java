@@ -39,6 +39,7 @@ public class Controller {
     try {
       this.model.modelInit();
       showStartScreen = true;
+      ConsoleView.showLogo();
       ConsoleView.showStartScreen();
     }
     catch (Exception e) {
