@@ -19,14 +19,14 @@ public class ConsoleView {
                     "      MMMMMMMMWKd:,;xNWWNNMMMX0NMMMMMM                                                    \n" +
                     "    MMMMMMMMMNOl;,;oXWMNKNMMWOoOWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM \n" +
                     "   MMMMMN0dlll;,,,:OWMNO0WWWXo,l0KKXWNK00NMMMMMMN00KKKKXWMMMWXK0000KNX00KXXNMWNXXK0XWMMMMM\n" +
-                    "  MMMMMKc',;..',,,lKWNkdKWWKd;'...;xXO,..,dXMMMWk;...,;c0WXd;',::,..od,...,kWNd,':lONMMMMM\n" +
-                    " MMMMMMk..cxo;,,,,cOKx:ckOxc;,,. .oWMWKl.  ,kXWMWXd.'kKXWK; .l0NNXOcc0Xk; .oNNl.:KWMM     \n" +
-                    "MMMMMMMXd,. ...',,,:c;,,;;,,,,,'  oWMMMK;.'..'lKWM0';KMMNl  oNMMMMMWXWMMXx,.;:.cXMMM      \n" +
-                    "MMMMMMMMWNOo;. ..,,,,,,,,,,,,,,'. cNMMMX:'k0:..'oKk.,KMMX; .kMMNOdodkNMMMMK,  ,KMMM       \n" +
-                    "MMMMMWK0XMMMNo. .,,,,,,,,,,,,,,'. :XMMMK;.kMNXk;..' ,0MMNl .oNMWO' :0WMMMMNc  lNMMMM      \n" +
-                    "MMMMMO'.lNMMXl..:l:,,,,,,,,,,,,'  cXWNX0;.dWMMMNo.  :XMMM0; .cOKk,.xMMMMWNXc  :0XWMMMM    \n" +
-                    " MMMMK:..:lc,.,xXN0xoc:;,,,,,,'...,oOdc:'.;ldx0WW0;.;KMMMMXd:;;;'.:0MMMMO:,.. ..;kWMMMMM  \n" +
-                    "  MMMMN0xolox0NMMMMWWNKOkxxddddx0XXNWNNXKKKXXXNWMMXkONMMMMMMWWNX   by rhobbs      WMMMMMMM\n" +
+                    "  MMMMMKc' ;..',,,lKWNkdKWWKd;'. .;xXO,. ,dXMMMWk; ..,;c0WXd;' .:, .od,...,kWNd,':lONMMMMM\n" +
+                    " MMMMMMk .cxo;,,,,cOKx,ckOxc;,,. .oWMWKl.  ,kXWMWXd 'kKXWK; .l0NNXOcc0Xk; .oNNl :KWMM     \n" +
+                    "MMMMMMMXd,  ...',,,:c;,,;;,,,,,'  oWMMMK; '. 'lKWM0 ;KMMNl  oNMMMMMWXWMMXx,.;: cXMMM      \n" +
+                    "MMMMMMMMWNOo;. ..,,,,,,,,,,,,,,'  cNMMMX: k0:. 'oKk ,KMMX; .kMMNOdodkNMMMMK,  ,KMMM       \n" +
+                    "MMMMMWK0XMMMNo. .,,,,,,,,,,,,,,'  :XMMMK; kMNXk;. ' ,0MMNl .oNMWO' :0WMMMMNc  lNMMMM      \n" +
+                    "MMMMMO'.lNMMXl. :l:,,,,,,,,,,,,'  cXWNX0; dWMMMNo.  :XMMM0; .cOKk, xMMMMWNXc  :0XWMMMM    \n" +
+                    " MMMMK:. :lc, ,xXN0xoc:;,,,,,,'. .,oOdc:' ;ldx0WW0;.;KMMMMXd:; ;'.:0MMMMO:,.....;kWMMMMM  \n" +
+                    "  MMMMN0xolox0NMMMMWWNKOkxxddddx0XXNWNNXKKKXXXNWMMXkONMMMMMMWWNX   by rhobbs  WWWWWMMMMMMM\n" +
                     "    MMMMMMMMMMMMMMMMMMMMMMMWWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWK00MMMMMMM00000KWMMMMMMMM\n"
     );
   }
