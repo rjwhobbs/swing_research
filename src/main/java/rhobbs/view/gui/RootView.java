@@ -32,6 +32,9 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     mainPanel = new JPanel();
     errorOnStart = new JLabel();
     startScreenButton = new javax.swing.JButton();
+    JLabel logo = new JLabel();
+    ImageIcon logoImage = new ImageIcon("assets/Swingy_logo.png");
+    logo.setIcon(logoImage);
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     this.setSize(600, 400);
@@ -46,6 +49,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
       }
     });
 
+    mainPanel.add(logo);
     mainPanel.add(startScreenButton);
     mainPanel.add(errorOnStart);
     this.add(mainPanel);
