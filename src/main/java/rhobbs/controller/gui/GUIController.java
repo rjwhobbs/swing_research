@@ -12,11 +12,11 @@ public class GUIController {
   static Random random = new Random();
 
   public GUIController(WindowManager windowManager, Model model) {
-    this.windowManager = windowManager;
     this.model = model;
-    // Seems the UI makes the screen before this can run, might need to handle this.
     try {
       this.model.modelInit();
+      this.windowManager = windowManager;
+      windowManager.setEnableStartButton(true);
     }
     catch (Exception e) {
       this.windowManager.disableStartSelectScreen();
@@ -25,7 +25,6 @@ public class GUIController {
               + "\n" + e.getMessage();
       this.windowManager.showErrorOnStart(error);
     }
-
   }
 
   public static void handler(String input) {
@@ -62,6 +61,16 @@ public class GUIController {
       case ControlCommands.exitGame:
         windowManager.quitGame();
         break;
+      case ControlCommands.playAgain:
+        try {
+          model = new Model();
+          model.modelInit();
+          windowManager.showStartScreen();
+        }
+        catch (Exception e) {
+          windowManager.showErrorDialog(e.getMessage());
+        }
+        break;
     }
   }
 
@@ -73,7 +82,7 @@ public class GUIController {
           handler(ControlCommands.showGameView);
         }
         catch (Exception e) {
-         windowManager.showSelectScreenError(e.getMessage());
+          windowManager.showErrorDialog(e.getMessage());
         }
         break;
     }
@@ -90,15 +99,18 @@ public class GUIController {
               handler(ControlCommands.showGameView);
             }
             else {
-              windowManager.showCreateScreenError("Hero was not initialized.\n");
+//              windowManager.showCreateScreenError("Hero was not initialized.\n");
+              windowManager.showErrorDialog("Hero was not initialized.\n");
             }
           }
           else {
-            windowManager.showCreateScreenError("Hero name already exits.\n");
+//            windowManager.showCreateScreenError("Hero name already exits.\n");
+            windowManager.showErrorDialog("Hero name already exits.\n");
           }
         }
         catch (Exception e) {
-          windowManager.showCreateScreenError(e.getMessage());
+//          windowManager.showCreateScreenError(e.getMessage());
+          windowManager.showErrorDialog(e.getMessage());
         }
         break;
     }
@@ -154,47 +166,18 @@ public class GUIController {
     }
   }
 
-  private static void runCoordinateChecks() {
-    if (model.isAtEndOfMap()) {
-//      windowManager.showGameInfo(
-//              "Congratulations! You reached the end of the map!\nYour stats will be saved."
-//      );
-      disableAllButtons();
-      windowManager.endGameMessage(
-              "Congratulations!",
-              "You reached the end of the map!\nYour stats will be saved."
-      );
-      try {
-        model.saveHero();
-      }
-      catch (Exception e) {
-        windowManager.showGameViewError(e.getMessage());
-      }
-    }
-    else if (model.coordHasEnemy()) {
-      model.generateEnemy();
-      windowManager.showGameInfo("", model.getEnemy());
-      enableFightStartButtons();
-    }
-  }
-
   private static void runFightLoop() {
     if (model.stillFighting()) {
       windowManager.showGameInfo("Attack!", model.getHero(), model.getEnemy());
     }
     else {
       if (model.isHeroDefeated()) {
-//        windowManager.showGameInfo(
-//                "Ahh no! You were defeated!"
-//                        + "\nSince you didn't reach the end of the map your stats won't be saved.",
-//                model.getHero(),
-//                model.getEnemy()
-//        );
         disableAllButtons();
         windowManager.endGameMessage(
                 "Ahh no! You were defeated!",
                 "\nSince you didn't reach the end of the map\nyour stats won't be saved."
-                );
+        );
+        return;
       }
       else {
         StringBuilder info = new StringBuilder();
@@ -217,6 +200,29 @@ public class GUIController {
       }
     }
     windowManager.upDateGameViewHeroStats(model.getHero());
+  }
+
+  private static void runCoordinateChecks() {
+    if (model.isAtEndOfMap()) {
+      disableAllButtons();
+
+      try {
+        model.saveHero();
+        windowManager.endGameMessage(
+                "Congratulations!",
+                "You reached the end of the map!\nYour stats will be saved."
+        );
+      }
+      catch (Exception e) {
+//        windowManager.showGameViewError(e.getMessage());
+        windowManager.showErrorDialog(e.getMessage());
+      }
+    }
+    else if (model.coordHasEnemy()) {
+      model.generateEnemy();
+      windowManager.showGameInfo("", model.getEnemy());
+      enableFightStartButtons();
+    }
   }
 
   private static void enableMovementButtons() {

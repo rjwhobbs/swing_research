@@ -5,6 +5,7 @@ import rhobbs.model.artefacts.Artefact;
 
 import java.util.List;
 public interface WindowManager {
+  public void setEnableStartButton(boolean b);
   public void showStartScreen();
   public void showSelectScreen(List<List<String>> heroList);
   public void showCreateScreen();
@@ -27,4 +28,5 @@ public interface WindowManager {
   public void showGameViewError(String error);
   public void endGameMessage(String title, String message);
   public void quitGame();
+  public void showErrorDialog(String error);
 }

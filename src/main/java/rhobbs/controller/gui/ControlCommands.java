@@ -19,4 +19,5 @@ public class ControlCommands {
   public static final String pickupItem = "PICKUP_ITEM";
   public static final String leaveItem = "LEAVE_ITEM";
   public static final String exitGame = "EXIT";
+  public static final String playAgain = "PLAY_AGAIN";
 }

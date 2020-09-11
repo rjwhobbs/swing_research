@@ -14,14 +14,14 @@ import java.util.List;
 
 public class RootView extends javax.swing.JFrame implements WindowManager {
 
-  private javax.swing.JButton startSelectScreen;
+  private javax.swing.JButton startScreenButton;
   private JLabel errorOnStart;
   JPanel mainPanel;
-  private static StartScreen startScreen;
-  private static SelectScreen selectScreen;
-  private static SelectScreenCombo selectScreenCombo;
-  private static CreateScreen createScreen;
-  private static GameView gameView;
+  private StartScreen startScreen;
+  private SelectScreen selectScreen;
+  private SelectScreenCombo selectScreenCombo;
+  private CreateScreen createScreen;
+  private GameView gameView;
 
   public RootView() {
     initComponents();
@@ -31,27 +31,31 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
 
     mainPanel = new JPanel();
     errorOnStart = new JLabel();
-    startSelectScreen = new javax.swing.JButton();
+    startScreenButton = new javax.swing.JButton();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     this.setSize(600, 400);
 
-    startSelectScreen.setText("Lets Go!");
+    startScreenButton.setText("Lets Go!");
+    startScreenButton.setEnabled(false);
 
-    startSelectScreen.addActionListener(new ActionListener() {
+    startScreenButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         GUIController.handler(ControlCommands.showStartScreen);
       }
     });
 
-    mainPanel.add(startSelectScreen);
+    mainPanel.add(startScreenButton);
     mainPanel.add(errorOnStart);
     this.add(mainPanel);
-//    setLocation(200, 200);
     setResizable(false);
     setLocationRelativeTo(null);
     setVisible(true);
+  }
+
+  public void setEnableStartButton(boolean b) {
+    startScreenButton.setEnabled(b);
   }
 
   public void showStartScreen() {
@@ -154,7 +158,6 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     gameView.setGameInfoLabel(labelFormatter(message));
   };
 
-
   public void showGameViewError(String error) {
     gameView.setGameViewErrorLabel( "<html>" + error.replaceAll("<","&lt;")
             .replaceAll(">", "&gt;")
@@ -172,7 +175,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   }
 
   public void disableStartSelectScreen() {
-    startSelectScreen.setEnabled(false);
+    startScreenButton.setEnabled(false);
   }
 
   public void showCurrentCoords(int[] currentCoords){
@@ -221,10 +224,22 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     if (n == JOptionPane.NO_OPTION) {
       GUIController.handler(ControlCommands.exitGame);
     }
+    else if (n == JOptionPane.YES_OPTION) {
+      GUIController.handler(ControlCommands.playAgain);
+    }
   };
 
   public void quitGame() {
     dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
+  }
+
+  public void showErrorDialog(String error) {
+    JOptionPane.showMessageDialog(
+            this,
+            labelFormatter(error),
+            "Swingy error",
+            JOptionPane.ERROR_MESSAGE
+    );
   }
 }
 
