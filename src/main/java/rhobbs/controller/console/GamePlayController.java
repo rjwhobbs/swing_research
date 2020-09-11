@@ -167,6 +167,7 @@ public class GamePlayController {
         break;
       case "N":
       case "n":
+        model.setArtefact(null);
         ConsoleView.showMessage("You left the item.");
         break;
       default:

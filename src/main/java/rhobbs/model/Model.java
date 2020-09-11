@@ -410,4 +410,8 @@ public class Model {
   public boolean isLevelGained() {
     return levelGained;
   }
+
+  public void setArtefact(Artefact artefact) {
+    this.artefact = artefact;
+  }
 }

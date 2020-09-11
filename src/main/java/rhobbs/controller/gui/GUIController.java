@@ -56,6 +56,7 @@ public class GUIController {
         break;
       case ControlCommands.leaveItem:
         windowManager.showGameInfo("You left the item");
+        model.setArtefact(null);
         enableMovementButtons();
         break;
       case ControlCommands.exitGame:

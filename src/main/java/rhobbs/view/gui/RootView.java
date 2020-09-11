@@ -205,6 +205,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   }
 
   public void endGameMessage(String title, String message) {
+    ImageIcon icon = new ImageIcon("assets/icon.png");
     String question = message + "\nPlay again?";
     Object[] options = {"Yes!", "Exit"};
     int n = JOptionPane.showOptionDialog(
@@ -213,7 +214,7 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
             title,
             JOptionPane.YES_NO_OPTION,
             JOptionPane.QUESTION_MESSAGE,
-            null,
+            icon,
             options,
             options[0]
     );
