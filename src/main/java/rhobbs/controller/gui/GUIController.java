@@ -65,13 +65,18 @@ public class GUIController {
     switch (input) {
       case ControlCommands.createNewHero:
         try {
-          model.createNewHero(valueOne, valueTwo);
-          if (model.getHero() != null) {
-            model.storeNewHero();
-            handler(ControlCommands.showGameView);
+          if (model.getStoredHeroByName(valueOne).size() == 0) {
+            model.createNewHero(valueOne, valueTwo);
+            if (model.getHero() != null) {
+              model.storeNewHero();
+              handler(ControlCommands.showGameView);
+            }
+            else {
+              windowManager.showCreateScreenError("Hero was not initialized.\n");
+            }
           }
           else {
-            windowManager.showCreateScreenError("Hero was not initialized.");
+            windowManager.showCreateScreenError("Hero name already exits.\n");
           }
         }
         catch (Exception e) {
