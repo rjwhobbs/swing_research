@@ -9,6 +9,7 @@ import rhobbs.model.artefacts.Artefact;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.List;
 
 public class RootView extends javax.swing.JFrame implements WindowManager {
@@ -201,6 +202,28 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
             .replaceAll(">", "&gt;")
             .replaceAll("\n", "<br/>")
             + "</html>";
+  }
+
+  public void endGameMessage(String title, String message) {
+    String question = message + "\nPlay again?";
+    Object[] options = {"Yes!", "Exit"};
+    int n = JOptionPane.showOptionDialog(
+            this,
+            labelFormatter(question),
+            title,
+            JOptionPane.YES_NO_OPTION,
+            JOptionPane.QUESTION_MESSAGE,
+            null,
+            options,
+            options[0]
+    );
+    if (n == JOptionPane.NO_OPTION) {
+      GUIController.handler(ControlCommands.exitGame);
+    }
+  };
+
+  public void quitGame() {
+    dispatchEvent(new WindowEvent(this, WindowEvent.WINDOW_CLOSING));
   }
 }
 

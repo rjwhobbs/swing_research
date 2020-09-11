@@ -1,7 +1,6 @@
 package rhobbs.controller.gui;
 
 import rhobbs.model.Model;
-import rhobbs.view.console.ConsoleView;
 import rhobbs.view.gui.WindowManager;
 
 import java.util.Random;
@@ -49,6 +48,19 @@ public class GUIController {
         windowManager.showCurrentCoords(model.getCurrentCoords());
         enableMovementButtons();
         break;
+      case ControlCommands.pickupItem:
+        model.equipArtefact();
+        windowManager.showGameInfo("You equip the item.");
+        windowManager.upDateGameViewHeroStats(model.getHero());
+        enableMovementButtons();
+        break;
+      case ControlCommands.leaveItem:
+        windowManager.showGameInfo("You left the item");
+        enableMovementButtons();
+        break;
+      case ControlCommands.exitGame:
+        windowManager.quitGame();
+        break;
     }
   }
 
@@ -92,6 +104,7 @@ public class GUIController {
   }
 
   public static void movementHandler(String input) {
+    windowManager.showGameInfo("");
     switch (input) {
       case ControlCommands.moveNorth:
         model.moveNorth();
@@ -142,10 +155,14 @@ public class GUIController {
 
   private static void runCoordinateChecks() {
     if (model.isAtEndOfMap()) {
-      windowManager.showGameInfo(
-              "Congratulations! You reached the end of the map!\nYour stats will be saved."
-      );
+//      windowManager.showGameInfo(
+//              "Congratulations! You reached the end of the map!\nYour stats will be saved."
+//      );
       disableAllButtons();
+      windowManager.endGameMessage(
+              "Congratulations!",
+              "You reached the end of the map!\nYour stats will be saved."
+      );
       try {
         model.saveHero();
       }
@@ -166,13 +183,17 @@ public class GUIController {
     }
     else {
       if (model.isHeroDefeated()) {
-        windowManager.showGameInfo(
-                "Ahh no! You were defeated!"
-                        + "\nSince you didn't reach the end of the map your stats won't be saved.",
-                model.getHero(),
-                model.getEnemy()
-        );
+//        windowManager.showGameInfo(
+//                "Ahh no! You were defeated!"
+//                        + "\nSince you didn't reach the end of the map your stats won't be saved.",
+//                model.getHero(),
+//                model.getEnemy()
+//        );
         disableAllButtons();
+        windowManager.endGameMessage(
+                "Ahh no! You were defeated!",
+                "\nSince you didn't reach the end of the map\nyour stats won't be saved."
+                );
       }
       else {
         StringBuilder info = new StringBuilder();

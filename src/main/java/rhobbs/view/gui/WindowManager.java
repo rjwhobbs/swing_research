@@ -25,4 +25,6 @@ public interface WindowManager {
   public void showGameInfo(String info, Hero hero, Enemy enemy);
   public void showGameInfo(String info, Hero hero, Artefact artefact);
   public void showGameViewError(String error);
+  public void endGameMessage(String title, String message);
+  public void quitGame();
 }

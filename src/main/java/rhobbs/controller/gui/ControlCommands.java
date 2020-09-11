@@ -16,4 +16,7 @@ public class ControlCommands {
   public static final String startFight = "START_FIGHT";
   public static final String run = "RUN";
   public static final String continueFight = "CONTINUE_FIGHT";
+  public static final String pickupItem = "PICKUP_ITEM";
+  public static final String leaveItem = "LEAVE_ITEM";
+  public static final String exitGame = "EXIT";
 }

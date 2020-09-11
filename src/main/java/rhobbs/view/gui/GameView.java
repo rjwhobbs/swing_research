@@ -197,6 +197,20 @@ public class GameView extends JPanel {
         GUIController.fightHandler(ControlCommands.continueFight);
       }
     });
+
+    pickUpButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.handler(ControlCommands.pickupItem);
+      }
+    });
+
+    leaveItemButton.addActionListener(new ActionListener() {
+      @Override
+      public void actionPerformed(ActionEvent e) {
+        GUIController.handler(ControlCommands.leaveItem);
+      }
+    });
   }
 
   public void setHeroStatsLabel(Hero hero) {
