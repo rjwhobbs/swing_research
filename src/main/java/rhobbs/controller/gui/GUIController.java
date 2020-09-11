@@ -1,6 +1,7 @@
 package rhobbs.controller.gui;
 
 import rhobbs.model.Model;
+import rhobbs.view.console.ConsoleView;
 import rhobbs.view.gui.WindowManager;
 
 public class GUIController {
@@ -43,6 +44,7 @@ public class GUIController {
         model.generateMap();
         windowManager.showGameView(model.getHero());
         windowManager.showCurrentCoords(model.getCurrentCoords());
+        enableMovement();
         break;
     }
   }
@@ -104,6 +106,61 @@ public class GUIController {
         model.moveWest();
         windowManager.showCurrentCoords(model.getCurrentCoords());
         break;
+    }
+    runCoordinateChecks();
+  }
+
+  private static void enableMovement() {
+    windowManager.setMovementEnabled(true);
+    windowManager.setFightRunEnabled(false);
+    windowManager.setAttackEnabled(false);
+    windowManager.setPickUpLeaveEnabled(false);
+  }
+
+  private static void enableFightStart() {
+    windowManager.setMovementEnabled(false);
+    windowManager.setFightRunEnabled(true);
+    windowManager.setAttackEnabled(false);
+    windowManager.setPickUpLeaveEnabled(false);
+  }
+
+  private static void enableAttack() {
+    windowManager.setMovementEnabled(false);
+    windowManager.setFightRunEnabled(false);
+    windowManager.setAttackEnabled(true);
+    windowManager.setPickUpLeaveEnabled(false);
+  }
+
+  private static void enablePickUp() {
+    windowManager.setMovementEnabled(false);
+    windowManager.setFightRunEnabled(false);
+    windowManager.setAttackEnabled(false);
+    windowManager.setPickUpLeaveEnabled(true);
+  }
+
+  private static void disableAllButtons() {
+    windowManager.setMovementEnabled(false);
+    windowManager.setFightRunEnabled(false);
+    windowManager.setAttackEnabled(false);
+    windowManager.setPickUpLeaveEnabled(false);
+  }
+
+  private static void runCoordinateChecks() {
+    if (model.isAtEndOfMap()) {
+      windowManager.showGameInfo(
+              "Congratulations! You reached the end of the map, your stats will be saved."
+      );
+      windowManager.showGameViewError("OH NOES\nERRRSS sfioifweofihworighworighworighorhg");
+      disableAllButtons();
+      try {
+        model.saveHero();
+      }
+      catch (Exception e) {
+        ConsoleView.showException(e.getMessage());
+      }
+    }
+    else if (model.coordHasEnemy()) {
+      model.generateEnemy();
     }
   }
 }

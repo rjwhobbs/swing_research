@@ -105,6 +105,20 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     gameView.setHeroStatsLabel(hero);
   };
 
+  public void showGameInfo(String info) {
+    gameView.setGameInfoLabel("<html>" + info.replaceAll("<","&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll("\n", "<br/>")
+            + "</html>");
+  };
+
+  public void showGameViewError(String error) {
+    gameView.setGameViewErrorLabel( "<html>" + error.replaceAll("<","&lt;")
+            .replaceAll(">", "&gt;")
+            .replaceAll("\n", "<br/>")
+            + "</html>");
+  };
+
   public void showErrorOnStart(String error) {
     errorOnStart.setText(
             "<html>" + error.replaceAll("<","&lt;")
@@ -124,5 +138,20 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
     gameView.setCurrentCoordsLabel(coords);
   };
 
+  public void setMovementEnabled(boolean b) {
+    gameView.setMovementButtonsEnabled(b);
+  };
+
+  public void setFightRunEnabled(boolean b) {
+    gameView.setFightRunButtonsEnabled(b);
+  };
+
+  public void setAttackEnabled(boolean b) {
+    gameView.setAttackButtonEnabled(b);
+  };
+
+  public void setPickUpLeaveEnabled(boolean b) {
+    gameView.setPickUpLeaveButtonsEnabled(b);
+  };
 }
 

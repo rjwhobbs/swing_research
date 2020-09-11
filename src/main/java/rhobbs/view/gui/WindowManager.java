@@ -14,4 +14,10 @@ public interface WindowManager {
   public void disableStartSelectScreen();
   public void showGameView(Hero hero);
   public void showCurrentCoords(int[] currentCoords);
+  public void setMovementEnabled(boolean b);
+  public void setFightRunEnabled(boolean b);
+  public void setAttackEnabled(boolean b);
+  public void setPickUpLeaveEnabled(boolean b);
+  public void showGameInfo(String info);
+  public void showGameViewError(String error);
 }

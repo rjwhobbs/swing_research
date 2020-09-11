@@ -52,7 +52,8 @@ public class GameView extends JPanel {
     leaveItemButton = new JButton();
 
     gameInfoLabel.setBackground(new Color(255, 255, 255));
-    gameInfoLabel.setAutoscrolls(true);
+//    gameInfoLabel.setAutoscrolls(true);
+    gameInfoLabel.setPreferredSize(new Dimension(200, 500));
     gameInfoLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
 
     heroStatsLabel.setBackground(new Color(255, 255, 255));
@@ -60,12 +61,6 @@ public class GameView extends JPanel {
     heroStatsLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
 
     moveNorthButton.setText("N");
-    moveNorthButton.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
-//        jButton2ActionPerformed(evt);
-      }
-    });
-
     moveSouthButton.setText("S");
     moveEastButton.setText("E");
     moveWestButton.setText("W");
@@ -73,16 +68,8 @@ public class GameView extends JPanel {
     runButton.setText("Run");
     attackButton.setText("Attack!");
     gameViewTitleLabel.setText("Title");
-    errorLabel.setText("Oh nos, errors!");
-//    currentCoordsLabel.setText("(23,24)");
     currentCoordsLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
     pickUpButton.setText("Pickup item");
-    pickUpButton.addActionListener(new ActionListener() {
-      public void actionPerformed(ActionEvent evt) {
-//        jButton9ActionPerformed(evt);
-      }
-    });
-
     leaveItemButton.setText("Leave item");
 
     GroupLayout jPanel2Layout = new GroupLayout(this);
@@ -207,5 +194,34 @@ public class GameView extends JPanel {
 
   public void setCurrentCoordsLabel(String coords) {
     currentCoordsLabel.setText(coords);
+  }
+
+  public void setMovementButtonsEnabled(boolean b) {
+    moveNorthButton.setEnabled(b);
+    moveSouthButton.setEnabled(b);
+    moveEastButton.setEnabled(b);
+    moveWestButton.setEnabled(b);
+  }
+
+  public void setFightRunButtonsEnabled(boolean b) {
+    fightButton.setEnabled(b);
+    runButton.setEnabled(b);
+  }
+
+  public void setAttackButtonEnabled(boolean b) {
+    attackButton.setEnabled(b);
+  }
+
+  public void setPickUpLeaveButtonsEnabled(boolean b) {
+    pickUpButton.setEnabled(b);
+    leaveItemButton.setEnabled(b);
+  }
+
+  public void setGameInfoLabel(String info) {
+    gameInfoLabel.setText(info);
+  }
+
+  public void setGameViewErrorLabel(String error) {
+    errorLabel.setText(error);
   }
 }
