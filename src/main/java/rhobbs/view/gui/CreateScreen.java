@@ -38,14 +38,9 @@ public class CreateScreen extends JPanel {
     titlelabel.setVerticalAlignment(JLabel.CENTER);
 
     menuLabel = new JLabel("Choose your hero class:");
-//    menuLabel.setPreferredSize(new Dimension(200,20));
     userTextLabel = new JLabel("Enter your hero's name:");
     errorLabel = new JLabel();
     errorLabel.setPreferredSize(new Dimension(500, 80));
-//    scrollPane = new JScrollPane(errorLabel);
-//    scrollPane.setPreferredSize(new Dimension(500, 100));
-
-
 
     userTextInputField = new JTextField(14);
     heroClassesMenu = new JComboBox(heroClasses);

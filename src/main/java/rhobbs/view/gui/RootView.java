@@ -7,6 +7,7 @@ import rhobbs.model.Hero;
 import rhobbs.model.artefacts.Artefact;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -16,7 +17,8 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
 
   private javax.swing.JButton startScreenButton;
   private JLabel errorOnStart;
-  JPanel mainPanel;
+  private JLabel loadingLabel;
+  private JPanel mainPanel;
   private StartScreen startScreen;
   private SelectScreen selectScreen;
   private SelectScreenCombo selectScreenCombo;
@@ -29,15 +31,24 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
 
   private void initComponents() {
 
-    mainPanel = new JPanel();
+    mainPanel = new JPanel(new BorderLayout());
+    JPanel subPanelCenter = new JPanel();
+    subPanelCenter.setLayout(new BoxLayout(subPanelCenter, BoxLayout.Y_AXIS));
+
+    loadingLabel = new JLabel("Loading...");
+    loadingLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
     errorOnStart = new JLabel();
     startScreenButton = new javax.swing.JButton();
+    startScreenButton.setAlignmentX(Component.CENTER_ALIGNMENT);
     JLabel logo = new JLabel();
     ImageIcon logoImage = new ImageIcon("assets/Swingy_logo.png");
     logo.setIcon(logoImage);
+    logo.setHorizontalAlignment(JLabel.CENTER);
+    logo.setBorder(BorderFactory.createEmptyBorder(20,0,20,0));
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-    this.setSize(600, 400);
+    this.setSize(600, 600);
+    this.setTitle("Swingy");
 
     startScreenButton.setText("Lets Go!");
     startScreenButton.setEnabled(false);
@@ -49,9 +60,11 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
       }
     });
 
-    mainPanel.add(logo);
-    mainPanel.add(startScreenButton);
-    mainPanel.add(errorOnStart);
+    subPanelCenter.add(loadingLabel);
+    subPanelCenter.add(startScreenButton);
+    mainPanel.add(logo, BorderLayout.PAGE_START);
+    mainPanel.add(subPanelCenter, BorderLayout.CENTER);
+    mainPanel.add(errorOnStart, BorderLayout.PAGE_END);
     this.add(mainPanel);
     setResizable(false);
     setLocationRelativeTo(null);
@@ -245,5 +258,9 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
             JOptionPane.ERROR_MESSAGE
     );
   }
+
+  public void clearLoadingLabel() {
+    loadingLabel.setText("");
+  };
 }
 

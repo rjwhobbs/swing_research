@@ -17,6 +17,7 @@ public class GUIController {
       this.model.modelInit();
       this.windowManager = windowManager;
       windowManager.setEnableStartButton(true);
+      windowManager.clearLoadingLabel();
     }
     catch (Exception e) {
       this.windowManager.disableStartSelectScreen();

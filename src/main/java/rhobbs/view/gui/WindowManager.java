@@ -29,4 +29,5 @@ public interface WindowManager {
   public void endGameMessage(String title, String message);
   public void quitGame();
   public void showErrorDialog(String error);
+  public void clearLoadingLabel();
 }
