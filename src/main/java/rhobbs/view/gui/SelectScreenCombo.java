@@ -11,9 +11,8 @@ import java.util.List;
 
 public class SelectScreenCombo extends JPanel implements ActionListener {
   JLabel screenTitle;
-  JLabel heroStats;
-  JLabel selectHeroError;
-  JButton selectHero;
+  JLabel heroStatsLabel;
+  JButton selectHeroButton;
   int heroId;
   private List<List<String>> heroList;
 
@@ -33,51 +32,51 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
       heroString.delete(0, heroString.length());
     }
 
-    JComboBox selectHeroList = new JComboBox(heroTitles);
-    selectHeroList.setSelectedIndex(0);
-    heroId = selectHeroList.getSelectedIndex();
-//    selectHeroList.
-    selectHeroList.addActionListener(this);
+    JComboBox selectHeroMenu = new JComboBox(heroTitles);
+    selectHeroMenu.setSelectedIndex(0);
+    heroId = selectHeroMenu.getSelectedIndex();
+    selectHeroMenu.addActionListener(this);
 
     screenTitle = new JLabel();
-    selectHeroError = new JLabel();
-    selectHero = new JButton();
-    heroStats = new JLabel();
-    selectHero.addActionListener(new ActionListener() {
+    selectHeroButton = new JButton();
+    heroStatsLabel = new JLabel();
+    JPanel subPanelCenter = new JPanel();
+    JPanel menuPanel = new JPanel();
+    subPanelCenter.setLayout(new BoxLayout(subPanelCenter, BoxLayout.Y_AXIS));
+
+    screenTitle.setText("Choose your hero!");
+    screenTitle.setPreferredSize(new Dimension(600, 50));
+    selectHeroButton.setText("Select hero");
+    selectHeroButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+    screenTitle.setHorizontalAlignment(JLabel.CENTER);
+    displayHeroStats(heroId);
+    heroStatsLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+
+    heroStatsLabel.setPreferredSize(new Dimension(100, 150));
+    heroStatsLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+    menuPanel.add(selectHeroMenu);
+
+    subPanelCenter.add(menuPanel);
+    subPanelCenter.add(heroStatsLabel);
+    subPanelCenter.add(selectHeroButton);
+
+    add(screenTitle, BorderLayout.PAGE_START);
+    add(subPanelCenter, BorderLayout.CENTER);
+    setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    selectHeroButton.addActionListener(new ActionListener() {
       @Override
       public void actionPerformed(ActionEvent e) {
         GUIController.handler(ControlCommands.selectHeroById, heroIds[heroId]);
       }
     });
-
-    screenTitle.setText("Choose your hero!");
-    selectHero.setText("Select hero");
-
-    heroStats.setHorizontalAlignment(JLabel.CENTER);
-    screenTitle.setHorizontalAlignment(JLabel.CENTER);
-    displayHeroStats(heroId);
-    heroStats.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
-
-    heroStats.setPreferredSize(new Dimension(330, 150));
-    selectHeroError.setPreferredSize(new Dimension(180, 150));
-
-    add(screenTitle, BorderLayout.PAGE_START);
-    add(selectHeroList, BorderLayout.LINE_START);
-    add(heroStats, BorderLayout.CENTER);
-    add(selectHeroError, BorderLayout.LINE_END);
-    add(selectHero, BorderLayout.PAGE_END);
-    setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
   }
 
   public void actionPerformed(ActionEvent e) {
-    selectHeroError.setText("");
     JComboBox cb = (JComboBox) e.getSource();
     heroId = cb.getSelectedIndex();
     displayHeroStats(heroId);
-  }
-
-  public void setSelectHeroError(String error) {
-    selectHeroError.setText(error);
   }
 
   protected void displayHeroStats(int index) {
@@ -93,7 +92,7 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
             + "\nXP: " + heroList.get(index).get(7)
             + "\nTotal HP: " + totalHP;
 
-    heroStats.setText("<html>" + heroStatsString.replaceAll("<","&lt;")
+    heroStatsLabel.setText("<html>" + heroStatsString.replaceAll("<","&lt;")
               .replaceAll(">", "&gt;")
               .replaceAll("\n", "<br/>")
               + "</html>");

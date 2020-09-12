@@ -103,17 +103,17 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
             + "</html>");
   }
 
-  public void showSelectScreenError(String error) {
-    String errorReason = "There was an error selecting your hero\n"
-                        + error
-                        + "\nPlease try again";
-    selectScreenCombo.setSelectHeroError(
-            "<html>" + errorReason.replaceAll("<","&lt;")
-            .replaceAll(">", "&gt;")
-            .replaceAll("\n", "<br/>")
-            + "</html>"
-    );
-  }
+//  public void showSelectScreenError(String error) {
+//    String errorReason = "There was an error selecting your hero\n"
+//                        + error
+//                        + "\nPlease try again";
+//    selectScreenCombo.setSelectHeroError(
+//            "<html>" + errorReason.replaceAll("<","&lt;")
+//            .replaceAll(">", "&gt;")
+//            .replaceAll("\n", "<br/>")
+//            + "</html>"
+//    );
+//  }
 
   public void showSelectScreenStats(String stats) {
     selectScreen.setSelectStats(stats);

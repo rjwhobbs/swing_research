@@ -13,7 +13,7 @@ public interface WindowManager {
   public void showSelectScreenStats(String stats);
   public void upDateGameViewHeroStats(Hero hero);
   public void showErrorOnStart(String error);
-  public void showSelectScreenError(String error);
+//  public void showSelectScreenError(String error);
   public void disableStartSelectScreen();
   public void showGameView(Hero hero);
   public void showCurrentCoords(int[] currentCoords);
