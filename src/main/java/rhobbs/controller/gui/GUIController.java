@@ -39,9 +39,9 @@ public class GUIController {
       case ControlCommands.showCreateScreen:
         windowManager.showCreateScreen();
         break;
-      case ControlCommands.showStats:
-        windowManager.showSelectScreenStats("these are stats");
-        break;
+//      case ControlCommands.showStats:
+//        windowManager.showSelectScreenStats("these are stats");
+//        break;
       case ControlCommands.showGameView:
         model.generateMap();
         windowManager.showGameView(model.getHero());
@@ -175,8 +175,10 @@ public class GUIController {
       if (model.isHeroDefeated()) {
         disableAllButtons();
         windowManager.endGameMessage(
-                "Ahh no! You were defeated!",
-                "\nSince you didn't reach the end of the map\nyour stats won't be saved."
+                "Ahh no! You were defeated.",
+                         "\nYou were defeated." +
+                                 "\nSince you didn't reach the end of the map" +
+                                 "\nyour stats won't be saved."
         );
         return;
       }

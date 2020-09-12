@@ -46,7 +46,12 @@ public class DrumHero extends Hero {
 
   @Override
   public void equipHelm() {
-    this.hitPoints += this.helm.getPoints();
     this.maxHitPoints = HeroConstants.DrumHeroHP + this.helm.getPoints();
+    if (this.hitPoints + this.helm.getPoints() <= this.maxHitPoints) {
+      this.hitPoints += this.helm.getPoints();
+    }
+    else {
+      this.hitPoints = this.maxHitPoints;
+    }
   }
 }

@@ -44,7 +44,12 @@ public class BassGuitarHero extends Hero {
 
   @Override
   public void equipHelm() {
-    this.hitPoints += this.helm.getPoints();
     this.maxHitPoints = HeroConstants.BassGuitarHeroHP + this.helm.getPoints();
+    if (this.hitPoints + this.helm.getPoints() <= this.maxHitPoints) {
+      this.hitPoints += this.helm.getPoints();
+    }
+    else {
+      this.hitPoints = this.maxHitPoints;
+    }
   }
 }

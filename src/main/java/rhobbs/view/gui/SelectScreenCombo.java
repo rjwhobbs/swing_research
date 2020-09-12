@@ -51,7 +51,7 @@ public class SelectScreenCombo extends JPanel implements ActionListener {
 
     screenTitle.setHorizontalAlignment(JLabel.CENTER);
     displayHeroStats(heroId);
-    heroStatsLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
+//    heroStatsLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
 
     heroStatsLabel.setPreferredSize(new Dimension(100, 150));
     heroStatsLabel.setAlignmentX(JLabel.CENTER_ALIGNMENT);

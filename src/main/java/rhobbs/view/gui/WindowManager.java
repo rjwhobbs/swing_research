@@ -10,7 +10,7 @@ public interface WindowManager {
   public void showSelectScreen(List<List<String>> heroList);
   public void showCreateScreen();
   public void showCreateScreenError(String error);
-  public void showSelectScreenStats(String stats);
+//  public void showSelectScreenStats(String stats);
   public void upDateGameViewHeroStats(Hero hero);
   public void showErrorOnStart(String error);
 //  public void showSelectScreenError(String error);

@@ -121,10 +121,9 @@ public class Model {
     int mapSize = (this.hero.getLevel() - 1) * 5 + 10 - (this.getHero().getLevel() % 2);
     int centerX = mapSize / 2;
     int heroLevel = this.hero.getLevel();
-    int ib = 1;
     int placeEnemyChance = this.hero.getLevel() == 0 ? 100 : 3;
     map = new int[mapSize][mapSize];
-    int maxEnemyLevel = this.hero.getLevel() + 2;
+    int maxEnemyLevel = this.hero.getLevel() + 3;
     int minEnemyLevel = this.hero.getLevel() - 1 > 0 ? this.hero.getLevel() - 1 : 0;
     int[] enemyArray = new int[maxEnemyLevel];
     this.setCoords(centerX, centerX);
@@ -221,7 +220,7 @@ public class Model {
 
   public boolean stillFighting() {
     int heroLevel = this.hero.getLevel() * 1000;
-    int heroXP = this.hero.getExperience() / 10;
+//    int heroXP = this.hero.getExperience() / 15;
     int heroDef = this.hero.getDefense() * 10;
     int heroAtt = this.hero.getAttack() * 10;
 
@@ -229,7 +228,7 @@ public class Model {
     int enemyDef = this.enemy.getDefense() * 10;
     int enemyAtt = this.enemy.getAttack() * 10;
 
-    int heroWeight = (heroLevel + heroXP + heroDef + heroAtt) / 100;
+    int heroWeight = (heroLevel /*+ heroXP*/ + heroDef + heroAtt) / 100;
     int enemyWeight = (enemyLevel + enemyDef + enemyAtt) / 100;
 
     int heroHP = this.hero.getHitPoints();
@@ -238,8 +237,11 @@ public class Model {
     // 2 = 1 out of 2 chance, 3 == 1 out of 3 chance etc
     int chanceOfLuck = this.makeChanceOfLuck(this.hero.getLevel());
 
-    int heroScore = random.nextInt(heroWeight);
-    int enemyScore = random.nextInt(enemyWeight);
+    int heroScore = scoreLeveler(random.nextInt(heroWeight), this.hero.getLevel());
+    int enemyScore = scoreLeveler(random.nextInt(enemyWeight), this.enemy.getLevel());
+
+//    System.out.println(heroScore);
+//    System.out.println(enemyScore);
 
     // Element of luck
     if (random.nextInt(chanceOfLuck) == chanceOfLuck - 1) {
@@ -328,37 +330,17 @@ public class Model {
 
   public void equipArtefact() {
     String artefactType = this.artefact.getType();
-//    try {
       if (artefactType.equals("Helm")) {
         this.hero.setHelm(this.artefact);
         this.hero.equipHelm();
-//        Storage.saveHelm(
-//                this.hero.getName(),
-//                this.hero.getHelm().getSubType(),
-//                this.hero.getHelm().getPoints()
-//        );
       } else if (artefactType.equals("Weapon")) {
         this.hero.setWeapon(this.artefact);
         this.hero.equipWeapon();
-//        Storage.saveWeapon(
-//                this.hero.getName(),
-//                this.hero.getWeapon().getSubType(),
-//                this.hero.getWeapon().getPoints()
-//        );
       } else {
         this.hero.setArmor(this.artefact);
         this.hero.equipArmor();
-//        Storage.saveArmor(
-//                this.hero.getName(),
-//                this.hero.getArmor().getSubType(),
-//                this.hero.getWeapon().getPoints()
-//        );
       }
       this.artefact = null;
-//    }
-//    catch (Exception e) {
-//      System.out.println("Error in equip Artefact. " + e.getMessage());
-//    }
   }
 
   private int makeChanceOfLuck(int level) {
@@ -368,6 +350,13 @@ public class Model {
       default:
         return 2;
     }
+  }
+
+  private int scoreLeveler(int score, int lvl) {
+
+    int div = 10;
+
+    return (score) - ((score / div) * lvl);
   }
 
   public int[] getPrevCoords() {

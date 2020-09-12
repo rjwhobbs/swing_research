@@ -20,7 +20,6 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
   private JLabel loadingLabel;
   private JPanel mainPanel;
   private StartScreen startScreen;
-  private SelectScreen selectScreen;
   private SelectScreenCombo selectScreenCombo;
   private CreateScreen createScreen;
   private GameView gameView;
@@ -115,9 +114,9 @@ public class RootView extends javax.swing.JFrame implements WindowManager {
 //    );
 //  }
 
-  public void showSelectScreenStats(String stats) {
-    selectScreen.setSelectStats(stats);
-  }
+//  public void showSelectScreenStats(String stats) {
+//    selectScreen.setSelectStats(stats);
+//  }
 
   public void showGameView(Hero hero) {
     gameView = new GameView(hero);
