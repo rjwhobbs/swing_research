@@ -13,9 +13,9 @@ public class Swingy {
 
    public static void main(String[] args) {
 //      new SwingyTests(0);
-      Controller controller = new Controller(new Model());
-//      RootView rootView = new RootView();
-//      GUIController guiController = new GUIController(rootView, new Model());
+//      Controller controller = new Controller(new Model());
+      RootView rootView = new RootView();
+      GUIController guiController = new GUIController(rootView, new Model());
 //      guiView.setVisible(true);
    }
 }
