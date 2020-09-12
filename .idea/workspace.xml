@@ -15,16 +15,12 @@
   <component name="ChangeListManager">
     <list default="true" id="d699cb6a-6171-4644-8c55-bc7f3accf15e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/controller/gui/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/controller/gui/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/BassGuitarHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/BassGuitarHero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/DrumHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/DrumHero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/Swingy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/Swingy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/EnemyFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/EnemyFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/GuitarHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/GuitarHero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/RootView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/RootView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/SelectScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/SelectScreenCombo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/SelectScreenCombo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/WindowManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/view/gui/WindowManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/WeaponFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rhobbs/model/artefacts/weapons/WeaponFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/rhobbs/AppTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,6 +109,21 @@
     <configuration name="Swingy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="rhobbs.Swingy" />
       <module name="SwingyTwo" />
+      <option name="PROGRAM_PARAMETERS" value="console" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="rhobbs.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Swingy" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="rhobbs.Swingy" />
+      <module name="SwingyTwo" />
+      <option name="PROGRAM_PARAMETERS" value="console" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="rhobbs.model.*" />
@@ -137,7 +148,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Swingy" />
-        <item itemvalue="Application.App (1)" />
+        <item itemvalue="Application.Swingy" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -154,7 +165,7 @@
       <workItem from="1598699430508" duration="806000" />
       <workItem from="1598708567001" duration="1112000" />
       <workItem from="1598710671912" duration="9542000" />
-      <workItem from="1598729875470" duration="252247000" />
+      <workItem from="1598729875470" duration="255381000" />
     </task>
     <servers />
   </component>
@@ -178,10 +189,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="128" y="23" key="#Project_Structure/0.23.1280.777@0.23.1280.777" timestamp="1598731165538" />
-    <state x="240" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1598712601785">
+    <state x="209" y="78" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599902313045">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state x="240" y="78" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777@0.23.1280.777" timestamp="1598712601785" />
+    <state x="209" y="78" width="1071" height="697" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777@0.23.1280.777" timestamp="1599902313045" />
     <state x="401" y="222" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1598710855120">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -190,6 +201,10 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state x="453" y="119" key="#com.intellij.ide.util.MemberChooser/0.23.1280.777@0.23.1280.777" timestamp="1599842875442" />
+    <state x="482" y="225" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1599902281934">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="482" y="225" key="#com.intellij.ide.util.TreeClassChooserDialog/0.23.1280.777@0.23.1280.777" timestamp="1599902281934" />
     <state x="414" y="291" width="452" height="245" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1599564067772">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
@@ -210,22 +225,22 @@
       <screen x="0" y="23" width="1280" height="777" />
     </state>
     <state width="254" height="192" key="DatabaseViewActions_Filter/0.23.1280.777@0.23.1280.777" timestamp="1598712497207" />
-    <state width="1238" height="502" key="GridCell.Tab.0.bottom" timestamp="1599899616841">
+    <state width="1238" height="502" key="GridCell.Tab.0.bottom" timestamp="1599907168026">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="502" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599899616841" />
-    <state width="1238" height="502" key="GridCell.Tab.0.center" timestamp="1599899616841">
+    <state width="1238" height="502" key="GridCell.Tab.0.bottom/0.23.1280.777@0.23.1280.777" timestamp="1599907168026" />
+    <state width="1238" height="502" key="GridCell.Tab.0.center" timestamp="1599907168025">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="502" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599899616841" />
-    <state width="1238" height="502" key="GridCell.Tab.0.left" timestamp="1599899616841">
+    <state width="1238" height="502" key="GridCell.Tab.0.center/0.23.1280.777@0.23.1280.777" timestamp="1599907168025" />
+    <state width="1238" height="502" key="GridCell.Tab.0.left" timestamp="1599907168025">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="502" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599899616841" />
-    <state width="1238" height="502" key="GridCell.Tab.0.right" timestamp="1599899616841">
+    <state width="1238" height="502" key="GridCell.Tab.0.left/0.23.1280.777@0.23.1280.777" timestamp="1599907168025" />
+    <state width="1238" height="502" key="GridCell.Tab.0.right" timestamp="1599907168026">
       <screen x="0" y="23" width="1280" height="777" />
     </state>
-    <state width="1238" height="502" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599899616841" />
+    <state width="1238" height="502" key="GridCell.Tab.0.right/0.23.1280.777@0.23.1280.777" timestamp="1599907168026" />
     <state width="1238" height="279" key="GridCell.Tab.1.bottom" timestamp="1599846194617">
       <screen x="0" y="23" width="1280" height="777" />
     </state>

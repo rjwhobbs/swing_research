@@ -354,7 +354,7 @@ public class Model {
 
   private int scoreLeveler(int score, int lvl) {
 
-    int div = 10;
+    int div = 9;
 
     return (score) - ((score / div) * lvl);
   }

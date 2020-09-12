@@ -1,9 +1,5 @@
 package rhobbs.model.artefacts.weapons;
 
-import javax.validation.constraints.NotNull;
-import static org.junit.Assert.*;
-import org.junit.Test;
-
 public abstract class WeaponFactory {
   public static Weapon retrieveWeapon(String weaponType) {
     if (weaponType == null) {

@@ -9,13 +9,25 @@ import rhobbs.view.gui.RootView;
 
 public class Swingy {
 
-   Model model;
-
    public static void main(String[] args) {
-//      new SwingyTests(0);
-//      Controller controller = new Controller(new Model());
-      RootView rootView = new RootView();
-      GUIController guiController = new GUIController(rootView, new Model());
-//      guiView.setVisible(true);
+
+      String validInput = "Unrecognised argument."
+              +"\nPlease choose only \"console\" or \"gui\".";
+
+      if (args.length != 1) {
+         System.out.println(validInput);
+      }
+      else if (args[0].equals("console") || args[0].equals("gui")) {
+         if (args[0].equals("console")) {
+            Controller controller = new Controller(new Model());
+         }
+         else if (args[0].equals("gui")) {
+            RootView rootView = new RootView();
+            GUIController guiController = new GUIController(rootView, new Model());
+         }
+      }
+      else {
+         System.out.println(validInput);
+      }
    }
 }
