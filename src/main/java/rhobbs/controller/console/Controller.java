@@ -3,9 +3,12 @@ package rhobbs.controller.console;
 import rhobbs.model.Model;
 import rhobbs.view.console.ConsoleView;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.InputStreamReader;
 
 public class Controller {
 
@@ -16,6 +19,8 @@ public class Controller {
   private boolean showChooseHeroNameScreen;
   private boolean showChooseHeroClassTypeScreen;
   private boolean showStartGameScreen;
+  private Scanner scanner;
+  private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
   public Controller(Model model) {
 
@@ -23,7 +28,7 @@ public class Controller {
     List<String> userCreateHeroInput = new ArrayList<>();
     String input = "";
 
-    Scanner scanner = new Scanner(System.in);
+    scanner = new Scanner(System.in).useDelimiter("\n");
 
     showStartScreen = false;
     showSelectHeroScreen = false;
@@ -48,12 +53,7 @@ public class Controller {
     while (!input.equals("EXIT")) {
       if (showStartScreen) {
         ConsoleView.showStartSelectScreen();
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -61,12 +61,7 @@ public class Controller {
       }
       else if (showSelectHeroScreen) {
         ConsoleView.listAvailableHeroes(this.model.getStoredHeroes());
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -74,24 +69,14 @@ public class Controller {
       }
       else if (showSelectedHeroScreen) {
         ConsoleView.showHeroStats(this.model.getHero());
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
       }
       else if (showChooseHeroNameScreen) {
         ConsoleView.chooseHeroName();
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -99,12 +84,7 @@ public class Controller {
       }
       else if (showChooseHeroClassTypeScreen) {
         ConsoleView.chooseHeroClass();
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -112,21 +92,24 @@ public class Controller {
       }
       else if (showStartGameScreen) {
         ConsoleView.showMessage("And so your quest begins! Hit ENTER to start.");
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
-        GamePlayController.startGame(this.model, scanner);
+//        GamePlayController.startGame(this.model, scanner);
+        GamePlayController.startGame(this.model);
         input = "EXIT";
       }
     }
     ConsoleView.showMessage("Exiting...");
     scanner.close();
+    try {
+      reader.close();
+    }
+    catch (IOException e) {
+      ConsoleView.showException(e.getMessage());
+    }
+
   }
 
   private void runStart(String input) {
@@ -254,6 +237,21 @@ public class Controller {
     }
     catch (NumberFormatException e) {
       return false;
+    }
+  }
+
+  static String getNextLine() {
+    String line;
+    try {
+      line = reader.readLine();
+      if (line == null) {
+        return "EXIT";
+      }
+      return line;
+    }
+    catch (IOException e) {
+       ConsoleView.showException(e.getMessage());
+       return "EXIT";
     }
   }
 }

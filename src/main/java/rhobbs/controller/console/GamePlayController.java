@@ -3,13 +3,13 @@ package rhobbs.controller.console;
 import rhobbs.model.Model;
 import rhobbs.view.console.ConsoleView;
 
+import java.io.BufferedReader;
 import java.util.Random;
 import java.util.Scanner;
 
 public class GamePlayController {
 
   private static Random random = new Random();
-  private static int checkEnemy = 0;
   private static boolean showMovementScreen;
   private static boolean showFightScreen;
   private static boolean showLoopFightScreen;
@@ -17,7 +17,7 @@ public class GamePlayController {
   private static boolean gameOverScreen;
   private static Model model;
 
-  public static void startGame(Model model, Scanner scanner) {
+  public static void startGame(Model model) {
 
     GamePlayController.model = model;
 
@@ -36,12 +36,7 @@ public class GamePlayController {
         ConsoleView.showHeroStats(GamePlayController.model.getHero());
         ConsoleView.showYourCoords(model.getCurrentCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = Controller.getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -51,12 +46,7 @@ public class GamePlayController {
         ConsoleView.showEnemyCoords(GamePlayController.model.getCurrentCoords());
         ConsoleView.showEnemyStats(GamePlayController.model.getEnemy());
         ConsoleView.showMessage("F to fight or R to run");
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = Controller.getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -64,12 +54,7 @@ public class GamePlayController {
       }
       else if (showLoopFightScreen) {
         ConsoleView.showMessage("Hit ENTER to fight!");
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = Controller.getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
@@ -80,12 +65,7 @@ public class GamePlayController {
         ConsoleView.showMessage("The enemy dropped an item...");
         ConsoleView.showArtefactStats(GamePlayController.model.getArtefact());
         ConsoleView.showMessage("Equip it? (Y/N)");
-        if (scanner.hasNext()) {
-          input = scanner.nextLine();
-        }
-        else {
-          input = "EXIT";
-        }
+        input = Controller.getNextLine();
         if (input.equals("EXIT")) {
           break;
         }
