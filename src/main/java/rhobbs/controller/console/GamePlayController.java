@@ -36,7 +36,12 @@ public class GamePlayController {
         ConsoleView.showHeroStats(GamePlayController.model.getHero());
         ConsoleView.showYourCoords(model.getCurrentCoords());
         ConsoleView.showMessage("Type to move: N, E, S, W");
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -46,7 +51,12 @@ public class GamePlayController {
         ConsoleView.showEnemyCoords(GamePlayController.model.getCurrentCoords());
         ConsoleView.showEnemyStats(GamePlayController.model.getEnemy());
         ConsoleView.showMessage("F to fight or R to run");
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -54,7 +64,12 @@ public class GamePlayController {
       }
       else if (showLoopFightScreen) {
         ConsoleView.showMessage("Hit ENTER to fight!");
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -65,7 +80,12 @@ public class GamePlayController {
         ConsoleView.showMessage("The enemy dropped an item...");
         ConsoleView.showArtefactStats(GamePlayController.model.getArtefact());
         ConsoleView.showMessage("Equip it? (Y/N)");
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }

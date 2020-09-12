@@ -9,17 +9,13 @@ import java.util.Scanner;
 
 public class Controller {
 
-  ConsoleView view;
   Model model;
-
-//  private List<List<String>> storedHeroes;
   private boolean showStartScreen;
   private boolean showSelectHeroScreen;
   private boolean showSelectedHeroScreen;
   private boolean showChooseHeroNameScreen;
   private boolean showChooseHeroClassTypeScreen;
   private boolean showStartGameScreen;
-  private boolean heroCreated;
 
   public Controller(Model model) {
 
@@ -34,7 +30,6 @@ public class Controller {
     showSelectedHeroScreen = false;
     showChooseHeroNameScreen = false;
     showChooseHeroClassTypeScreen = false;
-    heroCreated = false;
 
     try {
       this.model.modelInit();
@@ -53,7 +48,12 @@ public class Controller {
     while (!input.equals("EXIT")) {
       if (showStartScreen) {
         ConsoleView.showStartSelectScreen();
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -61,7 +61,12 @@ public class Controller {
       }
       else if (showSelectHeroScreen) {
         ConsoleView.listAvailableHeroes(this.model.getStoredHeroes());
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -69,14 +74,24 @@ public class Controller {
       }
       else if (showSelectedHeroScreen) {
         ConsoleView.showHeroStats(this.model.getHero());
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
       }
       else if (showChooseHeroNameScreen) {
         ConsoleView.chooseHeroName();
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -84,7 +99,12 @@ public class Controller {
       }
       else if (showChooseHeroClassTypeScreen) {
         ConsoleView.chooseHeroClass();
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
@@ -92,7 +112,12 @@ public class Controller {
       }
       else if (showStartGameScreen) {
         ConsoleView.showMessage("And so your quest begins! Hit ENTER to start.");
-        input = scanner.nextLine();
+        if (scanner.hasNext()) {
+          input = scanner.nextLine();
+        }
+        else {
+          input = "EXIT";
+        }
         if (input.equals("EXIT")) {
           break;
         }
