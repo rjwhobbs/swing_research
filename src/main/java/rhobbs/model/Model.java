@@ -3,7 +3,6 @@ package rhobbs.model;
 import rhobbs.model.artefacts.Artefact;
 import rhobbs.model.artefacts.DropArtefact;
 import rhobbs.model.storage.Storage;
-//import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -153,14 +152,6 @@ public class Model {
         }
       }
     }
-
-//    for (int i = 0; i < mapSize; i++) {
-//      for (int j = 0; j < mapSize; j++) {
-//        System.out.print(map[i][j] + " ");
-//      }
-//      System.out.println();
-//    }
-
   }
 
   public int[] getCurrentCoords() {
