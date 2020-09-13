@@ -13,8 +13,6 @@ import java.awt.event.ActionListener;
 
 public class GameView extends JPanel {
 
-  JLabel heroInfo;
-
   private javax.swing.JButton leaveItemButton;
   private javax.swing.JButton moveNorthButton;
   private javax.swing.JButton moveSouthButton;
@@ -66,7 +64,7 @@ public class GameView extends JPanel {
     fightButton.setText("Fight");
     runButton.setText("Run");
     attackButton.setText("Attack!");
-    gameViewTitleLabel.setText("Title");
+    gameViewTitleLabel.setText("The battle dome!");
     currentCoordsLabel.setBorder(new SoftBevelBorder(BevelBorder.RAISED));
     pickUpButton.setText("Pickup item");
     leaveItemButton.setText("Leave item");

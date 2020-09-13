@@ -220,7 +220,6 @@ public class Model {
 
   public boolean stillFighting() {
     int heroLevel = this.hero.getLevel() * 1000;
-//    int heroXP = this.hero.getExperience() / 15;
     int heroDef = this.hero.getDefense() * 10;
     int heroAtt = this.hero.getAttack() * 10;
 
@@ -228,20 +227,18 @@ public class Model {
     int enemyDef = this.enemy.getDefense() * 10;
     int enemyAtt = this.enemy.getAttack() * 10;
 
-    int heroWeight = (heroLevel /*+ heroXP*/ + heroDef + heroAtt) / 100;
+    int heroWeight = (heroLevel + heroDef + heroAtt) / 100;
     int enemyWeight = (enemyLevel + enemyDef + enemyAtt) / 100;
 
     int heroHP = this.hero.getHitPoints();
     int enemyHP = this.enemy.getHitPoints();
     int heroHPRecovery = 0;
-    // 2 = 1 out of 2 chance, 3 == 1 out of 3 chance etc
+    // 2 = 1 out of 2 chance, 3 = 1 out of 3 chance etc
     int chanceOfLuck = this.makeChanceOfLuck(this.hero.getLevel());
 
     int heroScore = scoreLeveler(random.nextInt(heroWeight), this.hero.getLevel());
     int enemyScore = scoreLeveler(random.nextInt(enemyWeight), this.enemy.getLevel());
 
-//    System.out.println(heroScore);
-//    System.out.println(enemyScore);
 
     // Element of luck
     if (random.nextInt(chanceOfLuck) == chanceOfLuck - 1) {
@@ -347,8 +344,10 @@ public class Model {
     switch (level) {
       case 0:
         return 1;
-      default:
+      case 1:
         return 2;
+      default:
+        return 3;
     }
   }
 
